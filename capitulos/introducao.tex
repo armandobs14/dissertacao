@@ -1,25 +1,27 @@
 \chapter{Introdução}
 \label{cap:introducao}
-Considerado como ponto chave para a Web Semântica \cite{berners2001semantic}, Dados Conectados vem sendo abordado de forma crescente por acadêmicos, governos e empresas. Tal crescimento se deve ao fato de que Dados Conectados é uma alternativa relevante para conectar bases de dados distribuídas na Web. Segundo \citeonline{hyland2011joy}, Dados Conectados se trata de um conjunto de boas práticas para publicar e conectar dados estruturados na Web. Ademais, \citeonline{berners2006linked} afirma que Dados Conectados não é apenas por dados na internet, mas fazer conexões entre eles, permitindo assim, que pessoas ou máquinas possam explorar a Web dos dados.
+Considerado como ponto chave para a Web Semântica \cite{berners2001semantic}, Dados Conectados vem sendo abordado de forma crescente por acadêmicos, governos e empresas. Tal crescimento se deve ao fato de Dados Conectados ser uma alternativa relevante para conectar bases de dados distribuídas na Web. Segundo \citeonline{hyland2011joy}, Dados Conectados se trata de um conjunto de boas práticas para publicar e conectar dados estruturados na Web. Ademais, \citeonline{berners2006linked} afirma que não se trata apenas de por dados na internet, mas fazer conexões entre eles, permitindo assim, que pessoas ou máquinas possam explorar a Web dos dados.
 
 Web de Dados bem como Web dos Documentos, são termos utilizados para descrever o paradigma da Web atualmente, onde o primeiro, que tem como base o segundo, reflete a possibilidade de conectar os dados através de links. Sendo esta, uma possibilidade inexistente quando se fala de Web dos Documentos, pois nesta, os documentos apontam para outros documentos através de links.
 
-Dados Conectados pode ser visto sob duas perspectivas: consumo e publicação. A primeira aborda o ponto de vista do consumidor de Dados Conectados, tratando a exploração de dados para tornar as aplicações mais ricas. A segunda está sob a perspectiva do publicador, abordando processos \cite{bizer2007publish, hyland2011joy, villazon2011methodological, Avila2015} e conceitos \cite{berners2006linked, wood2014linked} necessários para publicar e manter os dados na Web de forma conectada. O processo de publicação de dados conectados envolve diferentes etapas, ferramentas e boas práticas \cite{world2014best} para melhorar a qualidade dos dados publicados. 
+Dados Conectados pode ser visto sob duas perspectivas: consumo e publicação. A primeira aborda o ponto de vista do consumidor, tratando a exploração de dados para tornar as aplicações mais ricas. A segunda está sob a perspectiva do publicador, abordando processos \cite{bizer2007publish, hyland2011joy, villazon2011methodological, Avila2015} e conceitos \cite{berners2006linked, wood2014linked} necessários para publicar e manter os dados na Web de forma conectada. 
 
-Publicar dados conectados é custoso e não trivial. Isso devido a quantidade de elementos que devem ser levados em consideração ao longo do processo. Além disso, a criação de links entre conjuntos de dados distintos requer uma análise cuidadosa por parte dos especialistas de domínio. Apesar de ser uma abordagem eficaz, não é escalável, inviabilizando o processo de publicação de forma artesanal. Logo, é de grande importância para a existência de dados conectados, que existam soluções capazes de conectar dados de forma automática ou semi-automática. 
+Para publicar dados em formato conectado é necessário considerar etapas (ver Figura \ref{fig:modelo_processo}), ferramentas para modelagem, transformação e publicação dos dados. Além da existência de boas práticas \cite{world2014best} recomendadas para melhorar qualidade dos dados publicados. Além disso, criar links entre conjuntos de dados requer uma análise cuidadosa por parte do especialista de domínio, visto que a quantidade de novos conjuntos de dados publicados cresce constantemente.
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=0.95\textwidth]{./imagens/modelo-de-processo.png}\\
+    \caption{Modelo de processo para a publicação de dados conectados governamentais}
+	\footnotesize{Fonte: \cite{Avila2015}.}
+	\label{fig:modelo_processo}
+\end{figure}
+
+	  que apesar de ser uma abordagem eficaz, não é escalável. Consequentemente, inviabilizando o processo de publicação de forma artesanal. Logo, para que seja possível constuir a Web de Dados de forma eficiente, é necessário que existam soluções capazes de conectar dados de forma automática ou semi-automática.
 
 
 % Um bom exemplo de tal complexidade pode ser encontrado em alguns dos processos existentes autalmente, sendo um deles o modelo proposto por \citeonline{Avila2015}, também chamado de \textit{Piece of Cake} (PoC), que pode ser visto na Figura \ref{fig:modelo_processo}. Esse modelo possui dezenas de tarefas ao longo do processo.
 
 %Etapas como reuso de vocabulários, conversão e enriquecimento de dados, são etapas que requerem o conhecimento de um especialista de domínio para identificar vocabulários e informações existentes na Web de forma que ,. sendo esta última responsável por conectar os dados entre bases de dados distintas, que de acordo com \citeonline{berners2006linked} é impressindível para a existência de dados conectados.
-
-%\begin{figure}[!ht]
-%	\centering
-%	\includegraphics[width=0.95\textwidth]{./imagens/modelo-de-processo.png}\\
-%    \caption{Modelo de processo para a publicação de dados conectados governamentais}
-%	\footnotesize{Fonte: \cite{Avila2015}.}
-%	\label{fig:modelo_processo}
-%\end{figure}
 
 Para o estabelecimento da relação semântica entre dados, utiliza-se ontologias e vocabulários, que podem ser entendidos como artefatos computacionais utilizados para a representação de um determinado universo de discurso. Dessa forma, o uso de ontologias está fortemente relacionado à interoperabilidade de dados \cite{guarino1998formal, simon2004using, farinelli2013papel}. Segundo o IEEE\footnote{\url{https://www.ieee.org/education_careers/education/standards/standards_glossary.html}}, interoperabilidade pode ser entendida como a capacidade de um sistema conversar de forma transparente com outro, sendo assim, interoperabilidade de dados pode ser entendido como a capacidade de um sistema de processar os dados de outro com esforço mínimo. 
 
