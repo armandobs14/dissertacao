@@ -6,28 +6,9 @@ Web de Dados bem como Web dos Documentos, são termos utilizados para descrever 
 
 Dados Conectados pode ser visto sob duas perspectivas: consumo e publicação. A primeira aborda o ponto de vista do consumidor, tratando a exploração de dados para tornar as aplicações mais ricas. A segunda está sob a perspectiva do publicador, abordando processos \cite{bizer2007publish, hyland2011joy, villazon2011methodological, Avila2015} e conceitos \cite{berners2006linked, wood2014linked} necessários para publicar e manter os dados na Web de forma conectada. 
 
-Para publicar dados em formato conectado é necessário considerar etapas (ver Figura \ref{fig:modelo_processo}), ferramentas para modelagem, transformação e publicação dos dados. Além da existência de boas práticas \cite{world2014best} recomendadas para melhorar qualidade dos dados publicados. Além disso, criar links entre conjuntos de dados requer uma análise cuidadosa por parte do especialista de domínio, visto que a quantidade de novos conjuntos de dados publicados cresce constantemente.
+Publicar ou manter dados conectados na Web vai além de disponibilizar conjuntos de dados através de serializações RDF. É necessário conectá-los a outros conjuntos de dados já existentes. Porém, criar links entre conjuntos de dados requer uma análise cuidadosa por parte do especialista, que apesar de ser uma abordagem eficaz, não é escalável, visto que a quantidade de dados publicados cresce constantemente. Consequentemente, inviabilizando o processo de publicação de forma artesanal. Logo, para que seja possível constuir a Web de Dados de forma eficiente, é necessário que existam soluções capazes de conectar dados de forma automática ou semi-automática.
 
-\begin{figure}[!ht]
-	\centering
-	\includegraphics[width=0.95\textwidth]{./imagens/modelo-de-processo.png}\\
-    \caption{Modelo de processo para a publicação de dados conectados governamentais}
-	\footnotesize{Fonte: \cite{Avila2015}.}
-	\label{fig:modelo_processo}
-\end{figure}
-
-	  que apesar de ser uma abordagem eficaz, não é escalável. Consequentemente, inviabilizando o processo de publicação de forma artesanal. Logo, para que seja possível constuir a Web de Dados de forma eficiente, é necessário que existam soluções capazes de conectar dados de forma automática ou semi-automática.
-
-
-% Um bom exemplo de tal complexidade pode ser encontrado em alguns dos processos existentes autalmente, sendo um deles o modelo proposto por \citeonline{Avila2015}, também chamado de \textit{Piece of Cake} (PoC), que pode ser visto na Figura \ref{fig:modelo_processo}. Esse modelo possui dezenas de tarefas ao longo do processo.
-
-%Etapas como reuso de vocabulários, conversão e enriquecimento de dados, são etapas que requerem o conhecimento de um especialista de domínio para identificar vocabulários e informações existentes na Web de forma que ,. sendo esta última responsável por conectar os dados entre bases de dados distintas, que de acordo com \citeonline{berners2006linked} é impressindível para a existência de dados conectados.
-
-Para o estabelecimento da relação semântica entre dados, utiliza-se ontologias e vocabulários, que podem ser entendidos como artefatos computacionais utilizados para a representação de um determinado universo de discurso. Dessa forma, o uso de ontologias está fortemente relacionado à interoperabilidade de dados \cite{guarino1998formal, simon2004using, farinelli2013papel}. Segundo o IEEE\footnote{\url{https://www.ieee.org/education_careers/education/standards/standards_glossary.html}}, interoperabilidade pode ser entendida como a capacidade de um sistema conversar de forma transparente com outro, sendo assim, interoperabilidade de dados pode ser entendido como a capacidade de um sistema de processar os dados de outro com esforço mínimo. 
-
-Apesar da facilidade fornecida pelas ontologias em interoperar dados, criar conexão entre conjuntos de dados distintos mantem-se uma tarefa complexa, pois requer uma análise preliminar e detalhada por parte do especialista de domínio. Além disso, 
-A conexão entre diferentes conjuntos de dados pode ser feita no nível conceitual, através do alinhamento de ontologias e no nível de dados, através do alinhamento de instâncias.
-
+A criação de links automaticamente é um problema reconhecido por comunidades de Bancos de Dados e Web Semântica.
 %Sendo necessário também aplicar técnicas de alinhamento entre os conjuntos de dados \cite{Castano2008}. Este problema também é reconhecido pelas comunidades de bancos de dados e integração de dados através do termo inglês record linkage \cite{gu2003record}, que se refere à tarefa de identificar com acurácia e de forma rápida registros correspondentes para a mesma entidade a partir de uma ou mais fontes de dados.
 
 %Conhecido também como Problema de Resolução de Entidades \cite{menestrina2005generic} (do inglês Entity Resolution Problem) e deduplicação \cite{sarawagi2002interactive} (do inglês Deduplication), tratando-se de um processo que tem como objetivo identificar e mesclar recursos julgados representar a mesma entidade do mundo real. Além disso, é possível ressaltar outras áreas que podem se beneficiar a partir da conexão entre dados, sendo elas: 
