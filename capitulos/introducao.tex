@@ -8,14 +8,11 @@ Dados Conectados pode ser visto sob duas perspectivas: consumo e publicação. A
 
 Publicar ou manter dados conectados na Web vai além de disponibilizar conjuntos de dados através de serializações RDF. É necessário conectá-los a outros conjuntos de dados já existentes. Porém, criar links entre conjuntos de dados requer uma análise cuidadosa por parte do especialista, que apesar de ser uma abordagem eficaz, não é escalável, visto que a quantidade de dados publicados cresce constantemente. Consequentemente, inviabilizando o processo de publicação de forma artesanal. Logo, para que seja possível constuir a Web de Dados de forma eficiente, é necessário que existam soluções capazes de conectar dados de forma automática ou semi-automática.
 
-Conectar dados automaticamente é um problema reconhecido por diversas comunidades. Dentre essas comunidades, podemos destacar as comunidades de Bancos de Dados e Web Semântica. Na primeira, esse problema é conhecido através do termo \textbf{\textit{Record Linkage}} \cite{gu2003record}. Na segunda, ele é reconhecido pelo termo \textbf{\textit{Instance Matching}}. Além disso, também é possível encontrar referências como \textbf{\textit{Problema de Resolução de Entidades}} \cite{menestrina2005generic} e \textbf{\textit{Deduplicação}} \cite{sarawagi2002interactive}, que se trata de um processo que tem como objetivo identificar e mesclar recursos julgados representar a mesma entidade do mundo real.
-%\begin{itemize}
-%    \item \textbf{Integração semântica de dados}: Refere-se ao melhoramento de as técnicas existentes pra descobertas de mapeamento (semi) automático entre ontologias heterogêneas e distribuídas; 
+Conectar dados automaticamente é um problema reconhecido por diversas comunidades. Dentre essas comunidades, podemos destacar as comunidades de Bancos de Dados e Web Semântica. Na primeira, esse problema é conhecido através do termo \textbf{\textit{Record Linkage}} \cite{gu2003record}. Na segunda, ele é reconhecido pelo termo \textbf{\textit{Instance Matching}}. Além disso, também é possível encontrar referências como \textbf{\textit{Problema de Resolução de Entidades}} \cite{menestrina2005generic} e \textbf{\textit{Deduplicação}} \cite{sarawagi2002interactive}, que se referem ao processo que tem como objetivo identificar e conectar recursos julgados representar a mesma entidade do mundo real.
 
-%    \item \textbf{Reconhecimento de identidade}: Refere-se à capacidade de identificar se descritores de recursos distintos estão relacionados à mesma entidade do mundo real; 
+Afim de conectar os recursos disponíveis na Web. A comunidade, através da \textit{Ontology Alignment Evaluation Initiative}\footnote{http://oaei.ontologymatching.org} (OAEI), realiza anualmente uma avaliação das soluções de alinhamento de dados. Tal iniciativa mostrou-se promissora, pois foi possível notar a melhora nos resultados das soluções propostas. Porém, após experimentos utilizando dados reais, \citeonline{homoceanu2014putting} concluiram que essas soluções não estão prontas para conectar dados automaticamente de forma confiável. Além disso, o baixo nível de confiabilidade dessas soluções deve-se ao fato de que os testes realizados pela OAEI não refletem os problemas apresentados por dados reais. 
 
-%    \item \textbf{População de ontologias}: Refere-se a descoberta de relacionamentos entre novas instâncias e as instâncias já existentes na base de conhecimento. 
-%\end{itemize}
+Neste trabalho, nós apresentados uma abordagem semi-automática para o alinhamento de dados conectados. 
 
 %Por exemplo, admitindo a existência de uma entidade do mundo real (e.g. Pesquisador) onde atributos como nome e endereço estão armazenados em datasets distintos, onde estão vinculados a recursos que usam as seguintes URIs (http://www.ic.ufal.br/dac/rbie/author/615 e http://lattes.cnpq.br/4038730280834132) como na Figura \ref{fig:modelo_semantico}. Neste cenário, não é possível determinar, apenas através do alinhamento entre as ontologias, que ambas URIs fazem referência a mesma entidade, sendo necessário analisar informações adicionais provenientes de conexões semânticas entre conceitos e relações presentes nestes dados [31, 35]. 
 
@@ -26,27 +23,10 @@ Conectar dados automaticamente é um problema reconhecido por diversas comunidad
 %	\footnotesize{Fonte: Próprio autor.}
 %	\label{fig:modelo_semantico}
 %\end{figure}
-%No cenário de publicação de Dados Conectados, criar conexões entre conjuntos de dados é uma tarefa custosa, pois requer análise preliminar e detalhada por um especialista de domínio. 
-
-%Além disso, com a crescente quantidade de dados que estão sendo publicados Web, conforme a Figura \ref{fig:oferta_2020}, conectar esses dados se torna cada vez mais desafiador. Por exemplo, o catálogo de dados do governo de São Paulo2, que até o presente momento contém 424 conjuntos de dados, possui apenas 13 (0.23\%) que disponibiliza seus dados através de alguma serialização RDF (Turtle, RDF/XML).  
-
 
 %AQUI, PRECISA ESCREVER SOBRE TÉCNICAS APLICADAS POR OUTROS TRABALHOS (RELACIONADOS) E DIZER POR QUE ELES NÃO RESOLVEM O PROBLEMA.  
 
-%DEPOIS DISSO, DIZER QUE UM CAMINHO DE SOLUÇÃO É O ALINHAMENTO USANDO XXXXXXXXX E/OU YYYYYYYYYYY.  
-
-%Dessa forma, pretende-se dispor uma abordagem semi-automática para publicar Dados Conectados, a partir de dados estruturados (publicado e não publicados na Web), levando em consideração, técnicas de alinhamento de dados, contribuindo assim, para o cenário de publicação de Dados Conectados. 
-
-%Figura 2 - Oferta de dados na Web até 2020. Fonte: EMC 2012 
-%\begin{figure}[!ht]
-%	\centering
-%	\includegraphics[width=0.8\textwidth]{./imagens/oferta.png}\\
-%    \caption{Oferta de dados na Web até 2020}
-%	\footnotesize{Fonte: EMC 2012.}
-%	\label{fig:oferta_2020}
-%\end{figure}
-
-
+%DEPOIS DISSO, DIZER QUE UM CAMINHO DE SOLUÇÃO É O ALINHAMENTO USANDO XXXXXXXXX E/OU YYYYYYYYYYY.
 
 \subsection*{Contextualização}
 
