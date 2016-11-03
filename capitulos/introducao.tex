@@ -10,17 +10,18 @@ Publicar ou manter dados conectados na Web vai além de disponibilizar conjuntos
 
 Conectar dados automaticamente é um problema reconhecido por diversas comunidades. Dentre essas comunidades, podemos destacar as comunidades de Bancos de Dados e Web Semântica. Na primeira, esse problema é conhecido através do termo \textbf{\textit{Record Linkage}} \cite{gu2003record}. Na segunda, ele é reconhecido pelo termo \textbf{\textit{Instance Matching}}. Além disso, também é possível encontrar referências como \textbf{\textit{Problema de Resolução de Entidades}} \cite{menestrina2005generic} e \textbf{\textit{Deduplicação}} \cite{sarawagi2002interactive}, que se trata de um processo que tem como objetivo identificar e conectar recursos julgados representar a mesma entidade do mundo real.
 
-Para identificar e conectar recursos na Web, a comunidade vem apresentando um número crescente de abordagens (ver Figura \ref{fig:oaei_imtools}). Segundo \citeonline{caimi2012ontology}, as técnicas utilizadas nessas abordagens são baseadas em similaridade, aprendizagem, regras ou contexto, e podem ser utilizadas juntas ou separadas. Apesar das diferenças entre as abordagens geradas para conectar os dados, essas compartilham o característica de gerar um conjunto de alinhamento ao final do processo.
+Para identificar e conectar recursos na Web, a comunidade vem apresentando um número crescente de soluções (ver Figura \ref{fig:oaei_imtools}). Com o objetivo de avaliar o desempenho de cada uma das soluções, a \textit{Ontology Alignment Evaluation Initiative} (OAEI) realiza uma avaliação anual. Essa avaliação consiste em usar dois conjuntos de dados como entrada e comparar o alinhamento gerado pela solução com o alinhamento de referência, gerando métricas de \textit{precision}, \textit{recall} e \textit{f-measure}.
 
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width=1\textwidth]{./imagens/im_tools.pdf}
-    \caption{Quantidade de soluções avaliadas por ano}
+    \caption{Quantidade de soluções submetidas ao OAEI}
 	\footnotesize{Fonte: \cite{cheatham2015results}.}
 	\label{fig:oaei_imtools}
 \end{figure}
 
-Para avaliar a qualidade dos alinhamentos gerados por essas soluções, a comunidade através da \textit{Ontology Alignment Evaluation Initiative} (OAEI) realiza uma avaliação anual. A avaliação consiste de usar dois conjuntos de dados como entrada e comparar o alinhamento gerado pela solução com o alinhamento de referência, gerando métricas de \textit{precision}, \textit{recall} e \textit{f-measure}.
+Apesar da evolução perceptível das ferramentas avaliadas pelo OAEI, 
+
 
 %\begin{itemize}
 %    \item \textbf{Integração semântica de dados}: Refere-se ao melhoramento de as técnicas existentes pra descobertas de mapeamento (semi) automático entre ontologias heterogêneas e distribuídas; 
