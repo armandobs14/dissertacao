@@ -1,6 +1,6 @@
 \chapter{Introdução}
 \label{cap:introducao}
-Considerado como ponto chave para a Web Semântica \cite{berners2001semantic}, Dados Conectados vem sendo abordado de forma crescente por acadêmicos, governos e empresas. Tal crescimento se deve ao fato de Dados Conectados ser uma alternativa relevante para conectar bases de dados distribuídas na Web. Segundo \citeonline{hyland2011joy}, Dados Conectados se trata de um conjunto de boas práticas para publicar e conectar dados estruturados na Web. Ademais, \citeonline{berners2006linked} afirma que não se trata apenas de por dados na internet, mas fazer conexões entre eles, permitindo assim, que pessoas ou máquinas possam explorar a Web dos dados.
+Considerado como ponto chave para a Web Semântica \cite{berners2001semantic}, Dados Conectados vem sendo abordado de forma crescente por acadêmicos, governos e empresas. Tal crescimento se deve ao fato de Dados Conectados ser uma alternativa relevante para conectar bases de dados distribuídas na Web. Segundo \citeonline{hyland2011joy}, Dados Conectados se trata de um conjunto de boas práticas para publicar e conectar dados estruturados na Web. Ademais, \citeonline{berners2006linked} afirma que não se trata apenas de por dados na Web, mas fazer conexões entre eles, permitindo assim, que pessoas ou máquinas possam explorar a Web dos dados.
 
 Web de Dados bem como Web dos Documentos, são termos utilizados para descrever o paradigma da Web atualmente, onde o primeiro, que tem como base o segundo, reflete a possibilidade de conectar os dados através de links. Sendo esta, uma possibilidade inexistente quando se fala de Web dos Documentos, pois nesta, os documentos apontam para outros documentos através de links.
 
@@ -8,7 +8,20 @@ Dados Conectados pode ser visto sob duas perspectivas: consumo e publicação. A
 
 Publicar ou manter dados conectados na Web vai além de disponibilizar conjuntos de dados através de serializações RDF. É necessário conectá-los a outros conjuntos de dados já existentes. Porém, criar links entre conjuntos de dados requer uma análise cuidadosa por parte do especialista, que apesar de ser uma abordagem eficaz, não é escalável, visto que a quantidade de dados publicados cresce constantemente. Consequentemente, inviabilizando o processo de publicação de forma artesanal. Logo, para que seja possível constuir a Web de Dados de forma eficiente, é necessário que existam soluções capazes de conectar dados de forma automática ou semi-automática.
 
-Conectar dados automaticamente é um problema reconhecido por diversas comunidades. Dentre essas comunidades, podemos destacar as comunidades de Bancos de Dados e Web Semântica. Na primeira, esse problema é conhecido através do termo \textbf{\textit{Record Linkage}} \cite{gu2003record}. Na segunda, ele é reconhecido pelo termo \textbf{\textit{Instance Matching}}. Além disso, também é possível encontrar referências como \textbf{\textit{Problema de Resolução de Entidades}} \cite{menestrina2005generic} e \textbf{\textit{Deduplicação}} \cite{sarawagi2002interactive}, que se trata de um processo que tem como objetivo identificar e mesclar recursos julgados representar a mesma entidade do mundo real.
+Conectar dados automaticamente é um problema reconhecido por diversas comunidades. Dentre essas comunidades, podemos destacar as comunidades de Bancos de Dados e Web Semântica. Na primeira, esse problema é conhecido através do termo \textbf{\textit{Record Linkage}} \cite{gu2003record}. Na segunda, ele é reconhecido pelo termo \textbf{\textit{Instance Matching}}. Além disso, também é possível encontrar referências como \textbf{\textit{Problema de Resolução de Entidades}} \cite{menestrina2005generic} e \textbf{\textit{Deduplicação}} \cite{sarawagi2002interactive}, que se trata de um processo que tem como objetivo identificar e conectar recursos julgados representar a mesma entidade do mundo real.
+
+Para identificar e conectar recursos na Web, a comunidade vem apresentando um número crescente de abordagens (ver Figura \ref{fig:oaei_imtools}). Segundo \citeonline{caimi2012ontology}, as técnicas utilizadas nessas abordagens são baseadas em similaridade, aprendizagem, regras ou contexto, e podem ser utilizadas juntas ou separadas. Apesar das diferenças entre as abordagens geradas para conectar os dados, essas compartilham o característica de gerar um conjunto de alinhamento ao final do processo.
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=1\textwidth]{./imagens/im_tools.pdf}
+    \caption{Quantidade de soluções avaliadas por ano}
+	\footnotesize{Fonte: \cite{Cheatham2015}.}
+	\label{fig:oaei_imtools}
+\end{figure}
+
+Para avaliar a qualidade dos alinhamentos gerados por essas soluções, a comunidade através da \textit{Ontology Alignment Evaluation Initiative} (OAEI) realiza uma avaliação anual. A avaliação consiste de usar dois conjuntos de dados como entrada e comparar o alinhamento gerado pela solução com o alinhamento de referência, gerando métricas de \textit{precision}, \textit{recall} e \textit{f-measure}.
+
 %\begin{itemize}
 %    \item \textbf{Integração semântica de dados}: Refere-se ao melhoramento de as técnicas existentes pra descobertas de mapeamento (semi) automático entre ontologias heterogêneas e distribuídas; 
 
@@ -45,8 +58,6 @@ Conectar dados automaticamente é um problema reconhecido por diversas comunidad
 %	\footnotesize{Fonte: EMC 2012.}
 %	\label{fig:oferta_2020}
 %\end{figure}
-
-
 
 \subsection*{Contextualização}
 
