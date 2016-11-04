@@ -10,7 +10,7 @@ Publicar ou manter dados conectados na Web vai além de disponibilizar conjuntos
 
 Conectar dados automaticamente é um problema reconhecido por diversas comunidades. Dentre essas comunidades, podemos destacar as comunidades de Bancos de Dados e Web Semântica. Na primeira, esse problema é conhecido através do termo \textbf{\textit{Record Linkage}} \cite{gu2003record}. Na segunda, ele é reconhecido pelo termo \textbf{\textit{Instance Matching}}. Além disso, também é possível encontrar referências como \textbf{\textit{Problema de Resolução de Entidades}} \cite{menestrina2005generic} e \textbf{\textit{Deduplicação}} \cite{sarawagi2002interactive}, que se trata de um processo que tem como objetivo identificar e conectar recursos julgados representar a mesma entidade do mundo real.
 
-Para identificar e conectar recursos na Web, a comunidade vem apresentando um número crescente de soluções (ver Figura \ref{fig:oaei_imtools}). Com o objetivo de avaliar o desempenho de cada uma das soluções, a \textit{Ontology Alignment Evaluation Initiative} (OAEI) realiza uma avaliação anual. Essa avaliação consiste em usar dois conjuntos de dados como entrada e comparar o alinhamento gerado pela solução com o alinhamento de referência, gerando métricas de \textit{precision}, \textit{recall} e \textit{f-measure}.
+Para identificar e conectar recursos na Web, a comunidade vem apresentando um número crescente de soluções (ver Figura \ref{fig:oaei_imtools}). Com o objetivo de avaliá-las, a \textit{Ontology Alignment Evaluation Initiative} (OAEI) realiza uma avaliação anual, que consiste em alinhar dois conjuntos de dados pré-definidos e comparar o alinhamento gerado pela solução com o alinhamento de referência. A partir da comparação entre os dois conjuntos de alinhamento as métricas de precision, recall e f-measure são geradas.
 
 \begin{figure}[!ht]
 	\centering
@@ -20,7 +20,8 @@ Para identificar e conectar recursos na Web, a comunidade vem apresentando um n�
 	\label{fig:oaei_imtools}
 \end{figure}
 
-Apesar da evolução perceptível das ferramentas avaliadas pelo OAEI, 
+Porém, de acordo com \citeonline{homoceanu2014putting}, apesar dos bons resultados apresentados, as soluções avaliadas não estão prontas para alinhar dados automaticamente de forma confiável. Para tal argumentação, eles realizaram um experimento similar ao utilizado pela OAEI, porém com dados reais. Além disso, outro fator que foi considerado está no fato de não considerarem a trasitividade das prorpriedades semânticas, dentre essas a owl:sameAs.
+
 
 
 %\begin{itemize}
