@@ -6,7 +6,7 @@ Web de Dados bem como Web dos Documentos, são termos utilizados para descrever 
 
 Dados Conectados pode ser visto sob duas perspectivas: consumo e publicação. A primeira aborda o ponto de vista do consumidor, tratando a exploração de dados para tornar as aplicações mais ricas. A segunda está sob a perspectiva do publicador, abordando processos \cite{bizer2007publish, hyland2011joy, villazon2011methodological, Avila2015} e conceitos \cite{berners2006linked, wood2014linked} necessários para publicar e manter os dados na Web de forma conectada. 
 
-Publicar ou manter dados conectados na Web vai além de disponibilizar conjuntos de dados através de serializações RDF. É necessário conectá-los a outros conjuntos de dados já existentes. Porém, criar links entre conjuntos de dados requer uma análise cuidadosa por parte do especialista, que apesar de ser uma abordagem eficaz, não é escalável, visto que a quantidade de dados publicados cresce constantemente. Consequentemente, inviabilizando o processo de publicação de forma artesanal. Logo, para que seja possível constuir a Web de Dados de forma eficiente, é necessário que existam soluções capazes de conectar dados de forma automática ou semi-automática.
+Publicar ou manter dados conectados na Web vai além de disponibilizar conjuntos de dados através de serializações RDF. É necessário conectá-los a outros conjuntos de dados já existentes. Porém, criar links entre conjuntos de dados requer uma análise cuidadosa por parte do especialista, que apesar de ser uma abordagem eficaz, não é escalável, visto que a quantidade de dados publicados cresce constantemente. Consequentemente, inviabilizando o processo de publicação de forma artesanal. Logo, para que seja possível construir a Web de Dados de forma eficiente, é necessário que existam soluções capazes de conectar dados de forma automática ou semiautomática.
 
 Conectar dados automaticamente é um problema reconhecido por diversas comunidades. Dentre essas comunidades, podemos destacar as comunidades de Bancos de Dados e Web Semântica. Na primeira, esse problema é conhecido através do termo \textbf{\textit{Record Linkage}} \cite{gu2003record}. Na segunda, ele é reconhecido pelo termo \textbf{\textit{Instance Matching}}. Além disso, também é possível encontrar referências como \textbf{\textit{Problema de Resolução de Entidades}} \cite{menestrina2005generic} e \textbf{\textit{Deduplicação}} \cite{sarawagi2002interactive}, que se trata de um processo que tem como objetivo identificar e conectar recursos julgados representar a mesma entidade do mundo real.
 
@@ -20,46 +20,29 @@ Para identificar e conectar recursos na Web, a comunidade vem apresentando um n�
 	\label{fig:oaei_imtools}
 \end{figure}
 
-Porém, de acordo com \citeonline{homoceanu2014putting}, apesar dos bons resultados apresentados, as soluções avaliadas não estão prontas para alinhar dados automaticamente de forma confiável. Para tal argumentação, eles realizaram um experimento similar ao utilizado pela OAEI, porém com dados reais. Além disso, outro fator que foi considerado está no fato de não considerarem a trasitividade das prorpriedades semânticas, dentre essas a owl:sameAs.
+Porém, de acordo com \citeonline{homoceanu2014putting}, apesar dos bons resultados apresentados, as soluções não estão prontas para alinhar dados automaticamente de forma confiável. Para isso, foi realizado um experimento equivalente ao executado pela OAEI. Entretanto, utilizando dados reais, que foram obtidos de 5 fontes diferentes (Freebase, DBPedia, LinkedMDB, DrungBase e NewYork Times). Além disso, o experimento permitiu notar que não era provido o suporte adequado a algumas propriedades dos vocabulários utilizados.
+	
+Dentre as propriedades com suporte inadequado, destaca-se a propriedade owl:sameAs, que é responsável por identificar recursos equivalentes. Além disso, essa se trata de uma propriedade transitiva. Dessa forma, se existem dois recursos equivalentes R1 e R2 e existe um terceiro recurso R3 que é equivalente a R2, então R1 é equivalente a R3. Como representado na Figura \ref{sameAs}.Tais características fazem com que a propriedade owl:sameAs seja uma das  mais utilizadas para alinhar dados na Web. Dessa forma, utilizar ferramentas que levem em consideração as características das propriedades é de grande importância para alinhar dados de forma confiável.
 
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[node distance=1cm, auto,]
+ %nodes
+ \node[ellipse,draw] (r3) {R3};
+ 
+ \node[above=of r3] (dummy) {};
+ \node[right= of dummy,ellipse,draw](r2) {R2}
+ 	edge[pil,<->, bend left=45] node[auto] {owl:sameAs} (r3);
+ 
+ \node[left= of dummy,ellipse,draw] (r1) {R1}
+  	edge[dashed,<->, bend right=45] node[auto] {owl:sameAs} (r3)
+   	edge[pil,<->, bend left=45] node[auto] {owl:sameAs} (r2);
+\end{tikzpicture}
+\caption{Transitividade da propriedade owl:sameAs}
+\label{sameAs}
+\end{figure}
 
-
-%\begin{itemize}
-%    \item \textbf{Integração semântica de dados}: Refere-se ao melhoramento de as técnicas existentes pra descobertas de mapeamento (semi) automático entre ontologias heterogêneas e distribuídas; 
-
-%    \item \textbf{Reconhecimento de identidade}: Refere-se à capacidade de identificar se descritores de recursos distintos estão relacionados à mesma entidade do mundo real; 
-
-%    \item \textbf{População de ontologias}: Refere-se a descoberta de relacionamentos entre novas instâncias e as instâncias já existentes na base de conhecimento. 
-%\end{itemize}
-
-%Por exemplo, admitindo a existência de uma entidade do mundo real (e.g. Pesquisador) onde atributos como nome e endereço estão armazenados em datasets distintos, onde estão vinculados a recursos que usam as seguintes URIs (http://www.ic.ufal.br/dac/rbie/author/615 e http://lattes.cnpq.br/4038730280834132) como na Figura \ref{fig:modelo_semantico}. Neste cenário, não é possível determinar, apenas através do alinhamento entre as ontologias, que ambas URIs fazem referência a mesma entidade, sendo necessário analisar informações adicionais provenientes de conexões semânticas entre conceitos e relações presentes nestes dados [31, 35]. 
-
-%\begin{figure}[!ht]
-%	\centering
-%	\includegraphics[width=0.95\textwidth]{./imagens/researcher.png}\\
-%    \caption{Relação entre entidade do mundo real, dados e modelo semântico}
-%	\footnotesize{Fonte: Próprio autor.}
-%	\label{fig:modelo_semantico}
-%\end{figure}
-%No cenário de publicação de Dados Conectados, criar conexões entre conjuntos de dados é uma tarefa custosa, pois requer análise preliminar e detalhada por um especialista de domínio. 
-
-%Além disso, com a crescente quantidade de dados que estão sendo publicados Web, conforme a Figura \ref{fig:oferta_2020}, conectar esses dados se torna cada vez mais desafiador. Por exemplo, o catálogo de dados do governo de São Paulo2, que até o presente momento contém 424 conjuntos de dados, possui apenas 13 (0.23\%) que disponibiliza seus dados através de alguma serialização RDF (Turtle, RDF/XML).  
-
-
-%AQUI, PRECISA ESCREVER SOBRE TÉCNICAS APLICADAS POR OUTROS TRABALHOS (RELACIONADOS) E DIZER POR QUE ELES NÃO RESOLVEM O PROBLEMA.  
-
-%DEPOIS DISSO, DIZER QUE UM CAMINHO DE SOLUÇÃO É O ALINHAMENTO USANDO XXXXXXXXX E/OU YYYYYYYYYYY.  
-
-%Dessa forma, pretende-se dispor uma abordagem semi-automática para publicar Dados Conectados, a partir de dados estruturados (publicado e não publicados na Web), levando em consideração, técnicas de alinhamento de dados, contribuindo assim, para o cenário de publicação de Dados Conectados. 
-
-%Figura 2 - Oferta de dados na Web até 2020. Fonte: EMC 2012 
-%\begin{figure}[!ht]
-%	\centering
-%	\includegraphics[width=0.8\textwidth]{./imagens/oferta.png}\\
-%    \caption{Oferta de dados na Web até 2020}
-%	\footnotesize{Fonte: EMC 2012.}
-%	\label{fig:oferta_2020}
-%\end{figure}
+Neste trabalho, nós apresentamos uma abordagem semiautomática para  alinhamentar dados conectados baseada em modelagem semântica e algoritmos de similaridade. A partir dessas funções foi possível calcular a semelhança entre recursos/instâncias levando em consideração sua modelagem ontológica. Dessa forma, pretende-se permitir que datasets reais possam ser alinhados de forma confiável.
 
 \subsection*{Contextualização}
 
