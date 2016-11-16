@@ -12,7 +12,7 @@
 	% -- opções da classe memoir --
 	12pt,					% tamanho da fonte
 	openright,				% capítulos começam em pág ímpar (insere página vazia caso preciso)
-	twoside,					% para impressão em verso e anverso. Oposto a oneside
+	oneside,					% para impressão em verso e anverso. Oposto a oneside
 	a4paper,					% tamanho do papel. 
 	% -- opções da classe abntex2 --
 	chapter=TITLE,			% títulos de capítulos convertidos em letras maiúsculas
@@ -50,6 +50,9 @@
 \usepackage{afterpage} 								% Para executar um comando depois do fim da página corrente
 \usepackage{url} 										% Para formatar URLs (endereços da Web)
 \usepackage{enumitem}
+%\usepackage[scaled=0.85]{beramono}
+\usepackage{listings}
+\lstset{language=SQL,morekeywords={PREFIX,java,rdf,rdfs,url}}
 \usepackage{svg}
 \usepackage{tikz}
 \usetikzlibrary{arrows,positioning,shapes} 
@@ -195,6 +198,10 @@
 % TEXTO DA DISSERTAÇÃO
 % ----------------------------------------------------------
 \include{capitulos/introducao}
+\include{capitulos/fundamentacao}
+\include{capitulos/trabalhos_relacionados}
+\include{capitulos/proposta_processo}
+\include{capitulos/proposta_componentes}
 
 % ----------------------------------------------------------
 % ELEMENTOS PÓS-TEXTUAIS (Referências, Glossário, Apêndices)

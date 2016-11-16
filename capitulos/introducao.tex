@@ -42,34 +42,28 @@ Dentre as propriedades com suporte inadequado, destaca-se a propriedade owl:same
 \label{sameAs}
 \end{figure}
 
-Neste contexto, este trabalho propõe uma abordagem independete de contexto para o alinhamento de dados conectados por meio de um processo de alinhamento que leva em consideração aspectos dos dados e  características do modelo ontológico. Assim, os recursos/instâncias analisados, além de alinhados através das propriedades de dados, podem ser alinhados través seus relacionamentos. Ademais, a proposta trata o problema do alinhamento entre datasets reais, permitindo que seja possível alinhar datasets distribuídos na Web de forma confiável.
-\subsection*{Objetivos}
+Neste contexto, este trabalho propõe uma abordagem independente de contexto para o alinhamento de dados conectados por meio de um processo de alinhamento que leva em consideração aspectos dos dados e  características do modelo ontológico. Assim, os recursos/instâncias analisados, além de alinhados através das propriedades de dados, podem ser alinhados través seus relacionamentos. Ademais, a proposta trata o problema do alinhamento entre datasets reais, permitindo que seja possível alinhar datasets distribuídos na Web de forma confiável.
+\subsection*{Objetivo}
 
+Essa abordagem visa disponibilizar um mecanismo útil que permita alinhar semiautomaticamente recursos entre datasets diferentes. Além disso, a proposta também pretende facilitar a identificação e alinhamento de recursos duplicados dentro do mesmo dataset.
 
-
-\subsubsection*{Objetivo Geral}
+Dessa forma, o trabalho lida com aspectos mais gerais, como facilitar o alinhamento de dados, quanto com problemas específicos, como a definição de métricas para a análise de similaridade entre recursos, que sejam capazes de suportar os problemas provenientes dos datasets reais. Apesar de ser um trabalho com enfoque em engenharia de software, as suas contribuições estão mais voltadas para a área de Dados Conectados. Segue algumas dessas contribuições:
 
 \begin{itemize}
-	\item Objetivo geral.
-\end{itemize}
-
-\subsubsection*{Objetivos específicos}
-\begin{itemize}
-\item Objetivo específico 1;
-\item Objetivo específico 2;
-\item Objetivo específico 3;
-\item Objetivo específico 4.
+	\item Construção de um processo para alinhar dados conectados independente de contexto;
+	\item Definição de uma função de similaridade que contempla problemas provenientes de datasets reais (acentuação, ausência de propriedades, formatação e outros);
 \end{itemize}
 
 \subsection*{Estrutura do trabalho}
 
-O restante do trabalho está estruturado como segue:
+Esta dissertação está dividida em 7 capítulos. O Capítulo 1 introduz a problemática e os objetivos do trabalho proposto, enaltecendo a necessidade de uma abordagem capaz de alinhar dados conectados. No Capítulo 2, são apresentados os conceitos relacionados ao tema deste trabalho, como RDF, Ontologias, Dados Conectados, Algoritmos de similaridade e Alinhamento de Dados Conectados.
 
-\begin{enumerate}
-\item[a)] \textbf{Seção 2} - descrição;
-\item[b)] \textbf{Seção 3} - descrição;
-\item[c)] \textbf{Seção 4} - descrição;
-\item[d)] \textbf{Seção 5} - descrição;
-\item[e)] \textbf{Seção 6} - descrição;
-\item[f)] \textbf{Seção 7} - descrição;
-\end{enumerate}
+No Capítulo 3, são apresentados os trabalhos relacionados à abordagem proposta. Algumas abordagens de alinhamento são descritos bem como comparados com a solução proposta. Na conclusão do capítulo é apresentada uma tabela comparativa entre a abordagem proposta e os trabalhos relacionados apresentados.
+
+O Capítulo 4 mostra como a proposta foi desenvolvida, tanto no processo de alinhamento por intermédio de um diagrama de atividades como na arquitetura através de um diagrama de componentes. Neste capítulo, todas as etapas do processo bem como os componentes da arquitetura são descritos detalhadamente.
+
+O Capítulo 5 é apresentado um caso de estudo. Nele é descrita a plataforma QIE, um sistema que cruza dados da Revista Brasileira de Informática na Educação (RBIE), Simpósio Brasileiro de Informática na Educação (SBIE) e Workshop de informática na Escola (WIE) com dados extraídos da plataforma LATTES. Além disso, é descrito como o processo foi utilizado para alinhar os dados dos pesquisadores e de suas produções científicas entre essas bases.
+
+No Capítulo 6, um experimento foi projetado para avaliar, em termos de qualidade através das métricas de precision, recall e f-measure, a abordagem proposta, em comparação com RiMOM [citação] , Lily [citação] e LogMap [citação]. Cada alinhamento gerado é avaliado e uma discussão geral é apresentada ao final do capítulo.
+
+Por fim, no Capítulo 7, são apresentadas as considerações finais deste trabalho. bem como são definidos alguns trabalhos futuros.
