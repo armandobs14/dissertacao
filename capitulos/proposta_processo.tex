@@ -1,6 +1,7 @@
 \chapter{Processo de alinhamento}
 
-Neste capítulo, será apresentado o processo proposto para alinhar dados. Como exibido na Figura \ref{fig:processo}, o processo é composto por 4 etapas principais, sendo elas : selecionar datasets, identificar conceitos, listar recursos e alinhar dados.
+Neste capítulo, será apresentado o processo proposto para alinhar dados. Como exibido na Figura \ref{fig:processo}, o processo é composto por 4 etapas principais, sendo elas : selecionar datasets, identificar conceitos, listar recursos e alinhar dados. cada etapa do processo será descrita nas subseções a seguir.
+
 
 \begin{figure}[!ht]
 	\centering
@@ -14,7 +15,7 @@ A etapa de selecionar datasets trata da determinação de quais conjuntos de dad
 Complementarmente, a comunidade já disponibiliza ferramentas e processos para a publicação de dados conectados na Web, o que não é o foco desse processo. Além disso, é importante destacar que ao modelar os dados em qualquer processo de publicação de dados conectados são utilizadas ontologias/vocabulários que podem servir como base.
 
 \section*{II - Identificar Conceitos}
-A identificação de conceitos é dividida em duas atividades, uma automática e outra manual. A atividade automática se trata de recuperar os conceitos presentes na base de dados através de queries SPARQL que podem ser vistas a seguir.
+A identificação de conceitos é dividida em duas atividades, uma automática e outra manual. A atividade automática se trata de recuperar os conceitos presentes no dataset através de queries SPARQL que podem ser vistas a seguir.
 \\
 \begin{lstlisting}[captionpos=b, caption=Query SPARQL para identificação de conceito, label=lst:sparql,
    basicstyle=\ttfamily,frame=single]
@@ -28,7 +29,7 @@ group 	by ?Concept
 order 	by desc(?count)
 \end{lstlisting}
 
-Como resultado do Código \ref{lst:sparql} é apresentada uma lista contendo conceitos presentes na base, os conceitos estão ordenados decrescentemente de acordo com o número de recursos presentes na base. Neste momento, o usuário deve escolher que conceito deve ser alinhado. Após a seleção do conceito, será executada uma nova query SPARQL (ver Código \ref{lst:sparql2}), cujo objetivo é recuperar os conceitos relacionados ao conceito principal, que utiliza a escolha do usuário como parâmetro para a identificação.
+Como resultado do Código \ref{lst:sparql} é apresentada uma lista contendo conceitos presentes na base, os conceitos estão ordenados decrescentemente de acordo com o número de recursos presentes no dataset. Neste momento, o usuário deve escolher que conceito deve ser alinhado. Após a seleção do conceito, será executada uma nova query SPARQL (ver Código \ref{lst:sparql2}), cujo objetivo é recuperar os conceitos relacionados ao conceito principal, que utiliza a escolha do usuário como parâmetro para a identificação.
 
 \begin{lstlisting}[captionpos=b, caption=Query SPARQL para recuperação de conceitos relacionados, label=lst:sparql2,
    basicstyle=\ttfamily,frame=single]
@@ -57,17 +58,61 @@ select distinct ?type where {
 Como resultado do Código \ref{lst:sparql2} é provida uma lista contendo os conceitos relacionados ao conceito escolhido. Neste momento, o usuário deve escolher, quais conceitos relacionados ele deseja utilizar para melhorar o alinhamento do conceito escolhido. Tal decisão influenciará tanto no tempo que o processo levará para concluir, quanto na quantidade de recursos alinhados ao final do processo, pois para cada conceito relacionado haverá uma nova execução das etapas (iii) e (iv). Esse loop é necessário, pois alguns alinhamentos serão possíveis apenas através da relação entre esses conceitos.
 
 \section*{III - Listar recursos}
-A etapa de listar recursos pode ser entendida como a recuperação dos recursos que pertencem aos conceitos. É importante destacar que a listagem/recuperação de recursos da base de conhecimento pode ser executada mais de uma vez durante o processo, gerando um conjunto de recursos para cada conceito escolhido.
+A etapa de listar recursos pode ser entendida como a recuperação dos recursos que pertencem aos conceitos. É importante destacar que a listagem/recuperação de recursos da base de conhecimento pode ser executada mais de uma vez durante o processo, gerando um conjunto de recursos para cada conceito escolhido. Além disso, essa etapa é responsável pela geração de pares candidatos, onde os recursos do Dataset $D_{1}$ são comparados com os recursos do dataset $D_{2}$.
 
 
 \section*{IV - Alinhar Dados}
-A etapa de alinhamento de dados está dividida em duas atividades sendo elas alinhamento dos recursos e melhoramento. A atividade de alinhamento é composta de vários momentos, sendo eles: tratamento dos dados, comparação entre recursos e análise de similaridade.
-No tratamento dos dados é aplicado um conjunto de transformações nas propriedades dos recursos, das quais podemos citar: deixar letras em minúsculos, remover pontos, acentuação.
-Na comparação as propriedades dos recursos são comparadas entre si (ver Figura \ref{fig:resources}) através de algoritmos de similaridade de texto. Além disso, essas similaridades são utilizadas para a definição da similaridade entre recursos. Na análise de similaridade os resultados são comparados a um limiar de aceitação definido por um especialista no início do processo.
+A etapa de alinhamento de dados está dividida em duas atividades sendo elas: (i) alinhar recursos e (ii) melhorar alinhamento, que serão detalhadas nas subseções a seguir.
+
+\subsection*{Alinhar recursos}
+Para alinhar os recursos é necessário executar alguns procedimentos, sendo eles o tratamento dos dados, comparação entre recursos e análise da similaridade. O primeiro procedimento se refere a transformações nas propriedades dos recursos. Essas transformações são necessárias para auxiliar os algoritmos de similaridade a analisar melhor a semelhança entre os recursos. No procedimento de comparação, cada uma da propriedades são analisadas. Caso uma propriedade não pertença a um dos recursos, ela é dispensada da comparação. A Figura  \ref{fig:resources} apresenta a comparação entre as propriedades de cada recurso.
 
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[width=0.7\textwidth]{./imagens/resources.png}
+	\includegraphics[width=0.6\textwidth]{./imagens/resources.png}
     \caption{Comparação entre recursos}
 	\label{fig:resources}
+\end{figure}
+
+Para definir a similaridade de recurso formalmente foram usadas duas equações. A Equação \ref{eq:properties_definition} define o conjunto de propriedades que será considerado durante a comparação entre os recursos, onde esse é igual a subtração entre maior conjunto de propriedades e o conjunto de propriedades que deve ser desconsiderado. Logo:
+
+\begin{equation}
+P_f =M a x  ( P_{r1} ,P_{r2} ) - P_d
+\label{eq:properties_definition}
+\end{equation}
+
+Onde:
+\begin{itemize}
+	\item $P_{r1}$ – Propriedades do recurso 1;
+	\item $P_{r2}$ –  Propriedades do recurso 2;
+	\item $P_d$ –  Propriedades a ser desconsideradas;
+	\item $M a x  ( P_{r1} ,P_{r2} )$ – Retorna o maior conjunto de propriedades;
+\end{itemize}
+
+A Equação \ref{eq:similaridade} trata da função de similaridade entre recursos, essa equação pode ser entendida como a média das similaridades entre dois recursos.
+
+\begin{equation}
+SR  = \frac{1}{|P_f|} { \sum_{i = 1}^{P_f} {S(V(R_1,P_f[i]);V(R_2,P_f[i]))}}
+\label{eq:similaridade}
+\end{equation}
+
+Onde:
+
+\begin{itemize}
+	\item S – Função de similaridade léxica;
+	\item V(R,P) – Valor da propriedade P em um recurso R;
+	\item $R_1$ – Recurso 1;
+	\item $R_2$ – Recurso 2;
+\end{itemize}
+
+O valor gerado pelo componente de similaridade é enviado para o componente de alinhamento.
+
+\subsection*{Melhorar alinhamentos}
+O melhoramento dos alinhamentos se dá por meio dos recursos relacionados. Para a execução desta etapa é necessário que o conceito relacionado utilizado esteja alinhado com a outra base, pois os pares candidatos serão construídos a partir desses recursos (ver Figura \ref{fig:relacionados}).
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=0.8\textwidth]{./imagens/relacionados.pdf}
+    \caption{Construção de pares candidatos a partir de recursos relacionados}
+	\label{fig:relacionados}
 \end{figure}

@@ -13,51 +13,103 @@ Apesar de existirem diversas soluções que contém algoritmos para o cálculo d
 Os principais componentes utilizados são:
 
 \section*{Persistência}
-O componente de persistência é responsável pelo acesso à base de conhecimento. Assim, é responsável por armazenar e recuperar os recursos e os alinhamentos que são utilizados ao longo do processo. Além disso, o mesmo atua como abstração do servidor de triplas (Virtuoso, OWLim etc.).
+O componente de persistência é responsável pelo acesso à base de conhecimento. Assim, é responsável por armazenar e recuperar os recursos e os alinhamentos que são utilizados ao longo do processo. Além disso, o mesmo atua como abstração do servidor de triplas (Virtuoso, OWLim etc.). Isso permite que o alinhamento seja executado diretamente nos datasets.
 
 \section*{Similaridade}
-O componente de similaridade é dividido em dois subcomponentes, sendo eles o de similaridade léxica e recurso. O primeiro utiliza métricas como distância de Levenshtein \cite{levenshtein1966binary}, Cosseno \cite{singhal2001modern}, Jaro-Winkler \cite{winkler1990string} e outros. O segundo componente, que se refere à similaridade de recurso, utiliza o primeiro e tem como função gerar a similaridade entre recursos.
+O componente de similaridade é dividido em dois subcomponentes, sendo eles o de similaridade léxica e recurso. O primeiro utiliza métricas que analisam a similaridade entre palavras e textos. Algumas dessas técnicas são Levenshtein \cite{levenshtein1966binary}, Cosseno \cite{singhal2001modern}, Jaro-Winkler \cite{winkler1990string} e outros. O segundo componente, que se refere à similaridade de recurso, utiliza o primeiro e tem como função gerar a similaridade entre recursos.
 
-Para a cálculo da similaridade dos recursos foi utilizada uma abordagem baseada na técnica de subgrafo semântico, tal abordagem foi utilizada com o intuito de reduzir o nível de incerteza. Nesta abordagem é gerado um subgrafo com o recurso seus recursos relacionados. Além disso, é importante destacar que a semântica das relações entre os elementos é levada em consideração, de forma que apenas propriedades de semântica equivalente são comparados.
+Para o cálculo da similaridade dos recursos foi utilizada uma abordagem baseada na técnica de subgrafo semântico. Na prática, um subgrafo semântico diz respeito às triplas que estão relacionadas a um recurso qualquer, que estão de acordo com a modelagem ontológica. A Figura \ref{fig:subgrafo} representa um subgrafo que relaciona um autor e sua publicação. Além de propriedades de objetos, um subgrafo também possui propriedades de dados, tanto do recurso principal (Author), quanto dos conceitos relacionados (Production). O trecho de código \ref{lst:similaridade} descreve a implementação do cálculo de similaridade.
 
-Para definir a similaridade de recurso formalmente foram usadas duas equações. A Equação \ref{eq:properties_definition} define o conjunto de propriedades que será considerado durante a comparação entre os recursos, onde esse é igual a subtração entre maior conjunto de propriedades e o conjunto de propriedades que deve ser desconsiderado. Logo:
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=0.9\textwidth]{./imagens/subgrafo_semantico.pdf}
+    \caption{subgrafo que relaciona os conceitos Author e Publication}
+	\label{fig:subgrafo}
+\end{figure}
 
-\begin{equation}
-P_f =M a x  ( P_{r f} ,P_{r o} ) - P_d
-\label{eq:properties_definition}
-\end{equation}
+\begin{lstlisting}[captionpos=b, caption= Trecho de código java para calcular a similaridade entre recursos, label=lst:similaridade,
+   basicstyle=\ttfamily,frame=single]
+float avg_similarity = 0;
+try {
+  //Gerando subgrafos
+  JSONObject graphA = resource1;
+  JSONObject graphB = resource2;
 
-Onde:
-\begin{itemize}
-	\item $P_{r f}$ – Propriedades do recurso fonte;
-	\item $P_{r o}$ –  Propriedades do recurso objeto;
-	\item $P_d$ –  Propriedades a ser desconsideradas;
-	\item $M a x  ( P_{r f} ,P_{r o} )$ – Retorna o maior conjunto de propriedades;
-\end{itemize}
+  // Recuperando subgrafo com mais propriedades
+  if (graphA.length() > graphB.length()) {
+    JSONObject aux = graphA;
+    graphA = graphB;
+    graphB = aux;
+  }
 
-A Equação \ref{eq:similaridade} trata da função de similaridade entre recursos, essa equação pode ser entendida como a média das similaridades entre dois recursos.
+  // Numero de comparacoes internas
+  float innerComparisions = 0;
 
-\begin{equation}
-SR  = \frac{1}{|P_f|} { \sum_{i = 1}^{P_f} {S(V(R1,P_f[i]);V(R2,P_f[i]))}}
-\label{eq:similaridade}
-\end{equation}
+  // Valor de similaridade para cada propriedade
+  float innerSimilaritySum = 0;
 
-Onde:
+  // Chaves de iteracao
+  Iterator keys = graphB.keys();
 
-\begin{itemize}
-	\item S – Função de similaridade léxica;
-	\item V(R,P) – Valor da propriedade P em um recurso R;
-	\item R1 – Recurso 1;
-	\item R2 – Recurso 2;
-\end{itemize}
+  while (keys.hasNext()) {
+
+    //Recupera chave
+    String key = (String) keys.next();
+
+    // desconsiderando chaves que estiverem no set
+    if (propertySet != null && propertySet.contains(key)) continue;
+    try {
+      
+      // Recuperando o valor da propriedade
+      Object pA = graphA.get(key);
+      Object pB = graphB.get(key);
+
+      // Casting para string
+      String propertyA = (pA instanceof JSONArray) ? ((JSONArray) pA).getString(0) : graphA.getString(key);
+      String propertyB = (pB instanceof JSONArray) ? ((JSONArray) pB).getString(0) : graphB.getString(key);
+
+      // Recuperando quantidade de tokens
+      int tokensizeA = propertyA.toString().split(" ").length;
+      int tokensizeB = propertyB.toString().split(" ").length;
+
+      //Similaridade temporaria
+      float tempSimirity = 0f;
+
+      // Recuperando Estrategia baseada na quantidade maxima de tokens
+      StringMetric metric1 = (StringMetric) MongeElkanMetricStrategy.getMetric(Math.max(tokensizeA, tokensizeB));
+
+      // Dispensando o tipo e a uri do recurso
+      if (key.equals("type") ||
+        key.equals("@id")) {
+        continue;
+
+        // Se for recurso
+    } else if (levels > 0 && propertyA.toLowerCase().contains("http://") && propertyB.toLowerCase().contains("http://")) {
+      innerComparisions++;
+      tempSimirity = this.compare(propertyA, propertyB, levels);
+
+      // Se for dado
+    } else {
+      innerComparisions++;
+      tempSimirity = metric1.compare(PropertyUtils.nameCleaning(propertyA, true), PropertyUtils.nameCleaning(propertyB, true));
+    }
+    System.out.println(key+" = "+tempSimirity);
+
+    // Atribuindo peso a similaridade
+    innerSimilaritySum+= tempSimirity * weight.getOrDefault(key,1f);
+  } catch (Exception e) {
+    continue;
+  }
+}
+
+// Definindo similaridade de recurso
+avg_similarity = innerSimilaritySum / innerComparisions;
+
+\end{lstlisting}
 
 O valor gerado pelo componente de similaridade é enviado para o componente de alinhamento.
-
-
 \section*{Alinhamento}
-O componente de alinhamento tem como responsabilidade determinar, de acordo com os valores obtidos na etapa de similaridade, se os recursos analisados realmente dizem respeito à mesma entidade do mundo real. Para determinar se o alinhamento deve ser realizado, este componente faz uso de limiares de aceitação, que são determinados previamente. Por esse motivo, o processo de alinhamento não é uma tarefa automática, pois precisa que os valores sejam ajustados.
-
-Os valores de similaridade são comparados com o limiar, caso o valor esteja em uma faixa aceitável, será realizado o alinhamento entre os respectivos recursos, em caso contrário o alinhamento não será persistido. Assim como os componentes principais, os componentes auxiliares têm suas respectivas funções. De modo geral, esses componentes devem auxiliar os componentes principais. Tais componentes serão descritos a seguir.
+O componente de alinhamento tem como responsabilidade determinar, de acordo com os valores obtidos na etapa de similaridade, se os recursos analisados realmente dizem respeito à mesma entidade do mundo real. Para determinar se o alinhamento deve ser realizado, este componente faz uso de limiares de aceitação, que são determinados previamente. Por esse motivo, o processo de alinhamento não é uma tarefa automática, pois precisa que os valores sejam ajustados. Existem diversas formas de determinar o valor do limiar, que vão desde executar várias vezes e analisar o melhor custo benefício entre precision e recall até utilizar técnicas que atualizam o valor do limiar dinamicamente.
 
 
 \section*{Núcleo}

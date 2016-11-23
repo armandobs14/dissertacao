@@ -1,0 +1,126 @@
+\chapter{Experimento}
+Este capítulo descreve o experimento visando avaliar a eficácia, em termos de precision, recall e f-measure \cite{goutte2005probabilistic} a proposta. Dessa forma,  o experimento compara a proposta com RiMOM-2015 e LogMap. Vale a pena ressaltar que a ferramenta Lily não pôde ser avaliada por inviabilização do acesso à solução.
+
+O capítulo está dividido em três seções: planejamento, execução e análise dos dados. 
+
+\section*{Planejamento do experimento}
+
+Nesta seção, será detalhado o planejamento do experimento que foi projetado para este trabalho. Destro do planejamento, encontra-se a definição da questão de pesquisa e derivação de hipóteses, a seleção das variáveis dependentes e independentes a identificação da unidade experimental e a seleção do modelo experimental que será utilizado.
+
+O experimento adotado é do tipo comparativo, no qual será comparada a ferramenta proposta com as ferramentas RiMOM-2015 e LogMap. O contexto do experimento é acadêmico, posto que executado em um laboratório, mas executando algoritmos com dados reais. Nas próximas subseções, o planejamento do experimento será descrito.
+
+\subsection*{Hipóteses de pesquisa}
+
+Como mencionado no início deste capítulo, este experimento visa avaliar a proposta com relação às métricas precision, recall e f-measure. Levando em consideração as questões de pesquisa a seguir:
+
+\textbf{Q1} Existem diferença na eficácia entre RiMOM-2015, LogMap e a solução proposta? Se sim, qual abordagem foi melhor?
+A questão de pesquisa acima implica nas seguintes hipóteses de pesquisa:
+
+\begin{itemize}
+\item H1-0: A métrica precision entre apresentada pelas abordagens é igual.
+\item H1-1: A métrica precision entre apresentada pelas abordagens é diferente.
+\item H2-0: A métrica recall entre apresentada pelas abordagens é igual.
+\item H2-1: A métrica recall entre apresentada pelas abordagens é diferente.
+\item H3-0: A métrica f-measure entre apresentada pelas abordagens é igual.
+\item H3-1: A métrica f-measure entre apresentada pelas abordagens é diferente.
+\end{itemize}
+
+Caso a hipótese nula seja refutada (indicando diferença), uma análise das métricas será executada para que se possa concluir qual ferramenta se saiu melhor.
+A tabela \ref{tab:hypothesis} define formalmente as hipóteses de pesquisa supracitadas. P, R e F são funções que retornam, respectivamente o precision, o recall e f-measure, com relação às abordagens F1 (RiMOM-2015), F2 (LogMap) e F3 (Proposta).
+
+\begin{table}[h]
+\centering
+\caption{Formalização das hipóteses}
+\label{tab:hypothesis}
+\begin{tabular}{|c|c|c|}
+\hline
+Hipótese & Hipótese Nula & Hipótese Alternativa \\ \hline
+H1       & H1-0:$ P(F1) = P(F2) = P(F3) $ & H1-1:$ P(F1) \not= P(F2) \not= P(F3) $                    \\ \hline
+H2       & H2-0:$ R(F1) = R(F2) = R(F3) $ & H2-1:$ R(F1) \not= R(F2) \not= R(F3) $                    \\ \hline
+H3       & H3-0:$ F(F1) = F(F2) = F(F3) $ & H3-1:$ F(F1) \not= F(F2) \not= F(F3) $                    \\ \hline
+\end{tabular}
+\end{table}
+
+\subsection*{Seleção de Variáveis}
+Seguindo o planejamento, é necessário definir as variáveis contidas no experimento. Primeiro, as variáveis independentes, também chamadas de fatores, serão apresentadas. Logo em seguida, as variáveis dependentes, no caso as métricas, serão detalhadas.
+
+As variáveis independentes são as seguintes:
+\begin{itemize}
+\item \textbf{Ferramenta} : Esta variável especifica qual a ferramenta de alinhamento será avaliada
+\end{itemize}
+
+Os níveis de fatores apresentados acima serão definidos na tabela \ref{tab:factor_levels}. As variáveis dependentes (métricas) são definidas abaixo:
+
+\begin{itemize}
+\item \textbf{Precision} (P): Esta variável representa a precisão para cada um dos níveis avaliados. A definição formal para esta métrica é descrita pela equação abaixo:
+
+\begin{equation}
+P = \dfrac{|{A}\cap{B}|}{|A|}
+\end{equation}
+
+\item \textbf{Recall} (R): Esta variável representa o recall para cada um dos níveis avaliados. A definição formal para esta métrica é descrita pela equação abaixo:
+
+\begin{equation}
+R = \dfrac{|{A}\cap{B}|}{|B|}
+\end{equation}
+
+\item \textbf{F-measure} (F): Esta variável representa o f-measure para cada um dos níveis avaliados. A definição formal para esta métrica é descrita pela equação abaixo:
+
+\begin{equation}
+F = \dfrac{{2}\cdot{P}\cdot{R}}{P+R}
+\end{equation}
+
+\end{itemize}
+
+\begin{table}[]
+\centering
+\caption{Níveis de fatores}
+\label{tab:factor_levels}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Fator}              & \textbf{Nível} & \textbf{Descrição}    \\ \hline
+\multirow{3}{*}{Ferramenta} & F1             & Ferramenta RiMOM-2015 \\ \cline{2-3} 
+                            & F2             & Ferramenta LogMap     \\ \cline{2-3} 
+                            & F3             & Proprosta             \\ \hline
+\end{tabular}
+\end{table}
+
+\subsection*{Unidades de Experimento}
+A unidade experimental deste estudo é composto por três datasets (DBPedia\footnote{http://www.dbpedia.pt}, IBGE\footnote{http://cidades.ibge.gov.br
+}, Alagoas em Dados\footnote{http://dados.al.gov.br/dataset}), que contêm as cidades do estado de Alagoas. Os datasets  foram extraídos e transformados em RDF  seguindo a especificação da ontologia do dbpedia\footnote{http://dbpedia.org/ontology/}, que podem ser conferidos através do link \url{https://goo.gl/TkzStn}.
+
+Através da composição entre os elementos da unidade experimental (datasets), montamos o cenário de avaliação das ferramentas. A tabela \ref{tab:cenarios} apresenta os cenários. Vale a pensa ressaltar que não há a necessidade de cenários em que um dataset é alinhado com ele mesmo, pois não há recursos duplicados nos datasets. Além disso, não há a necessidade de criar cenário em que haja a permutação entre os datasets.
+
+\begin{table}[h]
+\centering
+\caption{Cenários de alinhamento}
+\label{tab:cenarios}
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Cenário} & \textbf{Datasets}          \\ \hline
+C1               & DBPedia X IBGE             \\ \hline
+C2               & DBPedia X Alagoas em Dados \\ \hline
+C3               & IBGE X Alagoas em Dados    \\ \hline
+\end{tabular}
+\end{table}
+
+Para este experimento, com exceção dos dados fornecidos pela dbpedia, os demais foram transformados para RDF através da ferramenta OpenRefine e persistidos no Virtuoso.  
+Todo o experimento foi executado utilizando a entidade City como conceito principal. A escolha desse conceito se deve ao fato deste ser o principal conceito.
+
+\subsection*{Seleção do Projeto Experimental}
+Levando em consideração as diversas classificações de experimento \cite{montgomery2012design}, o presente experimento é classificado como fatorial completo com blocagem. A blocagem foi escolhida com o objetivo de suprimir os efeitos dos datasets nas variáveis resposta. Para cada cenário houve a execução de todos os fatores, garantindo a completude do experimento. Dessa forma temos 3 cenários possíveis, com 3 execuções em cada um deles, totalizando 9 execuções.
+
+\section*{Execução do experimento}
+Esta seção descreve a execução do experimento que foi planejado na seção anterior, ou seja, descreve quais instrumentos foram utilizados, bem como a narrativa de execução do experimento.
+
+\subsection*{Preparação e instrumentação}
+Inicialmente é necessário preparar o ambiente em que os alinhamentos serão executados. As ferramentas utilizadas, bem como suas versões são descritas a seguir:
+
+\begin{itemize}
+\item Virtuoso RDF Store - 07.20.3217;
+\item Python - 2.7;
+\item OpenJDK 64-Bit Server VM (build 25.111-b14, mixed mode)
+
+\end{itemize}
+
+Para isolar os efeitos entre as execuções, todo o experimento foi conduzido em um container do Docker, que permitem isolar as aplicações, fazendo com que as aplicações sejam executadas em ambientes idênticos.

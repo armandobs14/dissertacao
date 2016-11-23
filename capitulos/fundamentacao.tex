@@ -14,7 +14,7 @@ RDF trata-se de um framework de descrição de recursos, trabalhando como um ali
 	\label{fig:spo}
 \end{figure}
 
-A estrutura do RDF pode se materializar de várias formas. Cada uma dessas formas recebe o nome de serialização RDF. Atualmente existe um conjunto considerável de serializações tais como: RDF/XML, bTurtle, N-Triples e outros. Onde cada serialização tem um uso em potencial. Por exemplo, Turtle é usado para ser lido por humanos, pois ele é melhor estruturado para isso. 
+A estrutura do RDF pode se materializar de várias formas. Cada uma dessas formas recebe o nome de serialização RDF. Atualmente existe um conjunto considerável de serializações tais como: RDF/XML, Turtle, N-Triples e outros. Onde cada serialização tem um uso em potencial. Por exemplo, Turtle é usado para ser lido por humanos, pois ele é melhor estruturado para isso. 
 
 Vale a pena salientar que RDF é um framework de descrição, não sendo responsável por atribuir semântica aos recursos descritos, sendo as ontologias responsáveis por esta função. Por esta razão, um número considerável de processos de publicação de Dados Conectados \cite{bizer2007publish, hyland2011joy, villazon2011methodological, Avila2015} recomenda o reúso de ontologias. 
 
@@ -48,13 +48,19 @@ O termo Dados Conectados (do inglês Linked Data) é a tradução oficial para o
 
 Algoritmos de similaridade podem ser entendidos como funções utilizadas para medir a semelhança entre duas palavras. Tais funções são utilizadas em vários contextos, partindo de correções ortográficas até tarefas de processamento de linguagem natural (PLN). Um dos algoritmos de similaridade mais conhecidos pela comunidade foi proposto por Levenshtein em 1965 \cite{levenshtein1966binary}, que se baseia na quantidade mínima de edições (remoções e adições) necessárias para que uma palavra seja igual a outra.  
 
-Dependendo da forma em que as palavras são vistas (cadeia de caracteres, conjunto de caracteres e conjuntos de palavras) existem diferentes abordagens (baseadas em caractere, baseadas em token) \cite{cohen2003comparison}. Abordagens baseadas em caractere (e.g. Levenshtein) realizam a comparação letra por letra. Já as abordagens baseadas em tokens (e.g. Jaro)  consideram a palavra como um corpo único, sendo utilizada para a comparação de frases, no qual uma frase é composto por um conjunto de tokens.
+Dependendo da perspectiva dada ao texto (conjunto de caracteres e conjuntos de palavras) existem diferentes abordagens (baseadas em caractere, baseadas em token) \cite{cohen2003comparison}. Abordagens baseadas em caractere (e.g. Levenshtein) realizam a comparação letra por letra. Já as abordagens baseadas em tokens (e.g. Jaro)  consideram a palavra como um corpo único.
 
 Nesta proposta, foi utilizada uma generalização do algoritmo de Monge-Elkan \cite{monge1996field}, que tem o objetivo de dar um peso maior a tokens mais semelhantes. Inicialmente, Monge-Elkan \cite{monge1996field} foi desenvolvido com o objetivo de calcular a semelhança entre textos que possuem vários tokens, onde a similaridade de cada token é calculada através da média das similaridades internas, que é provida por uma técnica baseada em caractere (e.g. Cosseno, Jaro, Dice). Essa abordagem se destaca em cenários de desordem ou ausência de tokens. Além disso, esse algoritmo explora os benefícios providos pelas abordagens baseadas caractere (e.g. erros de digitação, erros de OCR e erros ortográficos) \cite{jimenez2009generalized}.
 
 \section*{Alinhamento de Dados Conectados}
 
-Alinhar Dados Conectados  trata-se de um processo que tem como objetivo identificar e mesclar recursos julgados representar a mesma entidade do mundo real. Além disso, é possível ressaltar outras áreas que podem se beneficiar a partir da conexão entre dados, sendo elas: 
+Alinhar Dados Conectados  trata-se de um processo que tem como objetivo identificar e mesclar recursos julgados representar a mesma entidade do mundo real. Segundo \citeonline{homoceanu2014putting}, no contexto de dados conectados temos a seguinte definição para o problema:
+
+\begin{equation}
+f\left( { URI }_{ i },{ URI }_{ j } \right) :=\begin{cases} \mbox{verdadeiro, se } sim\left( { URI }_{ i },{ URI }_{ j } \right) >\theta  \\ \mbox{falso, caso contrário} \end{cases}\mbox{com }{ URI }_{ i } \in { D }_{ i }\mbox{ e }{ URI }_{ j } \in { D }_{ j }
+\end{equation}
+
+onde 1 $\leq$ i,j $\leq$ n, e $sim()$ é uma função que é capaz de calcular a similaridade entre os recursos e $\theta$ é o parâmetro que regula o nível de qualidade para o alinhamento, que também pode ser conhecido como limiar ou threshold. Além disso, é possível ressaltar outros benefícios que surgem a partir da conexão entre dados, sendo elas: 
 
 \begin{itemize}
 	\item \textbf{Integração semântica de dados:} Refere-se ao melhoramento de as técnicas existentes pra descobertas de mapeamento (semi) automático entre ontologias heterogêneas e distribuídas; 
@@ -62,7 +68,7 @@ Alinhar Dados Conectados  trata-se de um processo que tem como objetivo identifi
 	\item\textbf{ População de ontologias:} Refere-se a descoberta de relacionamentos entre novas instâncias e as instâncias já existentes na base de conhecimento. 
 \end{itemize}
 
-Segundo \citeonline{ferrara2008towards}, para que uma abordagem seja capaz de identificar recursos que identifiquem a mesma entidade do mundo real com propriedade a mesma deve satisfazer diferentes requisitos, que estão  dispostos em três categorias (ver Figura 4).
+Segundo \citeonline{ferrara2008towards}, para que uma abordagem seja capaz de identificar recursos que identifiquem a mesma entidade do mundo real com propriedade essa deve satisfazer diferentes requisitos, que estão  dispostos em três categorias (ver Figura \ref{fig:imrequirements}).
 
 \begin{figure}[!ht]
 	\centering
