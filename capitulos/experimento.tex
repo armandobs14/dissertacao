@@ -124,3 +124,226 @@ Inicialmente é necessário preparar o ambiente em que os alinhamentos serão ex
 \end{itemize}
 
 Para isolar os efeitos entre as execuções, todo o experimento foi conduzido em um container do Docker, que permitem isolar as aplicações, fazendo com que as aplicações sejam executadas em ambientes idênticos.
+
+\subsection*{Narrativa do experimento}
+A Figura \ref{fig:experiment} apresenta os passos de execução de cada alinhamento, que são descritos abaixo:
+\begin{itemize}
+\item Construir container com as configurações zeradas;
+\item Carregar dos dados;
+\item Executar ferramenta dentro do container;
+\item Coletar dados de alinhamento;
+\item Destruir container;
+\item Analisar dados;
+\end{itemize}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.9\textwidth]{./imagens/experimento.pdf}
+    \caption{Processo de execução do experimento}
+	\label{fig:experiment}
+\end{figure}
+
+\subsection*{Análise de Ameaças à Validade}
+Embora todo experimento tenha sido projetado para minimizar possíveis ameaças que comprometam suas conclusões, existem algumas ameaças que devem ser mencionadas. Uma possível ameaça à validade do experimento é com relação a quantidade de amostras, o número de recursos, bem como a quantidade de datasets pode influenciar o resultado do alinhamento.
+Levando isso em consideração, na próxima seção, os dados obtidos a partir da execução do experimento serão analisados.
+
+\subsection*{Análise dos dados}
+O experimento foi conduzido de acordo com o planejamento descrito anteriormente neste capítulo, depois da execução, os datasets de alinhamento eram coletados. Os dados de precision, recall e f-measure eram calculados através de script Python de acordo com as funções especificadas anteriormente.
+Ao longo desta seção, uma análise descritiva dos dados obtidos será conduzida, esta análise envolve a apresentação das métricas referentes a cada cenário. Vale a pensa ressaltar que as ferramentas RiMOM-2015 e LogMap não foram capazes de alinhar instâncias dos datasets, recebendo 0 (zero) nas métricas precision e recall. Podemos levantar alguns motivos para o baixo desempenho das ferramentas apresentadas, porém não é possível afirmar com certeza, pois em nenhum dos artigos foi apresentada as alterações que essas soluções sofreram para suportar o alinhamento de dados.
+
+Os alinhamentos gerados para cada um dos cenários podem ser acessados através do link \url{https://goo.gl/RbIuBH}. Dessa forma, as figuras \ref{fig:cenario1}, \ref{fig:cenario2} e \ref{fig:cenario3} apresentam as métricas de precision, recall e f-measure da proposta nos cenários C1, C2 e C3 respectivamente. 
+\begin{center}
+\begin{figure}
+\begin{tikzpicture}[cap=round]{H}
+%\draw[step=1cm,very thin,color=gray] (0,0) grid (10.0,9.0);
+\draw[|-|] (-0,0) -- (10,0);
+\draw[dashed,very thin] (10,0) arc (0:60:10cm);
+\draw[dashed,very thin] (0,0) arc (180:120:10cm);
+\draw[dashed] (10,0) arc (0:60:10cm) node[anchor=south east]  {{\tiny R=1.}};
+\draw[dashed,very thin] (9,0) arc (0:63:9cm) node[anchor=south east] {{\tiny R=.9}};
+\draw[dashed,very thin] (8,0) arc (0:66:8cm) node[anchor=south east]  {{\tiny R=.8}};
+\draw[dashed,very thin] (7,0) arc (0:70:7cm) node[anchor=south east]  {{\tiny R=.7}};
+\draw[dashed,very thin] (6,0) arc (0:73:6cm) node[anchor=south east]  {{\tiny R=.6}};
+\draw[dashed,very thin] (5,0) arc (0:76:5cm) node[anchor=south east] {{\tiny R=.5}};
+\draw[dashed,very thin] (4,0) arc (0:78:4cm) node[anchor=south east] {{\tiny R=.4}};
+\draw[dashed,very thin] (3,0) arc (0:80:3cm) node[anchor=south east] {{\tiny R=.3}};
+\draw[dashed,very thin] (2,0) arc (0:82:2cm) node[anchor=south east] {{\tiny R=.2}};
+\draw[dashed,very thin] (1,0) arc (0:84:1cm) node[anchor=south east] {{\tiny R=.1}};
+\draw[dashed] (0,0) arc (180:120:10cm) node[anchor=south west] {{\tiny P=1.}};
+\draw[dashed,very thin] (1,0) arc (180:117:9cm) node[anchor=south west] {{\tiny P=.9}};
+\draw[dashed,very thin] (2,0) arc (180:114:8cm) node[anchor=south west] {{\tiny P=.8}};
+\draw[dashed,very thin] (3,0) arc (180:110:7cm) node[anchor=south west] {{\tiny P=.7}};
+\draw[dashed,very thin] (4,0) arc (180:107:6cm) node[anchor=south west] {{\tiny P=.6}};
+\draw[dashed,very thin] (5,0) arc (180:105:5cm) node[anchor=south west] {{\tiny P=.5}};
+\draw[dashed,very thin] (6,0) arc (180:103:4cm) node[anchor=south west] {{\tiny P=.4}};
+\draw[dashed,very thin] (7,0) arc (180:100:3cm) node[anchor=south west] {{\tiny P=.3}};
+\draw[dashed,very thin] (8,0) arc (180:96:2cm) node[anchor=south west] {{\tiny P=.2}};
+\draw[dashed,very thin] (9,0) arc (180:90:1cm) node[anchor=south west] {{\tiny P=.1}};
+\draw (0.56,3.29) node[anchor=south west] {\tiny{F=0.5}};
+\draw plot[smooth] coordinates { (0.56,3.29) (1.55,3.10) (2.46,2.68) (3.31,2.05) (4.12,1.19) (5.00,0.00) (6.42,1.79) (9.44,3.29)};
+\draw (0.92,4.19) node[anchor=south west] {\tiny{F=0.6}};
+\draw plot[smooth] coordinates { (0.92,4.19) (1.96,4.05) (2.95,3.78) (3.93,3.48) (5.00,3.32) (6.56,3.63) (9.08,4.19)};
+\draw (1.45,5.19) node[anchor=south west] {\tiny{F=0.7}};
+\draw plot[smooth] coordinates { (1.45,5.19) (2.59,5.11) (3.74,4.98) (5.00,4.90) (6.73,5.03) (8.55,5.19)};
+\draw (2.22,6.29) node[anchor=south west] {\tiny{F=0.8}};
+\draw plot[smooth] coordinates { (2.22,6.29) (3.54,6.27) (5.00,6.24) (6.91,6.28) (7.78,6.29)};
+\draw (3.35,7.47) node[anchor=south west] {\tiny{F=0.9}};
+\draw plot[smooth] coordinates { (3.35,7.47) (5.00,7.48) (6.65,7.47)};
+\draw (0,-0.6) node {$recall$};
+\draw (10,-0.6) node {$precision$};
+%\draw (-0.2,0) node {0}; 
+%\draw (10.2,0) node {1}; 
+\draw plot[mark=*,] coordinates {(7.49155555,6.62394108075)};
+\draw (7.50155555,6.63394108075) node[anchor=south west] {Proposta};
+\end{tikzpicture}
+\caption{Métricas de precision, recall e f-measure no cenário 1}
+\label{fig:cenario1}
+\end{figure}
+
+\begin{figure}
+\begin{tikzpicture}[cap=round]{H}
+%\draw[step=1cm,very thin,color=gray] (0,0) grid (10.0,9.0);
+\draw[|-|] (-0,0) -- (10,0);
+\draw[dashed,very thin] (10,0) arc (0:60:10cm);
+\draw[dashed,very thin] (0,0) arc (180:120:10cm);
+\draw[dashed] (10,0) arc (0:60:10cm) node[anchor=south east]  {{\tiny R=1.}};
+\draw[dashed,very thin] (9,0) arc (0:63:9cm) node[anchor=south east] {{\tiny R=.9}};
+\draw[dashed,very thin] (8,0) arc (0:66:8cm) node[anchor=south east]  {{\tiny R=.8}};
+\draw[dashed,very thin] (7,0) arc (0:70:7cm) node[anchor=south east]  {{\tiny R=.7}};
+\draw[dashed,very thin] (6,0) arc (0:73:6cm) node[anchor=south east]  {{\tiny R=.6}};
+\draw[dashed,very thin] (5,0) arc (0:76:5cm) node[anchor=south east] {{\tiny R=.5}};
+\draw[dashed,very thin] (4,0) arc (0:78:4cm) node[anchor=south east] {{\tiny R=.4}};
+\draw[dashed,very thin] (3,0) arc (0:80:3cm) node[anchor=south east] {{\tiny R=.3}};
+\draw[dashed,very thin] (2,0) arc (0:82:2cm) node[anchor=south east] {{\tiny R=.2}};
+\draw[dashed,very thin] (1,0) arc (0:84:1cm) node[anchor=south east] {{\tiny R=.1}};
+\draw[dashed] (0,0) arc (180:120:10cm) node[anchor=south west] {{\tiny P=1.}};
+\draw[dashed,very thin] (1,0) arc (180:117:9cm) node[anchor=south west] {{\tiny P=.9}};
+\draw[dashed,very thin] (2,0) arc (180:114:8cm) node[anchor=south west] {{\tiny P=.8}};
+\draw[dashed,very thin] (3,0) arc (180:110:7cm) node[anchor=south west] {{\tiny P=.7}};
+\draw[dashed,very thin] (4,0) arc (180:107:6cm) node[anchor=south west] {{\tiny P=.6}};
+\draw[dashed,very thin] (5,0) arc (180:105:5cm) node[anchor=south west] {{\tiny P=.5}};
+\draw[dashed,very thin] (6,0) arc (180:103:4cm) node[anchor=south west] {{\tiny P=.4}};
+\draw[dashed,very thin] (7,0) arc (180:100:3cm) node[anchor=south west] {{\tiny P=.3}};
+\draw[dashed,very thin] (8,0) arc (180:96:2cm) node[anchor=south west] {{\tiny P=.2}};
+\draw[dashed,very thin] (9,0) arc (180:90:1cm) node[anchor=south west] {{\tiny P=.1}};
+\draw (0.56,3.29) node[anchor=south west] {\tiny{F=0.5}};
+\draw plot[smooth] coordinates { (0.56,3.29) (1.55,3.10) (2.46,2.68) (3.31,2.05) (4.12,1.19) (5.00,0.00) (6.42,1.79) (9.44,3.29)};
+\draw (0.92,4.19) node[anchor=south west] {\tiny{F=0.6}};
+\draw plot[smooth] coordinates { (0.92,4.19) (1.96,4.05) (2.95,3.78) (3.93,3.48) (5.00,3.32) (6.56,3.63) (9.08,4.19)};
+\draw (1.45,5.19) node[anchor=south west] {\tiny{F=0.7}};
+\draw plot[smooth] coordinates { (1.45,5.19) (2.59,5.11) (3.74,4.98) (5.00,4.90) (6.73,5.03) (8.55,5.19)};
+\draw (2.22,6.29) node[anchor=south west] {\tiny{F=0.8}};
+\draw plot[smooth] coordinates { (2.22,6.29) (3.54,6.27) (5.00,6.24) (6.91,6.28) (7.78,6.29)};
+\draw (3.35,7.47) node[anchor=south west] {\tiny{F=0.9}};
+\draw plot[smooth] coordinates { (3.35,7.47) (5.00,7.48) (6.65,7.47)};
+\draw (0,-0.6) node {$recall$};
+\draw (10,-0.6) node {$precision$};
+%\draw (-0.2,0) node {0}; 
+%\draw (10.2,0) node {1}; 
+\draw plot[mark=*,] coordinates {(5.2877368,8.48762861664)};
+\draw (5.2977368,8.49762861664) node[anchor=south west] {Proposta};
+\end{tikzpicture}
+\caption{Métricas de precision, recall e f-measure no cenário 2}
+\label{fig:cenario2}
+\end{figure}
+
+\begin{figure}
+\begin{tikzpicture}[cap=round]{H}
+%\draw[step=1cm,very thin,color=gray] (0,0) grid (10.0,9.0);
+\draw[|-|] (-0,0) -- (10,0);
+\draw[dashed,very thin] (10,0) arc (0:60:10cm);
+\draw[dashed,very thin] (0,0) arc (180:120:10cm);
+\draw[dashed] (10,0) arc (0:60:10cm) node[anchor=south east]  {{\tiny R=1.}};
+\draw[dashed,very thin] (9,0) arc (0:63:9cm) node[anchor=south east] {{\tiny R=.9}};
+\draw[dashed,very thin] (8,0) arc (0:66:8cm) node[anchor=south east]  {{\tiny R=.8}};
+\draw[dashed,very thin] (7,0) arc (0:70:7cm) node[anchor=south east]  {{\tiny R=.7}};
+\draw[dashed,very thin] (6,0) arc (0:73:6cm) node[anchor=south east]  {{\tiny R=.6}};
+\draw[dashed,very thin] (5,0) arc (0:76:5cm) node[anchor=south east] {{\tiny R=.5}};
+\draw[dashed,very thin] (4,0) arc (0:78:4cm) node[anchor=south east] {{\tiny R=.4}};
+\draw[dashed,very thin] (3,0) arc (0:80:3cm) node[anchor=south east] {{\tiny R=.3}};
+\draw[dashed,very thin] (2,0) arc (0:82:2cm) node[anchor=south east] {{\tiny R=.2}};
+\draw[dashed,very thin] (1,0) arc (0:84:1cm) node[anchor=south east] {{\tiny R=.1}};
+\draw[dashed] (0,0) arc (180:120:10cm) node[anchor=south west] {{\tiny P=1.}};
+\draw[dashed,very thin] (1,0) arc (180:117:9cm) node[anchor=south west] {{\tiny P=.9}};
+\draw[dashed,very thin] (2,0) arc (180:114:8cm) node[anchor=south west] {{\tiny P=.8}};
+\draw[dashed,very thin] (3,0) arc (180:110:7cm) node[anchor=south west] {{\tiny P=.7}};
+\draw[dashed,very thin] (4,0) arc (180:107:6cm) node[anchor=south west] {{\tiny P=.6}};
+\draw[dashed,very thin] (5,0) arc (180:105:5cm) node[anchor=south west] {{\tiny P=.5}};
+\draw[dashed,very thin] (6,0) arc (180:103:4cm) node[anchor=south west] {{\tiny P=.4}};
+\draw[dashed,very thin] (7,0) arc (180:100:3cm) node[anchor=south west] {{\tiny P=.3}};
+\draw[dashed,very thin] (8,0) arc (180:96:2cm) node[anchor=south west] {{\tiny P=.2}};
+\draw[dashed,very thin] (9,0) arc (180:90:1cm) node[anchor=south west] {{\tiny P=.1}};
+\draw (0.56,3.29) node[anchor=south west] {\tiny{F=0.5}};
+\draw plot[smooth] coordinates { (0.56,3.29) (1.55,3.10) (2.46,2.68) (3.31,2.05) (4.12,1.19) (5.00,0.00) (6.42,1.79) (9.44,3.29)};
+\draw (0.92,4.19) node[anchor=south west] {\tiny{F=0.6}};
+\draw plot[smooth] coordinates { (0.92,4.19) (1.96,4.05) (2.95,3.78) (3.93,3.48) (5.00,3.32) (6.56,3.63) (9.08,4.19)};
+\draw (1.45,5.19) node[anchor=south west] {\tiny{F=0.7}};
+\draw plot[smooth] coordinates { (1.45,5.19) (2.59,5.11) (3.74,4.98) (5.00,4.90) (6.73,5.03) (8.55,5.19)};
+\draw (2.22,6.29) node[anchor=south west] {\tiny{F=0.8}};
+\draw plot[smooth] coordinates { (2.22,6.29) (3.54,6.27) (5.00,6.24) (6.91,6.28) (7.78,6.29)};
+\draw (3.35,7.47) node[anchor=south west] {\tiny{F=0.9}};
+\draw plot[smooth] coordinates { (3.35,7.47) (5.00,7.48) (6.65,7.47)};
+\draw (0,-0.6) node {$recall$};
+\draw (10,-0.6) node {$precision$};
+%\draw (-0.2,0) node {0}; 
+%\draw (10.2,0) node {1}; 
+\draw plot[mark=*,] coordinates {(5.0975198,8.6032140441)};
+\draw (5.1075198,8.6132140441) node[anchor=south west] {Proposta};
+\end{tikzpicture}
+\caption{Métricas de precision, recall e f-measure no cenário 3}
+\label{fig:cenario3}
+\end{figure}
+\end{center}
+
+As três figuras apresentadas sugerem que a eficácia da ferramenta proposta é satisfatória para o alinhamento de datasets reais. A Tabela \ref{tab:resultados} sumariza os dados obtidos para cada cenário.
+
+\begin{table}[h]
+\centering
+\caption{Sumarização dos dados relativos a precision, recall e f-measure por cenário.}
+\label{tab:resultados}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+Cenário             & Ferramenta & Precision & Recall & F-measure \\ \hline
+\multirow{3}{*}{C1} & Proposta   & 1         & 0.7083 & 0.8292    \\ \cline{2-5} 
+                    & LogMap     & 0         & 0      & NaN       \\ \cline{2-5} 
+                    & RiMOM-2015 & 0         & 0      & NaN       \\ \hline
+\multirow{3}{*}{C2} & Proposta   & 1         & 0.9708 & 0.9851    \\ \cline{2-5} 
+                    & LogMap     & 0         & 0      & NaN       \\ \cline{2-5} 
+                    & RiMOM-2015 & 0         & 0      & NaN       \\ \hline
+\multirow{3}{*}{C3} & Proposta   & 1         & 0.9902 & 0.9950    \\ \cline{2-5} 
+                    & LogMap     & 0         & 0      & NaN       \\ \cline{2-5} 
+                    & RiMOM-2015 & 0         & 0      & NaN       \\ \hline
+\end{tabular}
+\end{table}
+
+\subsection*{Verificação das hipóteses}
+Esta seção tem como objetivo validar ou refutar as hipóteses propostas. A primeira hipótese a ser verificada será feita com relação à métrica precision. As hipóteses nula e alternativa estão numeradas abaixo, respectivamente:
+
+\begin{itemize}
+\item \textbf{H1-0:} A métrica precision entre apresentada pelas abordagens é igual.
+\item \textbf{H1-1:} A métrica precision entre apresentada pelas abordagens é diferente.
+\end{itemize}
+
+Para realizar a análise, devemos observar a métrica precision nos três cenários de alinhamento. Como descrito na Tabela \ref{tab:resultados}, apenas a proposta apresentou resultados (1) , refutando a hipótese nula (H1-0) e confirmando que a proposta apresentou melhor precisão nesses cenários de alinhamento.
+A próxima validação de hipótese ocorrerá com relação à métrica recall. As hipóteses nula e alternativa estão numeradas abaixo, respectivamente:
+
+\begin{itemize}
+\item \textbf{H2-0:} A métrica recall entre apresentada pelas abordagens é igual.
+\item \textbf{H2-1:} A métrica recall entre apresentada pelas abordagens é diferente.
+\end{itemize}
+
+Diante do resultado apresentado pelas ferramentas nos três cenários de alinhamento, onde apenas a proposta conseguiu realizar alinhamento de dados entre os datasets é possível refutar a hipótese nula (H2-0) e confirmando que diante os cenários de avaliação a proposta apresenta melhor recall que as outras soluções avaliadas.
+Finalizando a verificação de hipóteses, serão analisadas as hipóteses relacionadas à métrica f-measure.As hipóteses nula e alternativa estão numeradas abaixo, respectivamente:
+
+\begin{itemize}
+\item \textbf{H3-0:} A métrica f-measure entre apresentada pelas abordagens é igual.
+\item \textbf{H3-1:} A métrica f-measure entre apresentada pelas abordagens é diferente.
+\end{itemize}
+
+Conforme os resultados apresentados na Tabela K, é possível notar que apenas a proposta apresentou resultados nos três cenários avaliados (0.8292, 0.9851, 0.9950). Dessa forma, é possível refutar a hipótese nula e confirmar que a proposta apresentada tem melhor eficácia com relação à métrica f-measure. 
+
+
+\subsection*{Principais conclusões}
+O experimento conduzido neste capítulo, visou avaliar a eficácia das ferramentas de alinhamento de dados conectados com relação às métricas de precision, recall e f-measure. Essas variáveis foram avaliadas separadamente em cada um dos três cenários de alinhamento (DBPedia X IBGE, DBPedia X Alagoas em dados, IBGE X Alagoas em Dados).
+
+Pelas análises realizadas, foi possível verificar que a proposta obteve melhor eficácia nas três métricas. Além disso, apresentou vantagem com relação às demais soluções avaliadas em todos os cenários avaliados.
