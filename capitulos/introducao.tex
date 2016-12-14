@@ -1,8 +1,12 @@
 \chapter{Introdução}
 \label{cap:introducao}
-Considerado como ponto chave para a Web Semântica \cite{berners2001semantic}, Dados Conectados vem sendo abordado de forma crescente por acadêmicos, governos e empresas. Tal crescimento se deve ao fato de Dados Conectados ser uma alternativa relevante para conectar bases de dados distribuídas na Web. Segundo \citeonline{hyland2011joy}, Dados Conectados se trata de um conjunto de boas práticas para publicar e conectar dados estruturados na Web. Ademais, \citeonline{berners2006linked} afirma que não se trata apenas de por dados na Web, mas fazer conexões entre eles, permitindo assim, que pessoas ou máquinas possam explorar a Web dos dados.
+O Atual paradigma da Web é descrito como Web de documentos. Neste, os documentos ou páginas são descritas através de uma linguagem de marcação de hypertexto (HTML) e interligados através de hyperlinks. Para identificar as páginas na Web, é necessário um mecanismo capaz de identificat de forma única cada uma dessas páginas. Para isso, a identificação é arealizada através de um mecanismo de identificação global chamado URI (Uniform Resource Identifier). Dessa forma, para ter acesso a um conteúdo espefícido de qualquer documento neste paradigma, é necessário obter todo o documento.
 
-Web de Dados bem como Web dos Documentos, são termos utilizados para descrever o paradigma da Web atualmente, onde o primeiro, que tem como base o segundo, reflete a possibilidade de conectar os dados através de links. Sendo esta, uma possibilidade inexistente quando se fala de Web dos Documentos, pois nesta, os documentos apontam para outros documentos através de links.
+Diferentemente da Web de documentos, a Web de dados, através de URIs, possibilita que os dados sejam identificados de forma única, permitindo que apenas os dados sejados sejam recuperados.  Consequentemente, essas páginas assumem um papel de conjunto de dados (datasets). Além disso, os dados são representados através de um framework de descrição de recursos (RDF) e uma linguagem de consulta aos dados, linguagem SPARQL. Através desses recursos, é possível apontar e navegar entre os dados na Web. Surgindo o conceito de Dados Conectados.
+
+O conceito de Dados Conectados está intimamente relacionado à Web de dados, pois de acordo com \citeonline{bizer2009linked}, Dados Conectados trata-se de usar a Web para criar links entre dados de fontes diferentes. Além disso, Dados Conectados é considerado um ponto chave para o desenvolvimento da Web Semântica \cite{berners2001semantic} . Além disso, \citeonline{Isotani2015} destacam seu potencial de aplicação, tando para negócios quanto para o governo.  
+
+Caso como o da BestBuy, que través da utilização de serialização RDF (RDFa) melhorou o número de acessos via buscador  Google entre 15\% e 30\%. Além do próprio Google, que passou a utilizar a serialização json-ld em um de seus produtos, o Gmail. No governo, temos o caso do governo britânico que publica seus dados em formato RDF, permitindo que os dados possam ser conectados a outros, mesmo estando em bases diferentes. Consequentemente, a utilização de Dados Conectados vem sendo realizada de forma crescente.
 
 Dados Conectados pode ser visto sob duas perspectivas: consumo e publicação. A primeira aborda o ponto de vista do consumidor, tratando a exploração de dados para tornar as aplicações mais ricas. A segunda está sob a perspectiva do publicador, abordando processos \cite{bizer2007publish, hyland2011joy, villazon2011methodological, Avila2015} e conceitos \cite{berners2006linked, wood2014linked} necessários para publicar e manter os dados na Web de forma conectada. 
 
@@ -43,7 +47,7 @@ Dentre as propriedades com suporte inadequado, destaca-se a propriedade owl:same
 \end{figure}
 
 Neste contexto, este trabalho propõe uma abordagem independente de contexto para o alinhamento de dados conectados por meio de um processo de alinhamento que leva em consideração aspectos dos dados e  características do modelo ontológico. Assim, os recursos/instâncias analisados, além de alinhados através das propriedades de dados, podem ser alinhados través seus relacionamentos. Ademais, a proposta trata o problema do alinhamento entre datasets reais, permitindo que seja possível alinhar datasets distribuídos na Web de forma confiável.
-\subsection*{Objetivo}
+\section{Objetivo}
 
 Essa abordagem visa disponibilizar um mecanismo útil que permita alinhar semiautomaticamente recursos entre datasets diferentes. Além disso, a proposta também pretende facilitar a identificação e alinhamento de recursos duplicados dentro do mesmo dataset.
 
@@ -54,7 +58,7 @@ Dessa forma, o trabalho lida com aspectos mais gerais, como facilitar o alinhame
 	\item Definição de uma função de similaridade que contempla problemas provenientes de datasets reais (acentuação, ausência de propriedades, formatação e outros);
 \end{itemize}
 
-\subsection*{Estrutura do trabalho}
+\section{Estrutura do trabalho}
 
 Esta dissertação está dividida em 7 capítulos. O Capítulo 1 introduz a problemática e os objetivos do trabalho proposto, enaltecendo a necessidade de uma abordagem capaz de alinhar dados conectados. No Capítulo 2, são apresentados os conceitos relacionados ao tema deste trabalho, como RDF, Ontologias, Dados Conectados, Algoritmos de similaridade e Alinhamento de Dados Conectados.
 

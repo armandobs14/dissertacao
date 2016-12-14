@@ -3,13 +3,13 @@ Este capítulo descreve o experimento visando avaliar a eficácia, em termos de 
 
 O capítulo está dividido em três seções: planejamento, execução e análise dos dados. 
 
-\section*{Planejamento do experimento}
+\section{Planejamento do experimento}
 
 Nesta seção, será detalhado o planejamento do experimento que foi projetado para este trabalho. Destro do planejamento, encontra-se a definição da questão de pesquisa e derivação de hipóteses, a seleção das variáveis dependentes e independentes a identificação da unidade experimental e a seleção do modelo experimental que será utilizado.
 
 O experimento adotado é do tipo comparativo, no qual será comparada a ferramenta proposta com as ferramentas RiMOM-2015 e LogMap. O contexto do experimento é acadêmico, posto que executado em um laboratório, mas executando algoritmos com dados reais. Nas próximas subseções, o planejamento do experimento será descrito.
 
-\subsection*{Hipóteses de pesquisa}
+\subsection{Hipóteses de pesquisa}
 
 Como mencionado no início deste capítulo, este experimento visa avaliar a proposta com relação às métricas precision, recall e f-measure. Levando em consideração as questões de pesquisa a seguir:
 
@@ -41,7 +41,7 @@ H3       & H3-0:$ F(F1) = F(F2) = F(F3) $ & H3-1:$ F(F1) \not= F(F2) \not= F(F3)
 \end{tabular}
 \end{table}
 
-\subsection*{Seleção de Variáveis}
+\subsection{Seleção de Variáveis}
 Seguindo o planejamento, é necessário definir as variáveis contidas no experimento. Primeiro, as variáveis independentes, também chamadas de fatores, serão apresentadas. Logo em seguida, as variáveis dependentes, no caso as métricas, serão detalhadas.
 
 As variáveis independentes são as seguintes:
@@ -85,7 +85,7 @@ F = \dfrac{{2}\cdot{P}\cdot{R}}{P+R}
 \end{tabular}
 \end{table}
 
-\subsection*{Unidades de Experimento}
+\subsection{Unidades de Experimento}
 A unidade experimental deste estudo é composto por três datasets (DBPedia\footnote{http://www.dbpedia.pt}, IBGE\footnote{http://cidades.ibge.gov.br
 }, Alagoas em Dados\footnote{http://dados.al.gov.br/dataset}), que contêm as cidades do estado de Alagoas. Os datasets  foram extraídos e transformados em RDF  seguindo a especificação da ontologia do dbpedia\footnote{http://dbpedia.org/ontology/}, que podem ser conferidos através do link \url{https://goo.gl/TkzStn}.
 
@@ -107,13 +107,13 @@ C3               & IBGE X Alagoas em Dados    \\ \hline
 Para este experimento, com exceção dos dados fornecidos pela dbpedia, os demais foram transformados para RDF através da ferramenta OpenRefine e persistidos no Virtuoso.  
 Todo o experimento foi executado utilizando a entidade City como conceito principal. A escolha desse conceito se deve ao fato deste ser o principal conceito.
 
-\subsection*{Seleção do Projeto Experimental}
+\subsection{Seleção do Projeto Experimental}
 Levando em consideração as diversas classificações de experimento \cite{montgomery2012design}, o presente experimento é classificado como fatorial completo com blocagem. A blocagem foi escolhida com o objetivo de suprimir os efeitos dos datasets nas variáveis resposta. Para cada cenário houve a execução de todos os fatores, garantindo a completude do experimento. Dessa forma temos 3 cenários possíveis, com 3 execuções em cada um deles, totalizando 9 execuções.
 
-\section*{Execução do experimento}
+\section{Execução do experimento}
 Esta seção descreve a execução do experimento que foi planejado na seção anterior, ou seja, descreve quais instrumentos foram utilizados, bem como a narrativa de execução do experimento.
 
-\subsection*{Preparação e instrumentação}
+\subsection{Preparação e instrumentação}
 Inicialmente é necessário preparar o ambiente em que os alinhamentos serão executados. As ferramentas utilizadas, bem como suas versões são descritas a seguir:
 
 \begin{itemize}
@@ -125,7 +125,7 @@ Inicialmente é necessário preparar o ambiente em que os alinhamentos serão ex
 
 Para isolar os efeitos entre as execuções, todo o experimento foi conduzido em um container do Docker, que permitem isolar as aplicações, fazendo com que as aplicações sejam executadas em ambientes idênticos.
 
-\subsection*{Narrativa do experimento}
+\subsection{Narrativa do experimento}
 A Figura \ref{fig:experiment} apresenta os passos de execução de cada alinhamento, que são descritos abaixo:
 \begin{itemize}
 \item Construir container com as configurações zeradas;
@@ -143,11 +143,11 @@ A Figura \ref{fig:experiment} apresenta os passos de execução de cada alinhame
 	\label{fig:experiment}
 \end{figure}
 
-\subsection*{Análise de Ameaças à Validade}
+\subsection{Análise de Ameaças à Validade}
 Embora todo experimento tenha sido projetado para minimizar possíveis ameaças que comprometam suas conclusões, existem algumas ameaças que devem ser mencionadas. Uma possível ameaça à validade do experimento é com relação a quantidade de amostras, o número de recursos, bem como a quantidade de datasets pode influenciar o resultado do alinhamento.
 Levando isso em consideração, na próxima seção, os dados obtidos a partir da execução do experimento serão analisados.
 
-\subsection*{Análise dos dados}
+\subsection{Análise dos dados}
 O experimento foi conduzido de acordo com o planejamento descrito anteriormente neste capítulo, depois da execução, os datasets de alinhamento eram coletados. Os dados de precision, recall e f-measure eram calculados através de script Python de acordo com as funções especificadas anteriormente.
 Ao longo desta seção, uma análise descritiva dos dados obtidos será conduzida, esta análise envolve a apresentação das métricas referentes a cada cenário. Vale a pensa ressaltar que as ferramentas RiMOM-2015 e LogMap não foram capazes de alinhar instâncias dos datasets, recebendo 0 (zero) nas métricas precision e recall. Podemos levantar alguns motivos para o baixo desempenho das ferramentas apresentadas, porém não é possível afirmar com certeza, pois em nenhum dos artigos foi apresentada as alterações que essas soluções sofreram para suportar o alinhamento de dados.
 
@@ -316,7 +316,7 @@ Cenário             & Ferramenta & Precision & Recall & F-measure \\ \hline
 \end{tabular}
 \end{table}
 
-\subsection*{Verificação das hipóteses}
+\subsection{Verificação das hipóteses}
 Esta seção tem como objetivo validar ou refutar as hipóteses propostas. A primeira hipótese a ser verificada será feita com relação à métrica precision. As hipóteses nula e alternativa estão numeradas abaixo, respectivamente:
 
 \begin{itemize}
@@ -343,7 +343,7 @@ Finalizando a verificação de hipóteses, serão analisadas as hipóteses relac
 Conforme os resultados apresentados na Tabela K, é possível notar que apenas a proposta apresentou resultados nos três cenários avaliados (0.8292, 0.9851, 0.9950). Dessa forma, é possível refutar a hipótese nula e confirmar que a proposta apresentada tem melhor eficácia com relação à métrica f-measure. 
 
 
-\subsection*{Principais conclusões}
+\subsection{Principais conclusões}
 O experimento conduzido neste capítulo, visou avaliar a eficácia das ferramentas de alinhamento de dados conectados com relação às métricas de precision, recall e f-measure. Essas variáveis foram avaliadas separadamente em cada um dos três cenários de alinhamento (DBPedia X IBGE, DBPedia X Alagoas em dados, IBGE X Alagoas em Dados).
 
 Pelas análises realizadas, foi possível verificar que a proposta obteve melhor eficácia nas três métricas. Além disso, apresentou vantagem com relação às demais soluções avaliadas em todos os cenários avaliados.

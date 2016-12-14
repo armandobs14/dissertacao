@@ -10,11 +10,11 @@ Neste capítulo, será apresentado o processo proposto para alinhar dados. Como 
 	\label{fig:processo}
 \end{figure}
 
-\section*{I - Selecionar Datasets}
+\section{I - Selecionar Datasets}
 A etapa de selecionar datasets trata da determinação de quais conjuntos de dados serão alinhados. A seleção de um dataset está sujeita a alguns critérios, tais como: estar estruturado em triplas e utilizar conceitos modelados em ontologias/vocabulários. Tais critérios foram determinados de acordo com o escopo do processo, pois este está limitado à dados conectados. Além de se adequar ao escopo, os critérios cumprem os requisitos mínimos para a execução do processo.
 Complementarmente, a comunidade já disponibiliza ferramentas e processos para a publicação de dados conectados na Web, o que não é o foco desse processo. Além disso, é importante destacar que ao modelar os dados em qualquer processo de publicação de dados conectados são utilizadas ontologias/vocabulários que podem servir como base.
 
-\section*{II - Identificar Conceitos}
+\section{II - Identificar Conceitos}
 A identificação de conceitos é dividida em duas atividades, uma automática e outra manual. A atividade automática se trata de recuperar os conceitos presentes no dataset através de queries SPARQL que podem ser vistas a seguir.
 \\
 \begin{lstlisting}[captionpos=b, caption=Query SPARQL para identificação de conceito, label=lst:sparql,
@@ -57,14 +57,14 @@ select distinct ?type where {
 
 Como resultado do Código \ref{lst:sparql2} é provida uma lista contendo os conceitos relacionados ao conceito escolhido. Neste momento, o usuário deve escolher, quais conceitos relacionados ele deseja utilizar para melhorar o alinhamento do conceito escolhido. Tal decisão influenciará tanto no tempo que o processo levará para concluir, quanto na quantidade de recursos alinhados ao final do processo, pois para cada conceito relacionado haverá uma nova execução das etapas (iii) e (iv). Esse loop é necessário, pois alguns alinhamentos serão possíveis apenas através da relação entre esses conceitos.
 
-\section*{III - Listar recursos}
+\section{III - Listar recursos}
 A etapa de listar recursos pode ser entendida como a recuperação dos recursos que pertencem aos conceitos. É importante destacar que a listagem/recuperação de recursos da base de conhecimento pode ser executada mais de uma vez durante o processo, gerando um conjunto de recursos para cada conceito escolhido. Além disso, essa etapa é responsável pela geração de pares candidatos, onde os recursos do Dataset $D_{1}$ são comparados com os recursos do dataset $D_{2}$.
 
 
-\section*{IV - Alinhar Dados}
+\section{IV - Alinhar Dados}
 A etapa de alinhamento de dados está dividida em duas atividades sendo elas: (i) alinhar recursos e (ii) melhorar alinhamento, que serão detalhadas nas subseções a seguir.
 
-\subsection*{Alinhar recursos}
+\subsection{Alinhar recursos}
 Para alinhar os recursos é necessário executar alguns procedimentos, sendo eles o tratamento dos dados, comparação entre recursos e análise da similaridade. O primeiro procedimento se refere a transformações nas propriedades dos recursos. Essas transformações são necessárias para auxiliar os algoritmos de similaridade a analisar melhor a semelhança entre os recursos. No procedimento de comparação, cada uma da propriedades são analisadas. Caso uma propriedade não pertença a um dos recursos, ela é dispensada da comparação. A Figura  \ref{fig:resources} apresenta a comparação entre as propriedades de cada recurso.
 
 \begin{figure}[!ht]
@@ -107,7 +107,7 @@ Onde:
 
 O valor gerado pelo componente de similaridade é enviado para o componente de alinhamento.
 
-\subsection*{Melhorar alinhamentos}
+\subsection{Melhorar alinhamentos}
 O melhoramento dos alinhamentos se dá por meio dos recursos relacionados. Para a execução desta etapa é necessário que o conceito relacionado utilizado esteja alinhado com a outra base, pois os pares candidatos serão construídos a partir desses recursos (ver Figura \ref{fig:relacionados}).
 
 \begin{figure}[!ht]

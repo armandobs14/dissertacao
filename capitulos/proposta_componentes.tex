@@ -12,10 +12,10 @@ A execução do processo ocorre por meio de componentes para a análise de simil
 Apesar de existirem diversas soluções que contém algoritmos para o cálculo de similaridade e alinhamento entre recursos, optou-se pelo desenvolvimento de uma abordagem que contemplasse problemas provenientes de bases de dados reais (acentuação, ausência de propriedades, formatação e outros).
 Os principais componentes utilizados são:
 
-\section*{Persistência}
+\section{Persistência}
 O componente de persistência é responsável pelo acesso à base de conhecimento. Assim, é responsável por armazenar e recuperar os recursos e os alinhamentos que são utilizados ao longo do processo. Além disso, o mesmo atua como abstração do servidor de triplas (Virtuoso, OWLim etc.). Isso permite que o alinhamento seja executado diretamente nos datasets.
 
-\section*{Similaridade}
+\section{Similaridade}
 O componente de similaridade é dividido em dois subcomponentes, sendo eles o de similaridade léxica e recurso. O primeiro utiliza métricas que analisam a similaridade entre palavras e textos. Algumas dessas técnicas são Levenshtein \cite{levenshtein1966binary}, Cosseno \cite{singhal2001modern}, Jaro-Winkler \cite{winkler1990string} e outros. O segundo componente, que se refere à similaridade de recurso, utiliza o primeiro e tem como função gerar a similaridade entre recursos.
 
 Para o cálculo da similaridade dos recursos foi utilizada uma abordagem baseada na técnica de subgrafo semântico. Na prática, um subgrafo semântico diz respeito às triplas que estão relacionadas a um recurso qualquer, que estão de acordo com a modelagem ontológica. A Figura \ref{fig:subgrafo} representa um subgrafo que relaciona um autor e sua publicação. Além de propriedades de objetos, um subgrafo também possui propriedades de dados, tanto do recurso principal (Author), quanto dos conceitos relacionados (Production). O trecho de código \ref{lst:similaridade} descreve a implementação do cálculo de similaridade.
@@ -108,14 +108,14 @@ avg_similarity = innerSimilaritySum / innerComparisions;
 \end{lstlisting}
 
 O valor gerado pelo componente de similaridade é enviado para o componente de alinhamento.
-\section*{Alinhamento}
+\section{Alinhamento}
 O componente de alinhamento tem como responsabilidade determinar, de acordo com os valores obtidos na etapa de similaridade, se os recursos analisados realmente dizem respeito à mesma entidade do mundo real. Para determinar se o alinhamento deve ser realizado, este componente faz uso de limiares de aceitação, que são determinados previamente. Por esse motivo, o processo de alinhamento não é uma tarefa automática, pois precisa que os valores sejam ajustados. Existem diversas formas de determinar o valor do limiar, que vão desde executar várias vezes e analisar o melhor custo benefício entre precision e recall até utilizar técnicas que atualizam o valor do limiar dinamicamente.
 
 
-\section*{Núcleo}
+\section{Núcleo}
 O componente de núcleo tem como principal função coordenar as atividades de alinhamento. Além de coordenar, é nesse componente que são definidos os limiares de aceitação, propriedades a serem desconsideradas, conceitos principais e conceitos relacionados, que servirão como parâmetro os componentes de alinhamento e similaridade.
 
 
-\section*{Utilitários}
+\section{Utilitários}
 O componente de utilitários tem como função realizar tratamentos nos textos que serão aplicados à função de similaridade. Alguns exemplos de tratamento são: tratamento de acentos, pontuação e outros.
 
