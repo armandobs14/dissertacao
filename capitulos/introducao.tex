@@ -22,7 +22,7 @@ De acordo com \cite{castano2011ontology}, existem diversas técnicas que podem s
 
 \begin{figure}[!h]
 	\centering
-	\includegraphics[width=0.9\textwidth]{./imagens/im_techniques.pdf}
+	\includegraphics[width=0.85\textwidth]{./imagens/im_techniques.pdf}
 	\caption{Técnicas para correspondência de instâncias}
 	\footnotesize{Fonte: adaptado de \cite{castano2011ontology}.}
 	\label{fig:im_techniques}
@@ -50,11 +50,33 @@ Para identificar e conectar recursos na Web, a comunidade vem apresentando um n�
         \label{fig:oaei_imtools}
 \end{figure}
 
-Porém, de acordo com \citeonline{homoceanu2014putting}, apesar dos bons resultados apresentados, as soluções não estão prontas para alinhar dados automaticamente de forma confiável. Para isso, foi realizado um experimento equivalente ao executado pela OAEI. Entretanto, utilizando dados reais, que foram obtidos de 5 fontes diferentes (Freebase\footnote{\url{http://www.freebase.com/}}, DBPedia\footnote{\url{http://dbpedia.org}} , LinkedMDB\footnote{\url{http://www.linkedmdb.org}}, DrugBase\footnote{\url{http://www.drugbase.de/de/}} e NewYork Times\footnote{\url{http://www.nytimes.com}}). Além disso, o experimento permitiu notar que as características do modelo não eram considerados durante o processo de correspondência de instâncias.
+Porém, de acordo com \citeonline{homoceanu2014putting}, apesar dos bons resultados apresentados, as soluções não estão prontas para alinhar dados automaticamente de forma confiável. Para isso, foi realizado um experimento equivalente ao executado pela OAEI. Entretanto, utilizando dados reais, que foram obtidos de 5 fontes diferentes (Freebase\footnote{\url{http://www.freebase.com/}}, DBPedia\footnote{\url{http://dbpedia.org}} , LinkedMDB\footnote{\url{http://www.linkedmdb.org}}, DrugBase\footnote{\url{http://www.drugbase.de/de/}} e NewYork Times\footnote{\url{http://www.nytimes.com}}), que podem ser obtidos através do endereço \url{http://www.ifis.cs.tu-bs.de/node/2906}.
+
+No experimento realizado por \citeonline{homoceanu2014putting} foi utilizado uma abordagem de caixa preta. Nesta abordagem, qualquer sistema independente de domínio pode ser utilizado na avaliação. Nesse contexto, o SLINT+ \cite{nguyen2012interlinking} foi utilizado por ser uma ferramenta independe de domínio e não precisa de treinamento.
+A ferramenta foi avaliada em duas perspectivas. Na primeira perspectiva a transitividade da propriedade \textit{owl:sameAs} foi desconsiderada. Diferentemente da segunda, que considerou a transitividade das correspondências criadas. A tabela \ref{tab:homoceanu2014putting} apresenta os resultados obtidos no experimento.
+
+\begin{table}[h]
+	\centering
+	\caption{Quantidade de links owl:sameAs, quantidade de links owl:sameAs entre tipos diferentes,precisão. Nas perspectivas sem e com transividade}
+	\label{tab:homoceanu2014putting}
+	\begin{tabular}{@{}l|lll|lll@{}}
+		\toprule
+		\multicolumn{1}{c|}{\multirow{2}{*}{$\theta$}} & \multicolumn{3}{c|}{SLINT+}                                                                      & \multicolumn{3}{c}{$cl_{TR}$}                                                                  \\
+		\multicolumn{1}{c|}{}                        & \multicolumn{1}{c}{\#sameAs} & \multicolumn{1}{c}{Inter-domínio} & \multicolumn{1}{c|}{Precisão} & \multicolumn{1}{c}{\#sameAs} & \multicolumn{1}{c}{Inter-domínio} & \multicolumn{1}{c}{Precisão} \\ \midrule
+		0.95                                         & 8,020                        & 33                                & 0.91                          & 2,055                        & 89                                & 0.20                         \\
+		0.75                                         & 16,739                       & 119                               & 0.71                          & 5,498                        & 216                               & 0.15                         \\
+		0.50                                         & 17,436                       & 230                               & 0.76                          & 7,038                        & 396                               & 0.09                         \\
+		0.25                                         & 25,113                       & 1,734                             & 0.67                          & 14,879                       & 2,408                             & 0.02                         \\ \bottomrule
+	\end{tabular}
+\end{table}
+
+
+
+%Além disso, o experimento permitiu notar que as características do modelo não eram considerados durante o processo de correspondência de instâncias.
 
 Segundo \cite{homoceanu2014putting} e \cite{ferrara2008towards} uma solução de correspondência de instâncias deveria explorar a modelagem ontológica, que utiliza vocabulários e ontologias para seu desenvolvimento. Essa recomendação se deve ao fato de RDF apenas dar estrutura aos dado. Sendo responsabilidades das ontologias dar significado. Um modelo ontológico é composto por classes e propriedades, que são descritas através de uma linguagem de descrição de ontologias (e.g. OWL). As classes são utilizadas para representar os conceitos que pertencem ao domínio de interesse, já as propriedades são utilizadas para relacionar conceitos, sendo chamadas de propriedades de objeto (object properties) ou relacionar conceitos e dados, sendo chamadas de data properties. Essas propriedades possuem características como transitividade, simetria e reflexibilidade. Dessa forma, o baixo suporte às características das propriedades pode afetar diretamente na qualidade de soluções de correspondência de instâncias. 
         
-Dentre as propriedades com suporte inadequado,  destaca-se a propriedade owl:sameAs, que é responsável por identificar recursos equivalentes. Além disso, essa se trata de uma propriedade transitiva, de forma que se existem dois recursos equivalentes R1 e R2 e existe um terceiro recurso R3 que é equivalente a R2, então R1 é equivalente a R3 como representado na Figura \ref{sameAs}. Tais características fazem com que a propriedade owl:sameAs seja uma das  mais utilizadas para alinhar dados na Web. Dessa forma, utilizar ferramentas que levem em consideração as características das propriedades é de grande importância para alinhar dados de forma confiável.
+Dentre as propriedades com suporte inadequado,  destaca-se a propriedade owl:sameAs, que é responsável por identificar recursos equivalentes. Além disso, essa se trata de uma propriedade transitiva, de forma que se existem dois recursos equivalentes R1 e R2 e existe um terceiro recurso R3 que é equivalente a R2, então R1 é equivalente a R3 como representado na Figura \ref{sameAsSample}. Tais características fazem com que a propriedade owl:sameAs seja uma das  mais utilizadas para alinhar dados na Web. Dessa forma, utilizar ferramentas que levem em consideração as características das propriedades é de grande importância para alinhar dados de forma confiável.
 
 
 \begin{figure}[h]
@@ -98,12 +120,24 @@ Neste contexto, este trabalho propõe uma abordagem independente de contexto par
 
 \section{Objetivo}
 
+
 Essa abordagem visa disponibilizar um mecanismo útil que permita alinhar semiautomaticamente recursos entre \textit{datasets} diferentes. Além disso, a proposta também pretende facilitar a identificação e alinhamento de recursos dentro do mesmo \textit{dataset}.
 Dessa forma, o trabalho lida com aspectos mais gerais, como facilitar o alinhamento de dados, quanto com problemas específicos, como a definição de métricas para a análise de similaridade entre recursos, que sejam capazes de suportar os problemas provenientes dos \textit{datasets} reais. Apesar de ser um trabalho com enfoque em engenharia de software, as suas contribuições estão mais voltadas para a área de Dados Conectados. Segue algumas dessas contribuições:
 
 \begin{itemize}
         \item Construção de um processo para alinhar dados conectados independente de contexto;
         \item Definição de uma função de similaridade que contempla problemas provenientes de \textit{datasets} reais (acentuação, ausência de propriedades, formatação e outros);
+\end{itemize}
+
+\section{Contribuição e relevância do trabalho}
+
+Anualmente a OAEI realiza a avaliação de ferramentas para a correspondência de instâncias. Essa avaliação utiliza \textit{datasets} previamente disponibilizados juntamente com uma referência de correspondência entre as instâncias. Essa prática permite que o experimento seja reproduzido, permitindo que os resultados fornecidos pela OAEI sejam validados. Por outro lado, permite também que dos desenvolvedores entendam os \textit{datasets} e desenvolvam algoritmos dedicados à computação específica para o \textit{dataset}. Desta forma, é necessário o estudo de abordagens independentes de contexto que sejam capazes de alinhar dados de forma confiável.
+
+Nesse contexto, a proposta apresenta as seguintes contribuições:
+\begin{itemize}
+\item Desenvolvimento de processo independente de contexto para o alinhamento de dados conectados;
+\item Viabilização da execução do alinhamento diretamente dentro do armazenamento de triplas.
+\item  Criação de experimento e estudo de caso para avaliar a eficácia das soluções de alinhamento no estado da arte.
 \end{itemize}
 
 \section{Estrutura do trabalho}
