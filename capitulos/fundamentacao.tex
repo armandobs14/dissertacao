@@ -4,7 +4,7 @@ O objetivo deste capítulo é apresentar a fundamentação teórica referente ao
 
 \section{RDF (Resource Description Framework)}
 
-RDF trata-se de um framework de descrição de recursos, trabalhando como um alicerce para a construção de Dados Conectados. Em concordância com tecnologias Web, bem como Dados Conectados, o modelo RDF utiliza URIs para identificação de recursos, permitindo que os recursos sejam descritos uniformemente na Web. Basicamente, o RDF é estruturado em triplas do tipo sujeito predicado objeto (ver Figura \ref{fig:spo}). 
+RDF trata-se de um framework de descrição de recursos, trabalhando como um alicerce para a construção de Dados Conectados. Em concordância com tecnologias Web, bem como Dados Conectados, o modelo RDF utiliza URIs para identificação de recursos, permitindo que os recursos sejam descritos uniformemente na Web. Basicamente, o RDF é estruturado em triplas do tipo sujeito, predicado, objeto (ver Figura \ref{fig:spo}). 
 
 \begin{figure}[!ht]
 	\centering
@@ -20,7 +20,7 @@ Vale a pena salientar que RDF é um framework de descrição, não sendo respons
 
 \section{Ontologias}
 Os Dados Conectados fazem uso de ontologias como suporte formal para representação de conhecimento, pois só RDF não é o bastante para que máquinas consigam entender a relação entre os dados. Desta forma, as ontologias têm um papel fundamental na modelagem e descrição de dados. A palavra ontologia vem do Grego ontos e logos, significando conhecimento do ser. Em filosofia, ontologia refere-se ao estudo do ser. 
-Em Computação, de maneira informal, uma ontologia define um conjunto de conceitos e suas relações, tais como a terminologia (vocabulário do domínio), definição explícita dos conceitos essenciais, suas classificações, taxonomias, relações e axiomas do domínio, incluindo hierarquias e restrições \cite{deved2006semantic}. Formalmente, uma ontologia é uma especificação formal e explícita de uma conceitualização compartilhada \cite{gruber1993translation}
+Em Computação, de maneira informal, uma ontologia define um conjunto de conceitos e suas relações, tais como a terminologia (vocabulário do domínio), definição explícita dos conceitos essenciais, suas classificações, taxonomias, relações e axiomas do domínio, incluindo hierarquias e restrições \cite{deved2006semantic}. Em 1993, \citeauthor{gruber1993translation} definiu ontologia como uma especificação explícita de uma conceitualização. Em 1997, \citeauthor{borstw1997construction} definiu ontologia como uma especificação formal de uma conceitualização compartilhada. Em 1998, \citeauthor{studer1998knowledge} unificaram as duas definições, desta forma ontologia pode ser definida como uma especificação formal e explícita de uma conceitualização compartilhada.
 . Para melhor entendimento, abaixo seguem detalhes sobre os termos citados nessa definição: 
 \begin{itemize}
 	\item \textbf{Explícita:} definições de conceitos, relações, restrições e axiomas; 
@@ -33,7 +33,7 @@ Pode-se concluir, a partir das características supracitadas sobre ontologias, q
 \section{Dados Conectados}
 O termo Dados Conectados (do inglês Linked Data) é a tradução oficial para o conceito na língua portuguesa \cite{Isotani2015}. Segundo o W3C, Dados Conectados pode ser entendido como o núcleo da Web Semântica, tendo como objetivo prover a integração e raciocínio de dados disponíveis na Web. Além disso, \citeonline{berners2006linked} ressalta que Dados Conectados não é apenas por dados na internet, mas fazer conexões entre eles, permitindo que pessoas ou máquinas possam explorar a Web dos dados.
 
-\citeonline{hyland2011joy} afirmam que Dados Conectados se trata de um conjunto de boas práticas para publicar dados e conectar dados estruturados na Web utilizando padrões internacionais do World Wide Web Consortium – W3C. Essas boas práticas são fundamentadas em tecnologias Web como ressaltam \citeonline{Isotani2015}. Além dessas tecnologias, vale a pena destacar os quatro princípios básicos de Dados Conectados \cite{berners2006linked}: 
+Para conectar os dados disponíveis na Web com qualidade, foram desenvolvidas as boas práticas. Essas boas práticas são fundamentadas em tecnologias Web como ressaltam \citeonline{Isotani2015}. Além dessas tecnologias, vale a pena destacar os quatro princípios básicos de Dados Conectados \cite{berners2006linked}: 
 
 \begin{enumerate}
 	\item Usar URI para a identificação de recursos
@@ -50,7 +50,7 @@ Algoritmos de similaridade podem ser entendidos como funções utilizadas para m
 
 Dependendo da perspectiva dada ao texto (conjunto de caracteres e conjuntos de palavras) existem diferentes abordagens (baseadas em caractere, baseadas em token) \cite{cohen2003comparison}. Abordagens baseadas em caractere (e.g. Levenshtein) realizam a comparação letra por letra. Já as abordagens baseadas em tokens (e.g. Jaro)  consideram a palavra como um corpo único.
 
-Nesta proposta, foi utilizada uma generalização do algoritmo de Monge-Elkan \cite{monge1996field}, que tem o objetivo de dar um peso maior a tokens mais semelhantes. Inicialmente, Monge-Elkan \cite{monge1996field} foi desenvolvido com o objetivo de calcular a semelhança entre textos que possuem vários tokens, onde a similaridade de cada token é calculada através da média das similaridades internas, que é provida por uma técnica baseada em caractere (e.g. Cosseno, Jaro, Dice). Essa abordagem se destaca em cenários de desordem ou ausência de tokens. Além disso, esse algoritmo explora os benefícios providos pelas abordagens baseadas caractere (e.g. erros de digitação, erros de OCR e erros ortográficos) \cite{jimenez2009generalized}.
+Nesta proposta, foi utilizada uma generalização do algoritmo de Monge-Elkan \cite{monge1996field}, que tem o objetivo de dar um peso maior a tokens mais semelhantes. Inicialmente, Monge-Elkan foi desenvolvido com o objetivo de calcular a semelhança entre textos que possuem vários tokens, onde a similaridade de cada token é calculada através da média das similaridades internas, que é provida por uma técnica baseada em caractere (e.g. Cosseno, Jaro, Dice). Essa abordagem se destaca em cenários de desordem ou ausência de tokens. Além disso, esse algoritmo explora os benefícios providos pelas abordagens baseadas caractere (e.g. erros de digitação, erros de OCR e erros ortográficos) \cite{jimenez2009generalized}.
 
 \section{Alinhamento de Dados Conectados}
 
@@ -72,14 +72,15 @@ Segundo \citeonline{ferrara2008towards}, para que uma abordagem seja capaz de id
 
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[width=0.9\textwidth]{./imagens/IMRequirements.png}
+%	\includegraphics[width=0.9\textwidth]{./imagens/IMRequirements.png}
+	\includegraphics[width=0.9\textwidth]{./imagens/im_requirements.pdf}
     \caption{Requisitos para soluções de alinhamento de dados}
-	\footnotesize{Fonte: \cite{ferrara2008towards}}
+	\footnotesize{Fonte: baseado em \cite{ferrara2008towards}}
 	\label{fig:imrequirements}
 \end{figure}
 
 \textbf{Diferença de Valores:}
-Um algoritmo de instance matching deve reconhecer valores correspondentes, sempre que possível, mesmo quando esses valores possuem erros. Para mitigar esse problema, a comunidade dem utilizando abordagens como algoritmos de similaridade e transformação de valores.
+Um algoritmo de correspondência de instância deve reconhecer valores correspondentes, sempre que possível, mesmo quando esses valores possuem erros. Para mitigar esse problema, a comunidade utiliza abordagens como algoritmos de similaridade e transformação de valores.
 
 
 \textbf{Heterogeneidade Estrutural:}

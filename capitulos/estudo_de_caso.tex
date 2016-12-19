@@ -1,5 +1,5 @@
 \chapter{Estudo de caso (QIE)}
-Neste capítulo será descrita a utilização do processo de alinhamento através de uma aplicação real chamada QIE. O QIE foi escolhido como um bom cenário, pois se trata de um projeto que pretende cruzar informações sobre a comunidade brasileira de informática na educação.
+Neste capítulo será descrita a utilização do processo de alinhamento através de um estudo de caso, o QIE. O QIE foi escolhido, pois se trata de um projeto que pretende cruzar informações sobre a comunidade brasileira de informática na educação.
 
 Para validar a eficácia da solução, foi solicitado a membros da comunidade que sugerissem perguntas de seu interesse. Como resultado foi levantado um conjunto contendo mais de 30 questões (ver Tabela \ref{tab:questions}).
 
@@ -44,7 +44,7 @@ Q31 & Quem são os maiores especialistas em recursos digitais e objetos de apren
 \end{tabular}
 \end{table}
 
-Para responder tais questões é necessário cruzar informações dos pesquisadores e suas respectivas publicações de diferentes bases, sendo elas a Revista Brasileira de Informática na Educação (RBIE), Workshop de informática na Escola (WIE), Simpósio Brasileiro de Informática na Educação (SBIE) e currículum Lattes. Vale a pena ressaltar que os datasets foram disponibilizados como arquivos XML, sendo necessário transformá-los para RDF.
+Para responder tais questões é necessário cruzar informações dos pesquisadores e suas respectivas publicações de diferentes bases, sendo elas a Revista Brasileira de Informática na Educação\footnote{\url{http://www.br-ie.org/pub/index.php/rbie}} (RBIE), Workshop de informática na Escola\footnote{\url{http://www.br-ie.org/pub/index.php/wie }}(WIE), Simpósio Brasileiro de Informática na Educação\footnote{\url{http://www.br-ie.org/pub/index.php/sbie}} (SBIE) e currículum Lattes\footnote{\url{http://lattes.cnpq.br}}. Vale a pena ressaltar que os \textit{datasets} foram disponibilizados como arquivos XML, sendo necessário transformá-los para RDF.
 
 Para modelar os dados, foram utilizadas duas ontologias a dac e a lattes. A primeira tem o objetivo de modelar o domínio de publicação (ver Figura \ref{fig:dac}). A segunda foi construída para modelar o domínio do lattes (ver Figura \ref{fig:lattes}).
 
@@ -62,7 +62,7 @@ Para modelar os dados, foram utilizadas duas ontologias a dac e a lattes. A prim
 	\label{fig:lattes}
 \end{figure}
 
-Para transformar os dados para RDF foi utilizada a ferramenta OpenRefine com a extensão para suportar RDF. Após a transformação dos dados, as ontologias e os dados foram persistidos no Virtuoso (ver Figura \ref{fig:datasets}), que é uma ferramenta para armazenamento de triplas.
+Para transformar os dados para RDF foi utilizada a ferramenta OpenRefine\footnote{\url{http://openrefine.org}} com a extensão para suportar RDF. Essa ferramenta foi selecionada devido a sua facilidade para criar os templates de transformalção. Após a transformação dos dados, as ontologias e os dados foram persistidos no Virtuoso\footnote{\url{https://virtuoso.openlinksw.com}} (ver Figura \ref{fig:datasets}), que é uma ferramenta para armazenamento de triplas. O Virtuoso foi selecionado por ser uma ferramenta conhecida dos desenvolvedores.
 
 \begin{figure}[!ht]
 	\centering
@@ -71,7 +71,7 @@ Para transformar os dados para RDF foi utilizada a ferramenta OpenRefine com a e
 	\label{fig:datasets}
 \end{figure}
 
-Após a persistência dos dados, o processo de alinhamento foi executado. Vale ressaltar que os datasets também foram alinhados com eles mesmos com o objetivo de descobrir recursos duplicados, visto que um autor pode publicar vários artigos em um mesmo evento. Os alinhamento gerados foram persistidos em novos datasets (ver Figura \ref{fig:datasets_alingments}).
+Após a persistência dos dados, o processo de alinhamento foi executado. Vale ressaltar que os \textit{datasets} também foram alinhados com eles mesmos com o objetivo de descobrir recursos duplicados, visto que um autor pode publicar vários artigos em um mesmo evento. Os alinhamento gerados foram persistidos em novos \textit{datasets} (ver Figura \ref{fig:datasets_alingments}).
 
 \begin{figure}[!ht]
 	\centering
@@ -80,7 +80,7 @@ Após a persistência dos dados, o processo de alinhamento foi executado. Vale r
 	\label{fig:datasets_alingments}
 \end{figure}
 
-Após a realização do alinhamento por parte da ferramenta, foi realizado um levantamento. A partir do levantamento foi possível gerar informações como a quantidade de recursos não repetidos nas bases, total de recursos alinhados com o perfil Lattes, bem como precision, recall e f-measure \cite{goutte2005probabilistic} para analisar a confiabilidade dos alinhamentos (ver Tabela \ref{tab:case_study}).
+Após a realização do alinhamento por parte da ferramenta, foi realizado um levantamento. A partir do levantamento foi possível gerar informações como a quantidade de recursos não repetidos nas bases, total de recursos alinhados com o perfil Lattes, bem como precisão, revocação e medida-f \cite{goutte2005probabilistic} para analisar a confiabilidade dos alinhamentos (ver Tabela \ref{tab:case_study}).
 
 %\begin{landscape}
 \begin{table}[!ht]
@@ -90,7 +90,7 @@ Após a realização do alinhamento por parte da ferramenta, foi realizado um le
 %\begin{tabular}{|p{1cm}|p{2cm}|p{2cm}|p{1cm}|p{1cm}|p{2cm}|p{2cm}|p{2cm}|}
 \begin{tabular}{|c|c|c|c|}
 \hline
-\textbf{Dataset}	&	\textbf{RBIE}	&	\textbf{RBIE}	&	\textbf{WIE}  \\ \hline
+\textbf{Dataset}	&	\textbf{RBIE}	&	\textbf{SBIE}	&	\textbf{WIE}  \\ \hline
 %\textbf{Iniciais}	&	1118	&	1687	&	1952 \\ \hline
 %\textbf{Alinhamentos}	&	276	&	1742	&	1637  \\ \hline
 %\textbf{Recursos Alinhados}	&	1029	&	141	&	1405 \\ \hline
@@ -106,7 +106,7 @@ Após a realização do alinhamento por parte da ferramenta, foi realizado um le
 
 Na tabela \ref{tab:case_study}, é possível notar que apesar do crescimento na quantidade de alinhamentos, a quantidade final de perfis com Lattes reduz. Isso ocorre porque a quantidade de alinhamento contabiliza a quantidade de triplas owl:sameAs, desprezando sua característica transitiva. Fato esse, que é levando em consideração quando se refere a quantidade final de recursos e a quantidade final de perfis com Lattes.
 
-Como próximo passo, os datasets gerados na transformação e os datasets gerados a partir do alinhamento foram utilizados como fonte para as consultas SPARQL. O código \ref{lst:sparql3} apresenta a consulta utilizada para contabilizar a quantidade de pesquisadores em IE. 
+Como próximo passo, os \textit{datasets} convertidos e os \textit{datasets} gerados a partir do alinhamento foram utilizados como fonte para as consultas SPARQL. O código \ref{lst:sparql3} apresenta a consulta utilizada para contabilizar a quantidade de pesquisadores em IE. 
 
 \begin{lstlisting}[captionpos=b, caption=Query SPARQL para recuperação de conceitos relacionados, label=lst:sparql3,
    basicstyle=\ttfamily,frame=single]
