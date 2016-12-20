@@ -1,5 +1,5 @@
 \chapter{Trabalhos Relacionados}
-
+\label{cap:relacionados}
 Neste capítulo serão apresentadas duas ferramentas para o alinhamento de dados conectados. As ferramentas apresentadas a seguir foram selecionadas devido ao seu destaque na edição de 2016 do relatório publicado pela Ontology Alignment Evaluation Initiative (OAEI). Inicialmente, a OAEI avaliava apenas ferramentas de alinhamento de ontologias, dando início à avaliação de soluções para alinhar dados em 2009. Desde então, um número crescente aplicações vêm sendo submetidas.
 
 \section{AgreementMakerLight (AML)}
@@ -7,30 +7,20 @@ Desenvolvido em parceria entre o Instituto Gulbenkian de Ciência, Universidade 
 
 O AML conta com três algoritmos para alinhamento voltados a correspondência de instâncias, sendo elas o \textit{HybridStringMatcher}, \textit{ValueStringMatcher} e \textit{Value2LexiconMatcher}. A primeira utiliza diversas abordagens para gerar a similaridade, sendo elas a comparação entre frases, palavras. Além disso, essa abordagem hibrida também explora a \textit{WordNet}. O segundo utiliza o mapeamento de valor para gerar calcular a similaridade, penalizando pares nos quais anotações ou propriedades de dados não são os mesmos. Por fim, o terceiro une as duas abordagens anteriores.
 
+Apesar do AML possuir diferentes algoritmos alinhamentos na ferramenta, todos eles trabalham apenas no nível dos dados. Consequentemente, as características das propriedades são desconsiderados ao longo do processo de correspondência.
+
 \section{RiMOM-2016}
 Baseando-se no RiMOM  \cite{li2009rimom}, \cite{zhang2016rimom} desenvolveram o RiMOM-2016, que é uma ferramenta para alinhar dados conectados. Ela implementa um número considerável de abordagens para alinhar, cuja escolha é realizada através dos metadados extraídos da ontologia. Além disso, o RiMOM-2016 utiliza um índice invertido para indexar os objetos e consequentemente gerar pares candidatos para um possível alinhamento. A geração dos pares é realizada quando dois recursos compartilham pelo menos um predicado e objeto.
 
-Por um lado, o índice invertido permite que um número menor de comparações seja realizado. Por outro lado, a etapa de construção desse índice não considera que os objetos indexados podem conter qualquer tipo de erro. Além disso, como pode ser visto na Figura \ref{fig:rimom}, o RiMOM-2016 utiliza as ontologias apenas para alinhar as propriedades e como entrada para a geração de metadados.
-
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[width=0.8\textwidth]{./imagens/RiMOM_2016.png}
+	\includegraphics[width=0.8\textwidth]{./imagens/rimom_2016.pdf}
     \caption{Arquitetura do RiMOM-2016}
-	\footnotesize{Fonte: \cite{zhang2016rimom}}
+	\footnotesize{Fonte: adaptado de \cite{zhang2016rimom}}
 	\label{fig:rimom}
 \end{figure}
 
-%\section{Lily}
-%Desenvolvida durante o doutorado na Southeast University localizada em Nanjing no ano de 2008. Segundo  \citeonline{wang2015lily}, Lily se trata de uma solução para o alinhamento de ontologias, sendo composta por 5 estratégias principais, das quais apenas uma é dedicada ao alinhamento de dados.
-%o processo de alinhamento utilizado pelo Lily é composto pelo pré processamento, alinhamento e pós processamento (Figura \ref{fig:lily}).  A primeira etapa, consiste em analisar as ontologias de entrada para gerar metadados que serão utilizados para determinar parâmetros e estratégias. Na segunda, a ferramenta calcula a similaridade entre elementos de ontologias diferentes. Por fim, a etapa de pós processamento é responsável por exportar e refinar os alinhamentos gerados.
-
-%\begin{figure}[!ht]
-%	\centering
-%	\includegraphics[width=0.9\textwidth]{./imagens/lily.png}
-%    \caption{Arquitetura do Lily}
-%	\footnotesize{Fonte: \cite{euzenat2013d}}
-%	\label{fig:lily}
-%\end{figure}
+Por um lado, o índice invertido permite que um número menor de comparações seja realizado. Por outro lado, a etapa de construção desse índice não considera que os objetos indexados podem conter qualquer tipo de erro. Além disso, como pode ser visto na Figura \ref{fig:rimom}, o RiMOM-2016 utiliza as ontologias apenas para alinhar as propriedades e como entrada para a geração de metadados.
 
 \section{Comparação com a proposta}
 
@@ -42,11 +32,12 @@ Diferentemente das ferramentas citadas, a proposta a ser apresentada utiliza a o
 \centering
 \caption{Comparação entre os trabalhos}
 \label{tab:comparacao}
-\begin{tabular}{@{}cc}
-\toprule
-Ferramenta 	& Suporte à ontologia \\ \midrule
-AML			& Dirigido            \\
-RiMOM		& Dirigido            \\
-Proposta	& Baseado             \\ \midrule
+\begin{tabular}{@{}ccl}
+	\toprule
+	Ferramenta & Suporte à ontologia & Suporte à transitividade \\ \midrule
+	   AML     &      Dirigido       &  \\
+	  RiMOM    &      Dirigido       &  \\
+	 Proposta  &       Baseado       & X                        \\ \midrule
+	           &
 \end{tabular}
 \end{table}

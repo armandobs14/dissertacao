@@ -1,4 +1,5 @@
 \chapter{Experimento}
+\label{cap:experimento}
 Este capítulo descreve o experimento visando avaliar a eficácia, em termos de precisão, revocação e medida-f \cite{goutte2005probabilistic}. Dessa forma,  o experimento compara a proposta com os resultados apresentados na edição de 2016 do OAEI para as ferramentas AML e RiMOM-2016.
 O capítulo está dividido em três seções: planejamento, execução e análise dos dados. 
 
@@ -16,12 +17,12 @@ Como mencionado no início deste capítulo, este experimento visa avaliar a prop
 A questão de pesquisa acima implica nas seguintes hipóteses de pesquisa:
 
 \begin{itemize}
-\item H1-0: A métrica precision entre apresentada pelas abordagens é igual.
-\item H1-1: A métrica precision entre apresentada pelas abordagens é diferente.
-\item H2-0: A métrica recall entre apresentada pelas abordagens é igual.
-\item H2-1: A métrica recall entre apresentada pelas abordagens é diferente.
-\item H3-0: A métrica f-measure entre apresentada pelas abordagens é igual.
-\item H3-1: A métrica f-measure entre apresentada pelas abordagens é diferente.
+\item H1-0: A precisão apresentada pelas abordagens é igual.
+\item H1-1: A precisão entre apresentada pelas abordagens é diferente.
+\item H2-0: A revocação apresentada pelas abordagens é igual.
+\item H2-1: A revocação apresentada pelas abordagens é diferente.
+\item H3-0: A medida-f apresentada pelas abordagens é igual.
+\item H3-1: A medida-f apresentada pelas abordagens é diferente.
 \end{itemize}
 
 Caso a hipótese nula seja refutada (indicando diferença), uma análise das métricas será executada para que se possa concluir qual ferramenta se saiu melhor.
@@ -272,8 +273,8 @@ As figuras \ref{fig:cenario1}, \ref{fig:cenario2} apresentam as ferramentas de a
 \end{center}
 
 \subsection{Verificação das hipóteses}
-Esta seção tem como objetivo validar ou refutar as hipóteses propostas. A primeira hipótese a ser verificada será feita com relação à métrica precision. As hipóteses nula e alternativa estão numeradas abaixo, respectivamente:
-
+Esta seção tem como objetivo validar ou refutar as hipóteses propostas. A primeira hipótese a ser verificada será feita com relação à precisão. As hipóteses nula e alternativa estão numeradas abaixo, respectivamente:
+on
 \begin{itemize}
 \item \textbf{H1-0:} A precisão apresentada pelas abordagens é igual.
 \item \textbf{H1-1:} A precisão apresentada pelas abordagens é diferente.
