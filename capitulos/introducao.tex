@@ -121,17 +121,18 @@ Neste contexto, este trabalho propõe uma abordagem independente de contexto par
 \section{Objetivo}
 
 
-Essa abordagem visa disponibilizar um mecanismo útil que permita alinhar semiautomaticamente recursos entre \textit{datasets} diferentes. Além disso, a proposta também pretende facilitar a identificação e alinhamento de recursos dentro do mesmo \textit{dataset}.
-Dessa forma, o trabalho lida com aspectos mais gerais, como facilitar o alinhamento de dados, quanto com problemas específicos, como a definição de métricas para a análise de similaridade entre recursos, que sejam capazes de suportar os problemas provenientes dos \textit{datasets} reais. Apesar de ser um trabalho com enfoque em engenharia de software, as suas contribuições estão mais voltadas para a área de Dados Conectados. Segue algumas dessas contribuições:
+Essa abordagem visa disponibilizar um mecanismo útil que permita alinhar semiautomaticamente recursos entre \textit{datasets} diferentes. Além disso, a proposta também pretende facilitar a identificação e alinhamento de recursos dentro do mesmo \textit{dataset}. 
+
+Apesar de ser um trabalho com enfoque em engenharia de software, as suas contribuições estão mais voltadas para a área de Dados Conectados. Segue algumas dessas contribuições:
 
 \begin{itemize}
-        \item Construção de um processo para alinhar dados conectados independente de contexto;
-        \item Definição de uma função de similaridade que contempla problemas provenientes de \textit{datasets} reais (acentuação, ausência de propriedades, formatação e outros);
+        \item Construção de um processo para a correspondência de instâncias que seja independente de contexto;
+        \item Implementação de uma abordagem em cascata para a correspondência de instância a partir de instâncias relacionadas;
 \end{itemize}
 
 \section{Contribuição e relevância do trabalho}
 
-Anualmente a OAEI realiza a avaliação de ferramentas para a correspondência de instâncias. Essa avaliação utiliza \textit{datasets} previamente disponibilizados juntamente com uma referência de correspondência entre as instâncias. Essa prática permite que o experimento seja reproduzido, permitindo que os resultados fornecidos pela OAEI sejam validados. Por outro lado, permite também que dos desenvolvedores entendam os \textit{datasets} e desenvolvam algoritmos dedicados à computação específica para o \textit{dataset}. Desta forma, é necessário o estudo de abordagens independentes de contexto que sejam capazes de alinhar dados de forma confiável.
+Anualmente a OAEI realiza a avaliação de ferramentas para a correspondência de instâncias. Essa avaliação utiliza \textit{datasets} previamente disponibilizados juntamente com uma referência de correspondência entre as instâncias. Essa prática permite que o experimento seja reproduzido, permitindo que os resultados fornecidos pela OAEI sejam validados. Por outro lado, permite também que dos desenvolvedores desenvolvam algoritmos que utilizam computação específica para o \textit{dataset}. Desta forma, é necessário o estudo de abordagens independentes de contexto que sejam capazes de alinhar dados de forma confiável.
 
 Nesse contexto, a proposta apresenta as seguintes contribuições:
 \begin{itemize}
@@ -142,7 +143,7 @@ Nesse contexto, a proposta apresenta as seguintes contribuições:
 
 \section{Estrutura do trabalho}
 
-Esta dissertação está dividida em 7 capítulos. O Capítulo \ref{cap:introducao} introduz a problemática e os objetivos do trabalho proposto, enaltecendo a necessidade de uma abordagem capaz de alinhar dados conectados. No Capítulo \ref{cap:fundamentacao}, são apresentados os conceitos relacionados ao tema deste trabalho, como RDF, Ontologias, Dados Conectados, Algoritmos de similaridade e Alinhamento de Dados Conectados.
+Esta dissertação está dividida em 8 capítulos. O Capítulo \ref{cap:introducao} introduz a problemática e os objetivos do trabalho proposto, enaltecendo a necessidade de uma abordagem capaz de alinhar dados conectados. No Capítulo \ref{cap:fundamentacao}, são apresentados os conceitos relacionados ao tema deste trabalho, como RDF, Ontologias, Dados Conectados, Algoritmos de similaridade e Alinhamento de Dados Conectados.
 
 No Capítulo \ref{cap:relacionados}, são apresentados os trabalhos relacionados à abordagem proposta. Na conclusão do capítulo é apresentada uma tabela comparativa entre a abordagem proposta e os trabalhos relacionados apresentados.
 
