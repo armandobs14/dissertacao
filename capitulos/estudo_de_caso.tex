@@ -69,12 +69,12 @@ Para transformar os dados para RDF foi utilizada a ferramenta OpenRefine\footnot
 
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[width=0.9\textwidth]{./imagens/conversao.pdf}
+	\includegraphics[width=0.8\textwidth]{./imagens/conversao.pdf}
 	\caption{Processo de conversão para rdf}
 	\label{fig:conversao}
 \end{figure}
 
-Com o processo de conversão dos dados foram geradas 1.1 Milhões de triplas. As triplas estão distribuídas da seguinte forma: (96\%, 1094307 triplas) pertencem ao Lattes, (1.61\%,18363 triplas) pertencem ao SBIE, (1.21\%, 14601 triplas) pertencem ao WIE e (1.1\%, 12503 triplas) pertencem ao RBIE.
+Com o processo de conversão dos dados foram geradas 1,1 Milhão de triplas, sendo distribuídas da seguinte forma: (96\%, 1.094.307 triplas) pertencem ao Lattes, (1,61\%; 18.363 triplas) pertencem ao SBIE, (1,21\%; 14.601 triplas) pertencem ao WIE e (1,1\%; 12.503 triplas) pertencem ao RBIE.
 
 \newpage
 \section{Execução do processo}
@@ -82,12 +82,117 @@ Nesta seção pretende-se descrever como foi realizada cada uma das etapas do pr
 
 \subsection{Selecionar \textit{Datasets}}
 \label{sub:selecionar_datasets}
+Esta etapa diz respeito a seleção de quais \textit{datasets} serão utilizados como entrada para o processo de correspondência de instâncias. Vale ressaltar que dois ou mais \textit{datasets} podem ser selecionados. Neste contexto, foram selecionados os \textit{datasets} do RBIE, SBIE, WIE e Lattes.
+  
 \subsection{Identificar Conceitos}
+Esta etapa do processo diz respeito a seleção dos conceitos (principal e relacionados), que serão utilizados no processo. Atualmente existem apenas uma restrição quanto a seleção dos conceitos, neste é possível selecionar apenas um conceito principal.
+
 \subsubsection{Conceito Principal}
+Como descrito na seção \ref{sec:prop_identificar} para facilitar a identificação do conceito principal por parte do usuário a consulta \ref{lst:sparql} foi desenvolvida. A Tabela \ref{tab:estudo_sparql1} apresenta os resultados obtidos através execução da consulta. 
+
+\begin{table}[h]
+	\centering
+	\caption{Conceito da ontologia e quantidade de instâncias}
+	\label{tab:estudo_sparql1}
+	\begin{tabular}{@{}|l|r|@{}}
+		\hline
+		\multicolumn{1}{|c|}{\textbf{Conceitos}}               & \multicolumn{1}{c|}{\textbf{quantidade}} \\ \hline
+		http://www.ic.ufal.br/dac/Contribution               & 868752                              \\ \hline
+		http://www.ic.ufal.br/dac/Author                     & 155680                              \\ \hline
+		http://www.ic.ufal.br/lattes/DoctoralDegree          & 2387                                \\ \hline
+		http://www.ic.ufal.br/lattes/Graduation              & 2195                                \\ \hline
+		http://www.w3.org/2002/07/owl\#Class                 & 1680                                \\ \hline
+		http://www.ic.ufal.br/lattes/Course                  & 1186                                \\ \hline
+		http://www.w3.org/1999/02/22-rdf-syntax-ns\#List     & 204                                 \\ \hline
+		http://www.w3.org/2002/07/owl\#Restriction           & 161                                 \\ \hline
+		http://www.w3.org/2002/07/owl\#ObjectProperty        & 128                                 \\ \hline
+		http://www.w3.org/2000/01/rdf-schema\#Class          & 60                                  \\ \hline
+		http://www.w3.org/2002/07/owl\#Ontology              & 24                                  \\ \hline
+		http://www.w3.org/1999/02/22-rdf-syntax-ns\#Property & 23                                  \\ \hline
+		http://purl.org/dc/terms/AgentClass                  & 3                                   \\ \hline
+	\end{tabular}
+\end{table}
+
+Apesar de ter a segunda maior quantidade de instância nos dados, o conceito \textbf{\textit{Author}} foi selecionado como conceito principal. A escolhe desse conceito deu-se não só pela quantidade de instâncias, mas também por questões estratégicas, visto que a proposta deste estudo de caso é cruzar informações de pesquisadores.
+
 \subsubsection{Conceito Relacionado}
+Para selecionar o conceito relacionado que será utilizado, foi executada a consulta \ref{lst:sparql2}. A tabela \ref{tab:estudo_sparql2} apresenta os conceitos relacionados ao conceito principal previamente selecionado.
+
+\begin{table}[h]
+	\centering
+	\caption{Lista com conceitos relacionados}
+	\label{tab:estudo_sparql2}
+	\begin{tabular}{@{}|l|@{}}
+		\hline
+		\multicolumn{1}{|c|}{\textbf{Conceito Relacionado}}        \\ \hline
+		http://www.ic.ufal.br/dac/Contribution                     \\ \hline
+		http://www.ic.ufal.br/lattes/Software                      \\ \hline
+		http://www.ic.ufal.br/lattes/TradeMark                     \\ \hline
+		http://xmlns.com/foaf/0.1/Organization                     \\ \hline
+		http://www.ic.ufal.br/lattes/Organization                  \\ \hline
+		http://www.nees.com.br/boa-moradia/crawler/LocalityAddress \\ \hline
+		http://www.ic.ufal.br/lattes/DoctoralDegree                \\ \hline
+		http://www.ic.ufal.br/lattes/Graduation                    \\ \hline
+		http://www.ic.ufal.br/lattes/MastersDegree                 \\ \hline
+	\end{tabular}
+\end{table}
+ 
+O conceito \textbf{\textit{Contribution}} foi selecionado como conceito relacionado. Esse conceito será utilizado durante o alinhamento em cascata. Vale ressaltar que mais de um conceito relacionado pode ser selecionado.
+ 
 \subsection{Listar Recursos}
+A lista de recursos é gerada de forma automática com base nos conceitos selecionados anteriormente. A partir da lista de recursos serão montados os pares candidatos. Vale ressaltar que no estudo em questão um \textit{dataset} pode conter mais de uma instância para a mesma entidade do mundo real (e.g. mais de uma URI para o mesmo pesquisador). Dessa forma, foram gerados pares candidatos dentro do mesmo \textit{dataset}, caracterizando o alinhamento interno.
+
 \subsection{Alinhar Dados}
+A etapa de alinhamento é responsável por determinar se um par candidato diz respeito à mesma entidade do mundo real. Neste processo existem duas abordagens de alinhamento sendo elas simples e em cascata. Na abordagem simples, os recursos são comparados diretamente, explorando as propriedades e suas características. Na abordagem em cascata os recursos são comparados a partir dos recursos relacionados.
+
 \subsubsection{Alinhamento Simples}
+Assim como outras abordagens para a correspondência de instâncias \cite{zhang2016rimom}, também foi utilizado funções que analisam a similaridade entre dois recursos. Para determinar a similaridade entre os pares foi utilizado a função \ref{eq:similaridade}. Essa função de similaridade gera valores entre 0 e 1, sendo 0 totalmente distintos e 1 iguais. Além da função utilizada, foram definidos limiares (\textit{threshold}). Isso quer dizer que valores de similaridade acima do limiar eram considerados correspondentes. 
+Inicialmente o valor do limiar foi definido de forma arbitrária e posteriormente ajustado com ajuda de testes. Nesses testes eram avaliados vários limiares com o objetivo de escolher o de melhor custo/benefício. Por fim, o valor do limiar foi estabelecido em 0.88.
+
+
 \subsubsection{Alinhamento em Cascata}
+O alinhamento em cascata consiste em alinhar instâncias do recurso principal a partir de recursos relacionados. Esta etapa do processo é executada para cada um dos conceitos relacionados selecionados na etapa de identificação de conceitos e consiste de três atividades:
+\begin{itemize}
+	\item \textbf{Alinhar dos recursos relacionados:} O alinhamento simples é executado entre as instâncias que pertencem ao conceito relacionado;
+	
+	\item \textbf{Recuperar instâncias do conceito principal:} A partir do alinhamento entre instâncias de recurso relacionado, as instâncias que pertencem ao conceito principal são recuperadas.
+	
+	\item \textbf{Alinhar instâncias do conceito principal:} A partir das instâncias recuperadas novos pares candidatos são gerados e passados como entrada para o alinhamento simples.
+\end{itemize}
+
 
 \section{Resultados}
+Os resultados apresentados nessa seção estão separados em duas partes. A primeira diz respeito aos alinhamentos gerados. A segunda aborda as respostas das perguntas realizadas pela comunidade.
+
+\subsection{Alinhamentos}
+Após a realização do alinhamento por parte da ferramenta, foi realizado um levantamento. A partir do levantamento foi possível gerar informações como a quantidade de recursos são repetidos nas bases, total de recursos alinhados com o perfil Lattes, bem como precisão, revocação e medida-f \cite{goutte2005probabilistic} para analisar a confiabilidade dos alinhamentos (ver Tabela \ref{tab:case_study}).
+
+%\begin{landscape}
+\begin{table}[!ht]
+	\centering
+	\caption{ Resultado dos alinhamentos com relação aos dados do Lattes}
+	\label{tab:case_study}
+	%\begin{tabular}{|p{1cm}|p{2cm}|p{2cm}|p{1cm}|p{1cm}|p{2cm}|p{2cm}|p{2cm}|}
+	\begin{tabular}{|c|c|c|c|}
+		\hline
+		\textbf{Dataset}	&	\textbf{RBIE}	&	\textbf{SBIE}	&	\textbf{WIE}  \\ \hline
+		\textbf{Iniciais}	&	1118	&	1687	&	1952 \\ \hline
+		%\textbf{Alinhamentos}	&	276	&	1742	&	1637  \\ \hline
+		%\textbf{Recursos Alinhados}	&	1029	&	141	&	1405 \\ \hline
+		\textbf{Finais}	&	806	&	1032	&	1098 \\ \hline
+		\textbf{Perfis com Lattes*}	&	92.03\% (1029)	&	71.54\% (1207)	&	75.20\% (1468) \\ \hline
+		\textbf{Perfis com Lattes**}	&	89.06\% (717)	&	70.16\% (792)	&	67.48\% (741) \\ \hline
+		\textbf{P | R | F}	&	0.97 | 1 | 0.98	&	0.94 | 1 | 0.97 	&	0.84 | 1 | 0.91 \\ \hline
+	\end{tabular}
+\end{table}
+* - com repetição
+** - sem repetição
+%\end{landscape}
+
+\subsection{Respostas}
+O processo de correspondência de instância permite não só identificar as instâncias que dizem respeito a mesma entidade, mas também permite que informações complementares sejam integradas. Dessa forma, foi necessário consultar mais de uma base ao mesmo tempo para responder as perguntas feitas pela comunidade. Devido a quantidade de perguntas feitas, apenas algumas elas serão apresentadas a seguir. As outras estão disponíveis no Anexo ____.
+
+\subsubsection{Q03 - Onde estão? (Estado)}
+Para responder esta pergunta é necessário identificar o perfil dos pesquisadores é necessário cruzar as bases (RBIE, SBIE, WIE e Lattes), pois o endereço profissional está no dataset do lattes
+
+

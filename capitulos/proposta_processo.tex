@@ -15,6 +15,7 @@ A etapa de selecionar \textit{datasets} trata da determinação de quais conjunt
 Complementarmente, a comunidade já disponibiliza ferramentas e processos para a publicação de dados conectados na Web, o que não é o foco desse processo. Além disso, é importante destacar que ao modelar os dados em qualquer processo de publicação de dados conectados são utilizadas ontologias/vocabulários que podem servir como base.
 
 \section{II - Identificar Conceitos}
+\label{sec:prop_identificar}
 Para auxiliar na escolha do conceito bem como os conceitos que estão relacionados foi desenvolvida duas consultas SPARQL. A primeira consulta explora a ontologia, principalmente as relações rdfs:domain e rdfs:range dos  as propriedades de objeto (ver código \ref{lst:sparql}). A segunda explora os dados e as relações estabelecidas pelas instâncias.
 Na consulta \ref{lst:sparql}, a linha 4 tem o papel de recuperar todos os conceitos pertencentes na ontologia ou vocabulário. Na linha 5 é aplicada uma restrição. Nesta os conceitos devem ser domínio ou range de uma relação. Consequentemente, uma instância desse conceito será sujeito ou objeto de uma tripla (ver Figura \ref{fig:subgrafo1}).
 \begin{figure}[!ht]
