@@ -190,9 +190,78 @@ Após a realização do alinhamento por parte da ferramenta, foi realizado um le
 %\end{landscape}
 
 \subsection{Respostas}
-O processo de correspondência de instância permite não só identificar as instâncias que dizem respeito a mesma entidade, mas também permite que informações complementares sejam integradas. Dessa forma, foi necessário consultar mais de uma base ao mesmo tempo para responder as perguntas feitas pela comunidade. Devido a quantidade de perguntas feitas, apenas algumas elas serão apresentadas a seguir. As outras estão disponíveis no Anexo ____.
+O processo de correspondência de instância permite não só identificar as instâncias que dizem respeito a mesma entidade, mas também permite que informações complementares sejam integradas. Dessa forma, foi necessário consultar mais de uma base ao mesmo tempo para responder as perguntas feitas pela comunidade. Devido a quantidade de perguntas feitas, apenas algumas elas serão apresentadas a seguir. As outras estão disponíveis no Anexo \_.
 
 \subsubsection{Q03 - Onde estão? (Estado)}
-Para responder esta pergunta é necessário identificar o perfil dos pesquisadores é necessário cruzar as bases (RBIE, SBIE, WIE e Lattes), pois o endereço profissional está no dataset do lattes
+Através dessa pergunta é possível saber onde os pesquisadores que publicaram no RBIE, SBIE ou WIE trabalham. Essa informação é obtida através do endereço profissional que pode ser encontrado no perfil do curriculum Lattes de cada pesquisador. Dessa forma, para responder essa pergunta, é necessário identificar o perfil. desses pesquisadores no curriculum Lattes.
+A consulta \ref{lst:where} recupera o endereço profissional dos pesquisadores que publicaram no WIE. Na linha 9, a transitividade da propriedade \textit{owl:sameAs} é utilizada com o objetivo de recuperar todos os perfis correspondentes. Para que a consulta não entrasse em loop, foi estabelecido a consulta de até 5 elementos.
 
+\begin{lstlisting}[captionpos=b, caption= Consulta para recuperar a concentração de pesquisadores por UF, label=lst:where,
+basicstyle=\ttfamily,frame=single]
+PREFIX dac:<http://www.ic.ufal.br/dac/>
+PREFIX lattes:<http://www.ic.ufal.br/lattes/>
+SELECT  ?uf count (distinct ?o) as ?total
+FROM <http://www.ic.ufal.br/dac/wie/>
+FROM <http://www.ic.ufal.br/dac/author/wie/lattes/alignments/>
+FROM <http://www.ic.ufal.br/dac/author/wie/wie/alignments/>
+FROM <http://www.ic.ufal.br/dac/lattes/>
+WHERE {
+?s a dac:Author; owl:sameAs{,5} ?o.
+filter regex(?s,"http://www.ic.ufal.br/dac/author/wie/(\\d)+$","i")
+filter regex(?o,"http://www.ic.ufal.br/dac/author/lattes/(.)+$","i")
+filter not exists {graph<http://www.ic.ufal.br/dac/author/wie/wie/alignments/>{?k owl:sameAs ?s}}
+?o lattes:hasProfessionalAddress ?address.
+?address lattes:uf ?uf
+filter exists {?elem owl:sameAs ?g}
+}
+group by ?uf
+order by desc(?total)
 
+\end{lstlisting}
+
+A Figura \ref{fig:where} apresenta a concentração de pesquisadores por unidade federativa (UF). Este mapa também conta com uma versão iterativa\footnote{\url{https://fiddle.jshell.net/4hernfu6/3/show/}}.
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=0.8\textwidth]{./imagens/where.pdf}
+	\caption{Concentração de pesquisadores por UF}
+	\label{fig:where}
+\end{figure}
+
+\subsubsection{Q08 - Onde fizemos os nossos doutorados?}
+Através dessa pergunta é possível saber onde os pesquisadores que publicaram no RBIE, SBIE e WIE concluíram seus doutorados. Assim como a informação de endereço profissional, essa informação também pode ser obtida através do cruzamento entre essas bases e o Lattes. A consulta \ref{lst:phd} recupera a instituição onde os pesquisadores que publicaram no WIE concluíram seus doutorados.
+
+\begin{lstlisting}[captionpos=b, caption= Consulta para recuperar a concentração de doutorados por universidade, label=lst:phd,
+basicstyle=\ttfamily,frame=single]
+
+PREFIX dac:<http://www.ic.ufal.br/dac/>
+PREFIX lattes:<http://www.ic.ufal.br/lattes/>
+
+Select ?nameInstitution count( distinct ?g) as ?Count
+FROM <http://www.ic.ufal.br/dac/wie/>
+from <http://www.ic.ufal.br/dac/author/wie/lattes/alignments/>
+from <http://www.ic.ufal.br/dac/author/wie/wie/alignments/>
+FROM <http://www.ic.ufal.br/dac/lattes/>
+
+where {
+?s a dac:Author; owl:sameAs* ?g.
+?g foaf:name ?oname.
+filter regex(?s,"http://www.ic.ufal.br/dac/author/wie/(\\d)+$","i")
+filter regex(?g,"http://www.ic.ufal.br/dac/author/lattes/(.)+$","i")
+filter not exists {graph<http://www.ic.ufal.br/dac/author/wie/wie/alignments/>{?k owl:sameAs ?s}}
+?g lattes:hasAcademicDegree ?t.
+?t a lattes:DoctoralDegree.
+?t lattes:hasInstitution ?institution.
+?institution foaf:name ?nameInstitution
+}
+Order by desc(?Count)
+\end{lstlisting}
+
+A Figura \ref{fig:phd} apresenta a concentração de doutorados concluídos por universidade.
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=0.8\textwidth]{./imagens/phds.png}
+	\caption{Quantidade de doutorados por universidade}
+	\label{fig:phd}
+\end{figure}
