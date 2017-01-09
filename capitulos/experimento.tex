@@ -1,19 +1,39 @@
 \chapter{Experimento}
 \label{cap:experimento}
-Este capítulo descreve o experimento visando avaliar a eficácia, em termos de precisão, revocação e medida-f \cite{goutte2005probabilistic}. Dessa forma,  o experimento compara a proposta com os resultados apresentados na edição de 2016 do OAEI para as ferramentas AML e RiMOM-2016.
-O capítulo está dividido em três seções: planejamento, execução e análise dos dados. 
+Sabendo que o presente trabalho visa desenvolver um processo de alinhamento de dados  e  independente de contexto consolidado em uma ferramenta que seja capaz de realizar a correspondência de instâncias, afim de melhorar a eficácia das soluções de correspondência de instâncias. Este capítulo está dividido em quatro seções que abordam (i) Design de Experimento; (ii) Execução do experimento; (iii) Análise dos resultados e (iv) Principais conclusões obtidas.
 
-\section{Planejamento do experimento}
-
+\section{Design de Experimento}
 Nesta seção, será detalhado o planejamento do experimento que foi projetado para este trabalho. Dentro do planejamento, encontra-se a definição da questão de pesquisa e derivação de hipóteses, a seleção das variáveis dependentes e independentes, a identificação da unidade experimental e a seleção do modelo experimental que será utilizado.
 
-O experimento adotado é do tipo comparativo, no qual será comparada a ferramenta proposta com as ferramentas AML e RiMOM-2016. O contexto do experimento é acadêmico, posto que foi executado em um laboratório, mas algoritmos com dados reais. Nas próximas subseções, o planejamento do experimento será descrito.
+\subsection{Situando o problema}
+A avaliação de ferramentas de correspondência de instâncias utilizada \textit{datasets} e um alinhamento de referência. Como mencionado na subseção \ref{sub:contribuicao}, isso permite que os desenvolvedores utilizem computação específica para os \textit{datasets}. Com isso, retomamos o nosso problema:
 
-\subsection{Hipóteses de pesquisa}
+\textbf{(Problema Geral)} Como identificar que duas instâncias dizem respeito à mesma entidade do mundo real?
+Atualmente, estratégias baseadas em similaridade, aprendizagem, regras e contexto \cite{Castano2011} vêm sendo utilizadas para resolver o problema. Porém, segundo \citeonline{Homoceanu2014} essa ferramentas para correspondência de instância não estão pontos para alinhar dados automaticamente de forma confiável. 
 
-Como mencionado no início deste capítulo, este experimento visa avaliar a proposta com relação às métricas precisão, revocação e medida-f. Levando em consideração as questões de pesquisa a seguir:
+Diante disso, nos deparamos com nosso problema específico: 
 
-\textbf{Q1} Existe diferença na eficácia entre AML, RiMOM-2016 e a solução proposta? Se sim, qual abordagem foi melhor?
+\textbf{(Problema Específico)} Como melhorar a eficácias das ferramentas para correspondência de instâncias?
+
+\subsection{Objetivos da Investigação}
+A pesquisa a ser realizada é de caráter experimental e tem como objetivo geral \textbf{avaliar a eficácia das ferramentas de correspondência de instâncias}. O intuito do experimento é \textbf{refutar} as hipóteses nulas definidas na subseção \ref{sub:hipoteses} indicando que a abordagem proposta, apesar de não conter computação específica para os \textit{datasets} é capaz de criar correspondências com eficácia.
+
+Formalmente, o objetivo da nossa investigação pode ser definido como \textbf{analisar} ferramentas de correspondência de instâncias \textbf{com a intenção de}  compará-los \textbf{a respeito} de sua eficácia \textbf{no ponto de vista} de geração de correspondência entre instâncias \textbf{no contexto} alinhamento de dados entre \textit{datasets} \textbf{com o fim} de utilizar as melhores abordagens \textbf{provendo} uma melhoria na qualidade das ferramentas.
+
+Como objetivos específicos, nós temos:
+\begin{enumerate}[label=\roman*]
+\item Comparar as abordagens criadas;
+\item Avaliar empiricamente a qualidade dos modelos criados.
+\end{enumerate}
+
+
+\subsection{Questões de Pesquisa e Hipóteses}
+\label{sub:hipoteses}
+Após a apresentação dos objetivos deste experimento, nos deparamos com as seguintes questões de pesquisa e usas respectivas hipóteses:
+
+%\textbf{Q1} Existe diferença na eficácia entre AML, RiMOM-2016 e a solução proposta? Se sim, qual abordagem foi melhor?
+\textbf{Q1} Como se comportam as ferramentas para correspondência de instâncias (AML, RiMOM-2016 e Proposta) com relação a eficácia? 
+
 A questão de pesquisa acima implica nas seguintes hipóteses de pesquisa:
 
 \begin{itemize}
@@ -25,129 +45,132 @@ A questão de pesquisa acima implica nas seguintes hipóteses de pesquisa:
 \item H3-1: A medida-f apresentada pelas abordagens é diferente.
 \end{itemize}
 
-Caso a hipótese nula seja refutada (indicando diferença), uma análise das métricas será executada para que se possa concluir qual ferramenta se saiu melhor.
-A tabela \ref{tab:hypothesis} define formalmente as hipóteses de pesquisa supracitadas. P, R e F são funções que retornam, respectivamente a precisão, revocação e medida-f, com relação às abordagens F1 (AML), F2 (RiMOM-2016) e F3 (Proposta).
-
-\begin{table}[h]
-\centering
-\caption{Formalização das hipóteses}
-\label{tab:hypothesis}
-\begin{tabular}{|c|c|c|}
-\hline
-Hipótese & Hipótese Nula & Hipótese Alternativa \\ \hline
-H1       & H1-0:$ P(F1) = P(F2) = P(F3) $ & H1-1:$ P(F1) \not= P(F2) \not= P(F3) $                    \\ \hline
-H2       & H2-0:$ R(F1) = R(F2) = R(F3) $ & H2-1:$ R(F1) \not= R(F2) \not= R(F3) $                    \\ \hline
-H3       & H3-0:$ F(F1) = F(F2) = F(F3) $ & H3-1:$ F(F1) \not= F(F2) \not= F(F3) $                    \\ \hline
-\end{tabular}
-\end{table}
-
-\subsection{Seleção de Variáveis}
-Seguindo o planejamento, é necessário definir as variáveis contidas no experimento. Primeiro, as variáveis independentes, também chamadas de fatores, serão apresentadas. Logo em seguida, as variáveis dependentes, no caso as métricas, serão detalhadas.
-
-As variáveis independentes são as seguintes:
+\subsection{Fatores e Variáveis de Resposta}
+A partir da definição das hipóteses na subseção \ref{sub:hipoteses}, temos os fatores, também conhecidos como variáveis independentes, como sendo:
 \begin{itemize}
-\item \textbf{Ferramenta} : Esta variável especifica qual a ferramenta de alinhamento será avaliada
+	\item \textbf{Ferramenta:} Esta variável especifica qual a ferramenta de alinhamento será avaliada
 \end{itemize}
 
-Os fatores, também conhecidos como variáveis, podem de dois tipos: independentes e dependentes. Os fatores independentes são aqueles que queremos controlar. Além disso, um fator pode conter níveis, que caracteriza a variação. Neste experimento contamos com três níveis para o fator ou variável independente que são: F1 (AML), F2(RiMOM-2016) e F3(Proposta).
+Como variáveis de resposta, também conhecidas como variáveis dependentes, nós temos:
 
-Os níveis de fatores, que são  apresentados acima serão definidos na tabela \ref{tab:factor_levels}. As variáveis dependentes (métricas) são definidas abaixo:
-
-\begin{itemize}
-\item \textbf{Precisão} (P): Esta variável representa a precisão para cada um dos níveis avaliados. A definição formal para esta métrica é descrita pela equação abaixo:
+\textbf{Precisão (P):} Para a correspondência de instâncias, indica a quantidade de correspondências que são relevantes em relação a todas as correspondências geradas pelas ferramentas. A definição formal para esta métrica é descrita pela equação abaixo:
 
 \begin{equation}
 P = \dfrac{|{A}\cap{B}|}{|A|}
 \end{equation}
 
-\item \textbf{Revocação} (R): Esta variável representa o recall para cada um dos níveis avaliados. A definição formal para esta métrica é descrita pela equação abaixo:
+\textbf{Revocação (R):} Para a correspondência de instâncias, indica a quantidade de correspondências relevantes com relação com relação ao conjunto de todas as correspondências possíveis (espelho). A definição formal para esta métrica é descrita pela equação abaixo:
 
 \begin{equation}
 R = \dfrac{|{A}\cap{B}|}{|B|}
 \end{equation}
 
-\item \textbf{Medida-f} (F): Esta variável representa o f-measure para cada um dos níveis avaliados. A definição formal para esta métrica é descrita pela equação abaixo:
+\textbf{Medida-f (F):} Média harmônica entre precisão e revocação. A intenção é transformar essas duas métricas em apenas uma. A definição formal para esta métrica é descrita pela equação abaixo:
 
 \begin{equation}
 F = \dfrac{{2}\cdot{P}\cdot{R}}{P+R}
 \end{equation}
 
-\end{itemize}
-
-\begin{table}[]
-\centering
-\caption{Níveis de fatores}
-\label{tab:factor_levels}
-\begin{tabular}{|c|c|c|}
-\hline
-\textbf{Fator}              & \textbf{Nível} & \textbf{Descrição}    \\ \hline
-\multirow{3}{*}{Ferramenta} & F1             & Ferramenta RiMOM-2015 \\ \cline{2-3} 
-                            & F2             & Ferramenta RiMOM-2016     \\ \cline{2-3} 
-                            & F3             & Proprosta             \\ \hline
-\end{tabular}
-\end{table}
-
-\subsection{Unidades de Experimento}
-A unidade experimental deste estudo foi fornecido pela OAEI. O \textit{dataset}\footnote{\url{http://islab.di.unimi.it/content/im_oaei/2016/\#doremus}} é composto por três variações (9-heterogeneities,4-heterogeneities e falsepositives-trap). Cada uma das variações conta com um alinhamento de referência, para que seja possível calcular as métricas.
-
-Devido a problemas durante a execução, foram avaliadas apenas duas variações. A tabela \ref{tab:cenarios} apresenta os cenários. Vale a pensa ressaltar que não há a necessidade de cenários em que um \textit{dataset} é alinhado com ele mesmo, pois não há recursos duplicados nos \textit{datasets}. Além disso, não há a necessidade de criar cenário em que haja a permutação entre os \textit{datasets}.
+\subsection{Níveis dos Fatores}
+\label{sub:fator_nivel}
+Os níveis dos fatores são apresentados na Tabela \ref{tab:factor_levels}.
 
 \begin{table}[h]
-\centering
-\caption{Cenários de alinhamento}
-\label{tab:cenarios}
-\begin{tabular}{|c|c|}
-\hline
-\textbf{Cenário} & \textbf{Datasets}          \\ \hline
-C1               & 9-heterogeneities          \\ \hline
-C2               & falsepositives-trap        \\ \hline
-\end{tabular}
+	\centering
+	\caption{Níveis de fatores}
+	\label{tab:factor_levels}
+	\begin{tabular}{|c|c|c|}
+		\hline
+		\textbf{Fator}        & \textbf{Nível} &  \textbf{Descrição}   \\ \hline
+		\multirow{3}{*}{Ferramenta} &       F1       &    Ferramenta AML     \\ \cline{2-3}
+		&       F2       & Ferramenta RiMOM-2016 \\ \cline{2-3}
+		&       F3       &       Proprosta       \\ \hline
+	\end{tabular}
 \end{table}
 
-Para este experimento, com exceção dos dados fornecidos pela dbpedia, os demais foram transformados para RDF através da ferramenta OpenRefine e persistidos no Virtuoso.  
-Todo o experimento foi executado utilizando a entidade City como conceito principal. A escolha desse conceito se deve ao fato deste ser o principal conceito.
+\subsection{Definição formal das Hipóteses}
+Formalmente, todas as hipóteses definidas na seção \ref{sub:hipoteses} podem ser definidas conforme a Tabela \ref{tab:hypothesis}. P, R e F são funções que retornam, respectivamente a precisão, revocação e medida-f, com relação às abordagens F1 (AML), F2 (RiMOM-2016) e F3 (Proposta).
 
-\subsection{Seleção do Projeto Experimental}
-Levando em consideração as diversas classificações de experimento \cite{montgomery2012design}, o presente experimento é classificado como fatorial completo com blocagem. A blocagem foi escolhida com o objetivo de suprimir os efeitos dos \textit{datasets} nas variáveis resposta. Para cada cenário houve a execução de todos os níveis de fatores, garantindo a completude do experimento. Dessa forma temos 2 cenários possíveis, com 3 execuções em cada um deles, totalizando 6 execuções.
+\begin{table}[h]
+	\centering
+	\caption{Formalização das hipóteses}
+	\label{tab:hypothesis}
+	\begin{tabular}{|c|c|c|}
+		\hline
+		Hipótese &                      Hipótese Nula                      &                        Hipótese Alternativa                         \\ \hline
+		   H1    & H1-0:$ P(F_i) = P(F_j); i,j \in \{1,2,3\}; i \not= j  $ & H1-1:$ \exists i,j \in \{1,2,3\}; i \not= j ; P(F_i) \not= P(F_j) $ \\ \hline
+		   H2    & H2-0:$ R(F_i) = R(F_j); i,j \in \{1,2,3\}; i \not= j  $ & H2-1:$ \exists i,j \in \{1,2,3\}; i \not= j ; R(F_i) \not= R(F_j) $ \\ \hline
+		   H3    & H3-0:$ F(F_i) = F(F_j); i,j \in \{1,2,3\}; i \not= j  $ & H3-1:$ \exists i,j \in \{1,2,3\}; i \not= j ; F(F_i) \not= F(F_j) $ \\ \hline
+	\end{tabular}
+\end{table}
 
-\section{Execução do experimento}
-Esta seção descreve a execução do experimento que foi planejado na seção anterior, ou seja, descreve quais instrumentos foram utilizados, bem como a narrativa de execução do experimento.
+\subsection{Unidades Experimentais}
+Levando em consideração as diversas classificações de experimento \cite{montgomery2012design}, o presente experimento é classificado como fatorial completo com blocagem. A blocagem foi escolhida com o objetivo de suprimir os efeitos dos \textit{datasets} nas variáveis resposta. Para cada cenário houve a execução de todos os níveis de fatores, garantindo a completude do experimento.
 
-\subsection{Preparação e instrumentação}
-Inicialmente é necessário preparar o ambiente em que os alinhamentos serão executados. As ferramentas utilizadas, bem como suas versões são descritas a seguir:
-
-\begin{itemize}
-\item Virtuoso RDF Store - 07.20.3217;
-\item Python - 2.7;
-\item OpenJDK 64-Bit Server VM (build 25.111-b14, mixed mode)
-
-\end{itemize}
-
-Para isolar os efeitos entre as execuções, todo o experimento foi conduzido em um container, que permite isolar as aplicações, fazendo com que as aplicações sejam executadas em ambientes idênticos.
-
-\subsection{Narrativa do experimento}
+\subsection{Plano de execução}
 A Figura \ref{fig:experiment} apresenta os passos de execução de cada alinhamento, que são descritos abaixo:
 \begin{itemize}
-\item Construir container com as configurações zeradas;
-\item Carregar dos dados;
-\item Executar ferramenta dentro do container;
-\item Coletar dados de alinhamento;
-\item Destruir container;
-\item Analisar dados;
+	\item Construir contêiner com as configurações zeradas;
+	\item Carregar dos dados;
+	\item Executar ferramenta dentro do contêiner;
+	\item Coletar dados de alinhamento;
+	\item Destruir container;
+	\item Analisar dados;
 \end{itemize}
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.9\textwidth]{./imagens/experimento.pdf}
-    \caption{Processo de execução do experimento}
+	\caption{Processo de execução do experimento}
 	\label{fig:experiment}
 \end{figure}
 
-\subsection{Análise de Ameaças à Validade}
-Embora todo experimento tenha sido projetado para minimizar possíveis ameaças que comprometam suas conclusões, existem algumas ameaças que devem ser mencionadas. Uma possível ameaça à validade do experimento é com relação a quantidade de amostras, o número de recursos, bem como a quantidade de \textit{datasets} pode influenciar o resultado do alinhamento.
-Levando isso em consideração, na próxima seção, os dados obtidos a partir da execução do experimento serão analisados.
+\subsection{Coleta dos Dados}
+Os dados utilizados neste estudo foram fornecidos pela OAEI. O \textit{dataset}\footnote{\url{http://islab.di.unimi.it/content/im_oaei/2016/\#doremus}} é composto por três variações (9-heterogeneities,4-heterogeneities e falsepositives-trap). Cada uma das variações conta com um alinhamento de referência, para que seja possível calcular as métricas.
 
-\subsection{Análise dos dados}
+%-----------------------------------------------------------
+\section{Execução do experimento}
+Para avaliar as ferramentas para correspondência de instância, o experimento irá contar com dois cenários possíveis, com uma execução para cada nível dos fatores definidos na subseção \ref{sub:fator_nivel} , totalizando 6 execuções. A Tabela \ref{tab:cenarios} apresenta os cenários. 
+
+\begin{table}[h]
+	\centering
+	\caption{Cenários de alinhamento}
+	\label{tab:cenarios}
+	\begin{tabular}{|c|c|}
+		\hline
+		\textbf{Cenário} & \textbf{Datasets}          \\ \hline
+		C1               & 9-heterogeneities          \\ \hline
+		C2               & falsepositives-trap        \\ \hline
+	\end{tabular}
+\end{table}
+
+\subsection{Instrumentação}
+Para a realização do experimento de correspondência de instâncias, serão utilizados os seguintes instrumentos.
+
+\begin{itemize}
+\item Intellij IDEA 2016.3 para desenvolvimento do código e execução da proposta.
+\item Virtuoso RDF Store - 07.20.3217;
+\item OpenJDK 64-Bit Server VM (build 25.111-b14, mixed mode)
+\end{itemize}
+
+Para isolar os efeitos entre as execuções, todo o experimento foi conduzido em um contêiner, que permite isolar as aplicações, fazendo com que as aplicações sejam executadas em ambientes idênticos sem que gerem efeitos colaterais entre si.
+
+\subsection{Ameaças à validade}
+Embora todo experimento tenha sido projetado para minimizar possíveis ameaças que comprometam suas conclusões, existem algumas ameaças que devem ser mencionadas. Nos tópicos a seguir, serão apresentadas e detalhadas as ameaças deste experimento.
+
+\subsubsection{Ameaças à validade interna}
+Uma possível ameaça interna à validade do experimento pode ser a seleção das unidades experimentais, pois os \textit{dataset} utilizados no experimento foram fornecidos pelo OAEI e nenhum outro \textit{dataset} foi utilizado.
+
+\subsubsection{Ameaças à validade externa}
+As unidades experimentais desta pesquisa são selecionadas de apenas uma base de dados correspondente a cada modelo, tendo, cada uma delas, características que poderão não ser generalizadas para as demais bases
+
+\subsubsection{Ameaças à validade de construto}
+É possível que a quantidade de fatores e cenários não sejam suficientes para observar diferenças significativas na eficácia entre as abordagens utilizadas para a correspondência de instâncias. Além disso, deve-se considerar que o tempo de resposta não foi considerado no experimento.
+
+\subsubsection{Ameaças à validade de conclusão}
+Devido a pequena quantidade de dados por \textit{dataset}, é possível que a quantidade de instâncias por \textit{dataset}, não seja suficiente para observar diferenças significativas nas métricas associadas.
+
+\section{Análise dos Resultados}
 O experimento foi conduzido de acordo com o planejamento descrito anteriormente neste capítulo, depois da execução, os \textit{datasets} de alinhamento eram coletados. Os dados de precisão, revocação e medida-f eram calculados de acordo com as funções especificadas anteriormente.
 Ao longo desta seção, uma análise descritiva dos dados obtidos será conduzida, envolve, a apresentação das métricas referentes a cada cenário.
 
@@ -300,8 +323,7 @@ Finalizando a verificação de hipóteses, serão analisadas as hipóteses relac
 
 Conforme os resultados apresentados na Tabela \ref{tab:resultados}, a proposta ficou em primeiro posição no cenário 1 com uma dedida-f de 0.933 e segundo lugar no cenário 2 com 0.794.
 
-
-\subsection{Principais conclusões}
+\section{Principais conclusões}
 O experimento conduzido neste capítulo, visou avaliar a eficácia das ferramentas de alinhamento de dados conectados com relação às métricas de precisão, revocação e medida-f. Essas variáveis foram avaliadas separadamente em cada um dos dois cenários de alinhamento (9-heterogeneities e falsepositives-trap).
 
-Pelas análises realizadas, foi possível verificar que a proposta apresentou bons resultados mesmo não utilizando abordagens dedicadas ao dataset.
+Pelas análises realizadas, foi possível verificar que a proposta apresentou bons resultados mesmo não utilizando abordagens dedicadas ao \textit{dataset}.

@@ -53,7 +53,7 @@ Para identificar e conectar recursos na Web, a comunidade vem apresentando um n�
 Porém, de acordo com \citeonline{homoceanu2014putting}, apesar dos bons resultados apresentados, as soluções não estão prontas para alinhar dados automaticamente de forma confiável. Para isso, foi realizado um experimento equivalente ao executado pela OAEI. Entretanto, utilizando dados reais, que foram obtidos de 5 fontes diferentes (Freebase\footnote{\url{http://www.freebase.com/}}, DBPedia\footnote{\url{http://dbpedia.org}} , LinkedMDB\footnote{\url{http://www.linkedmdb.org}}, DrugBase\footnote{\url{http://www.drugbase.de/de/}} e NewYork Times\footnote{\url{http://www.nytimes.com}}), que podem ser obtidos através do endereço \url{http://www.ifis.cs.tu-bs.de/node/2906}.
 
 No experimento realizado por \citeonline{homoceanu2014putting} foi utilizado uma abordagem de caixa preta. Nesta abordagem, qualquer sistema independente de domínio pode ser utilizado na avaliação. Nesse contexto, o SLINT+ \cite{nguyen2012interlinking} foi utilizado por ser uma ferramenta independe de domínio e não precisa de treinamento.
-A ferramenta foi avaliada em duas perspectivas. Na primeira perspectiva a transitividade da propriedade \textit{owl:sameAs} foi desconsiderada. Diferentemente da segunda, que considerou a transitividade das correspondências criadas. A tabela \ref{tab:homoceanu2014putting} apresenta os resultados obtidos no experimento.
+A ferramenta foi avaliada em duas perspectivas. Na primeira perspectiva a transitividade da propriedade \textit{owl:sameAs} foi desconsiderada. Diferentemente da segunda, que considerou a transitividade das correspondências criadas. A Tabela \ref{tab:homoceanu2014putting} apresenta os resultados obtidos no experimento.
 
 \begin{table}[h]
 	\centering
@@ -117,6 +117,26 @@ Dentre as propriedades com suporte inadequado,  destaca-se a propriedade owl:sam
 
 
 Neste contexto, este trabalho propõe uma abordagem independente de contexto para o alinhamento de dados conectados por meio de um processo de alinhamento que leva em consideração aspectos dos dados e  características do modelo ontológico. Assim, os recursos/instâncias analisados, além de alinhados através das propriedades de dados, podem ser alinhados través seus relacionamentos. Ademais, a proposta trata o problema do alinhamento entre \textit{datasets} reais, permitindo que seja possível alinhar \textit{datasets} distribuídos na Web de forma confiável.
+
+\section{Problemática e justificativa}
+Em um cenário favorável, a tarefa de encontrar recursos correspondentes entre \textit{datasets} pode ser realizada com facilidade. Por outro lado, o mesmo não pode ser dito quando esses  possuem milhares de instâncias, visto que os recursos necessários para manter uma análise manual tornam esta prática inviável. Além disso, devido ao esforço necessário juntamente com à quantidade de instâncias que devem ser comparadas, tem-se que a qualidade da análise pode ser comprometida.
+
+Sabendo que aumentar a quantidade de recursos não é uma solução, nos deparamos com nosso problema geral:
+
+\textbf{(Problema Geral)} Como simplificar a identificação de instâncias que dizem respeito à mesma entidade do mundo real?
+
+Para manter a qualidade das análises, mesmo com o crescimento dos \textit{datasets}, diversas comunidades utilizam a tecnologia para auxiliar na correspondência de recursos. Dentre essas comunidades, destaca-se a de Banco de Dados (BD), que estuda abordagens para identificar recursos entre bancos de dados diferentes. No entando, \citeonline{araujo2011serimi} ressaltam que apesar das abordagens utilizadas pela comunidade de BD (\textit{Record Linkage}) compartilhar características com as abordagens utilizadas pela comunidade de Dados Conectados (\textit{Instance Matching}), ambas diferenciam-se em alguns aspectos, tais como: semântica dos relacionamentos e flexibilidade do modelo RDF.
+
+Para suportar os aspectos que diferenciam \textit{Record Linkage} de \textit{Instance Matching}, a comunidade de Dados Conectados vêm desenvolvendo abordagens próprias. Essas abordagens vêm se mostrando promissoras diante as das avaliações às quais são submetidas. Porém, apesar do desempenho apresentado, diversas soluções deixam a desejar no suporte de aspectos relacionados à semântica do modelo ontológico. 
+
+O que leva ao nosso problema específico.
+
+\textbf{(Problema Específico)} Como melhorar a eficácias das ferramentas para correspondência
+de instâncias?
+
+Para tanto, é apresentado como questão de pesquisa (\textbf{Q1}) o seguinte questionamento:
+
+\textbf{Q1:} Como se comportam as ferramentas para correspondência de instâncias com relação a eficácia?
 
 \section{Objetivo}
 

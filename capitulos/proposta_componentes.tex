@@ -1,10 +1,10 @@
 \chapter{Implementação do Processo}
 \label{cap:componentes}
-A execução do processo ocorre por meio de componentes para a análise de similaridade, persistência dos dados, geração do alinhamento, lógica entre as etapas e utilitários para manipulação de dados (ver Figura \ref{fig:componentes}). Alguns componentes foram reusados, como o de similaridade léxica, que contém vários algoritmos para detectar a similaridade entre textos. Outros componentes foram desenvolvidos, como os responsáveis pela detecção da similaridade de recurso, alinhamento e outros.
+A execução do processo ocorre por meio de componentes para a análise de similaridade, persistência dos dados, geração do alinhamento, lógica entre as etapas e pré-processamento (ver Figura \ref{fig:componentes}). Alguns componentes foram reusados, como o de similaridade léxica, que contém vários algoritmos para detectar a similaridade entre textos. Outros componentes foram desenvolvidos, como os responsáveis pela detecção da similaridade de recurso, alinhamento e outros.
 
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[width=0.9\textwidth]{./imagens/componentes.png}
+	\includegraphics[width=1\textwidth]{./imagens/componentes.pdf}
     \caption{Componentes utilizados na implementação do processo}
 	\label{fig:componentes}
 \end{figure}
@@ -13,7 +13,18 @@ Apesar de existirem diversas soluções que contém algoritmos para o cálculo d
 Os principais componentes utilizados são:
 
 \section{Persistência}
-O componente de persistência é responsável pelo acesso à base de conhecimento. Assim, é responsável por armazenar e recuperar os recursos e os alinhamentos que são utilizados ao longo do processo. Além disso, o mesmo atua como abstração do servidor de triplas (Virtuoso, OWLim etc.). Isso permite que o alinhamento seja executado diretamente nos datasets.
+
+O componente de persistência é responsável materializar as correspondências encontras pelo componente de alinhamento. Para isso, é utilizado o JOINT, que de acordo com \citeonline{holanda2013joint}, é um arcabouço para facilitar o desenvolvimento de aplicações baseadas em ontologia. As \textit{features} apresentadas pela ferramenta JOINT permitem que operações sejam realizada diretamente no servidor de triplas (Virtuoso, OWLim etc.). Além disso, essa ferramenta também suporta a execução de consultas SPARQL, que através de um sistema de tradução, transforma as triplas em objetos da linguagem Java.
+
+A Figura \ref{fig:joint} apresenta a arquitetura do JOINT.
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=1\textwidth]{./imagens/joint.png}
+	\caption{Arquitetura da ferramenta JOINT}
+	\footnotesize{Fonte: \cite{holanda2013joint}.}
+	\label{fig:joint}
+\end{figure}
 
 \section{Similaridade}
 O componente de similaridade é dividido em dois subcomponentes, sendo eles o de similaridade léxica e recurso. O primeiro utiliza métricas que analisam a similaridade entre palavras e textos. Algumas dessas técnicas são Levenshtein \cite{levenshtein1966binary}, Cosseno \cite{singhal2001modern}, Jaro-Winkler \cite{winkler1990string} e outros. O segundo componente, que se refere à similaridade de recurso, utiliza o primeiro e tem como função gerar a similaridade entre recursos.
@@ -114,9 +125,9 @@ O componente de alinhamento tem como responsabilidade determinar, de acordo com 
 
 
 \section{Núcleo}
-O componente de núcleo tem como principal função coordenar as atividades de alinhamento. Além de coordenar, é nesse componente que são definidos os limiares de aceitação, propriedades a serem desconsideradas, conceitos principais e conceitos relacionados, que servirão como parâmetro os componentes de alinhamento e similaridade.
 
+O componente de núcleo é responsável por concentrar e coordenar as configurações durante a execução. Atualmente, o componente de núcleo conta com três modalidades para a correspondência entre instâncias, sendo elas o alinhamento simples, que é executado em todas as modalidades, podendo também ser executado de forma independente, como mencionado na subseção \ref{im_simples}. O alinhamento em cascata, que é executando quando é escolhido um conceito relacionado ao conceito cujas instâncias se deseja alinhar. O processo de execução do alinhamento em cascada pode ser encontrado na subseção \ref{sub:cascata}. Por fim, o alinhamento em multicascata, que ocorre quando mais de um conceito relacionado é escolhido. Vale ressaltar que esta variação se trata do alinhamento em cascata de vários conceitos relacionados, que pode ser executado em paralelo.
 
-\section{Utilitários}
-O componente de utilitários tem como função realizar tratamentos nos textos que serão aplicados à função de similaridade. Alguns exemplos de tratamento são: tratamento de acentos, pontuação e outros.
+\section{Pré-processamento}
+O componente de pré-processamento tem como função realizar tratamentos nos textos que serão aplicados à função de similaridade. Alguns exemplos de tratamento são: tratamento de acentos, pontuação e outros.
 

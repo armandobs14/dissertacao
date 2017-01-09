@@ -2,10 +2,9 @@
 \label{cap:processo}
 Neste capítulo, será apresentado o processo proposto para alinhar dados. Como exibido na Figura \ref{fig:processo}, o processo é composto por 4 etapas principais, sendo elas: selecionar \textit{datasets}, identificar conceitos, listar recursos e alinhar dados. cada etapa do processo será descrita nas subseções a seguir.
 
-
-\begin{figure}[!ht]
+\begin{figure}[!h]
 	\centering
-	\includegraphics[width=0.9\textwidth]{./imagens/processo.png}
+	\includegraphics[width=0.55\textwidth]{./imagens/processo.pdf}
     \caption{Processo de alinhamento de dados conectados}
 	\label{fig:processo}
 \end{figure}
@@ -18,7 +17,7 @@ Complementarmente, a comunidade já disponibiliza ferramentas e processos para a
 \label{sec:prop_identificar}
 Para auxiliar na escolha do conceito bem como os conceitos que estão relacionados foi desenvolvida duas consultas SPARQL. A primeira consulta explora a ontologia, principalmente as relações rdfs:domain e rdfs:range dos  as propriedades de objeto (ver código \ref{lst:sparql}). A segunda explora os dados e as relações estabelecidas pelas instâncias.
 Na consulta \ref{lst:sparql}, a linha 4 tem o papel de recuperar todos os conceitos pertencentes na ontologia ou vocabulário. Na linha 5 é aplicada uma restrição. Nesta os conceitos devem ser domínio ou range de uma relação. Consequentemente, uma instância desse conceito será sujeito ou objeto de uma tripla (ver Figura \ref{fig:subgrafo1}).
-\begin{figure}[!ht]
+\begin{figure}[!h]
 	\centering
 	\includegraphics[width=0.9\textwidth]{./imagens/subgrafo_semantico.pdf}
 	\caption{Relação entre ontologia e dados}
@@ -70,13 +69,13 @@ A etapa de listar recursos pode ser entendida como a recuperação dos recursos 
 
 
 \section{IV - Alinhar Dados}
-A etapa de alinhamento de dados está dividida em duas atividades sendo elas: (i) alinhamento simples e (ii) alinhamento em cascata, que serão detalhadas nas subseções a seguir.
+A etapa de alinhamento de dados está dividida em duas atividades sendo elas: (i) alinhamento simples e (ii) alinhamento em , que serão detalhadas nas subseções a seguir.
 
 \subsection{alinhamento simples}
 \label{im_simples}
 Para alinhar os recursos é necessário executar alguns procedimentos, sendo eles o tratamento dos dados, comparação entre recursos e análise da similaridade. O primeiro procedimento se refere a transformações nas propriedades dos recursos. Essas transformações são necessárias para auxiliar os algoritmos de similaridade a analisar melhor a semelhança entre os recursos. No procedimento de comparação, cada uma da propriedades são analisadas. Caso uma propriedade não pertença a um dos recursos, ela é dispensada da comparação. A Figura  \ref{fig:resources} apresenta a comparação entre as propriedades de cada recurso.
 
-\begin{figure}[!ht]
+\begin{figure}[!h]
 	\centering
 	\includegraphics[width=0.6\textwidth]{./imagens/resources.png}
     \caption{Comparação entre recursos}
@@ -118,14 +117,14 @@ O valor gerado pelo componente de similaridade é enviado para o componente de a
 
 \subsection{Alinhamento em cascata}
 \label{sub:cascata}
-O alinhamento em cascata recebe esse nome devido as atividades que são executadas nesta etapa que são: Alinhamento simples dos recursos relacionados, Recuperação das instâncias que pertencem ao conceito principal que estão relacionadas aos recursos relacionados e alinhamento simples das instâncias recuperadas (ver Figura \ref{fig:cascata}).
+O alinhamento em cascata recebe esse nome devido as atividades que são executadas nesta etapa que são: Alinhamento simples dos recursos relacionados, Recuperação das instâncias que pertencem ao conceito principal que estão relacionadas aos recursos relacionados e alinhamento simples das instâncias recuperadas.
 
-\begin{figure}[!ht]
-	\centering
-	\includegraphics[width=0.6\textwidth]{./imagens/cascata.pdf}
-	\caption{Alinhamento em cascata}
-	\label{fig:cascata}
-\end{figure}
+%\begin{figure}[!h]
+%	\centering
+%	\includegraphics[width=0.6\textwidth]{./imagens/cascata.pdf}
+%	\caption{Alinhamento em cascata}
+%	\label{fig:cascata}
+%\end{figure}
 
 \subsubsection{Alinhar Recursos}
 

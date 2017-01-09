@@ -24,19 +24,24 @@ Por um lado, o índice invertido permite que um número menor de comparações s
 
 \section{Comparação com a proposta}
 
-Neste capítulo, algumas das principais ferramentas existentes foram apresentadas. Estas ferramentas tem o objetivo de alinhar dados conectados através de diversas abordagens. Dentre os sistemas apresentados, nenhum deles têm o alinhamento de dados como foco principal. Além disso, as ferramentas são baseada em soluções de alinhamento de ontologias, porém a exploração no processo de alinhamento se limita à geração de metadados para auxiliar na escolha da estratégia que deve ser tomada. 
+Neste capítulo, algumas das principais ferramentas existentes foram apresentadas. Essas ferramentas tem o objetivo de alinhar dados conectados através de diversas abordagens. Dentre os sistemas apresentados, nenhum deles têm o alinhamento de dados como foco principal, sendo variações de ferramentas existentes para o alinhamento de ontologias.
 
-Diferentemente das ferramentas citadas, a proposta utiliza ontologias para guiar o processo de correspondência de instância. Além disso, essa abordagem permite que o usuário defina como o alinhamento deve ser realizado. A tabela \ref{tab:comparacao} sumariza e compara os trabalhos relacionados com a proposta.
+Esta seção tem o objetivo de apresentar um comparativo entre os trabalhos relacionados e o presente estudo. Para isso, consideramos os seguintes critérios: (1) Quantidade de \textit{datasets} suportados; (2) Tipo de suporte à ontologia; (3) Utilização de computação específica; e (4) Exploração dos conceitos presentes na ontologia.
 
 \begin{table}[h]
-\centering
-\caption{Comparação entre os trabalhos}
-\label{tab:comparacao}
-\begin{tabular}{@{}clcl}
-	\toprule
-	Ferramenta & Múltiplos \textit{datasets} & Suporte à ontologia & Suporte à transitividade \\ \midrule
-	   AML     & 2                           &      Dirigido       &  \\
-	  RiMOM    & 2                           &      Dirigido       &  \\
-	 Proposta  & 2 ou mais                   &       Baseado       & X                        \\ \midrule
-\end{tabular}
+	\centering
+	\caption{Comparação entre os trabalhos}
+	\label{tab:comparacao}
+	\begin{tabular}{@{}llll}
+		\toprule
+		\textbf{Critérios de comparação}                    & \textbf{RiMOM} & \textbf{AML} & \textbf{Proposta} \\ \midrule
+		(1) Quantidade de \textit{datasets} suportados    & 2              & 2            & 2+                \\
+		(2) Tipo de suporte à ontologia                     & Dirigido       & Dirigido     & Baseado           \\
+		(3) Utilização de computação específica             & Sim            & Sim          & Não               \\
+		(4) Exploração dos conceitos presentes na ontologia & Não            & Não          & Sim               \\ \bottomrule
+	\end{tabular}
 \end{table}
+
+Contudo, apesar das ferramentas se mostrarem capazes de encontrar correspondência entre instâncias, ainda deixam a desejar em alguns critérios, tais como a utilização de computação específica para os \textit{datasets}, além da pouca exploração das ontologia, que são utilizadas apenas para a geração de metadados, com o objetivo de escolher entre as abordagens de correspondência disponíveis. Diferentemente das ferramentas citadas, a proposta utiliza ontologias para guiar o processo de correspondência de instância. Além disso, essa abordagem permite que o usuário defina como o alinhamento deve ser realizado.
+
+Outro diferencial da proposta em relação aos trabalhos relacionados está no que chamamos de alinhamento em cascata, que consiste na utilização de instâncias que pertencem a conceitos relacionados ao conceito cujas instâncias serão alinhadas. Ademais, a proposta permite que as correspondências entre as instâncias sejam armazenadas diretamente na base de triplas (\textit{triple store}) em que estão armazenadas.
