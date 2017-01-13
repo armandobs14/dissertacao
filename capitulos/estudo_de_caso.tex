@@ -1,6 +1,6 @@
 \chapter{Estudo de caso (QIE)}
 \label{cap:estudo}
-Neste capítulo será descrita a utilização do processo de alinhamento através de um estudo de caso, o QIE. O QIE foi escolhido, pois se trata de um projeto que pretende cruzar informações sobre a comunidade brasileira de informática na educação. Este capítulo está estruturado em três seções. A seção \ref{sec:estudo_descricao} apresenta uma descrição do estudo de caso e a conversão dos dados para RDF.
+Neste capítulo será descrita a utilização do processo de alinhamento através de um estudo de caso, o QIE. O QIE foi escolhido, pois se trata de um projeto que pretende cruzar informações sobre a comunidade brasileira de informática na educação. Este capítulo está estruturado em três seções. A seção \ref{sec:estudo_descricao} apresenta uma descrição do estudo de caso e a conversão dos dados para RDF. A seção \ref{sec:exec_processo} Apresenta passo a passo como o processo foi executado no estudo de caso. Por fim, a seção \ref{sec:resultados} apresenta os resultados apresentados a partir do alinhamento.
 
 \section{Descrição do estudo}
 \label{sec:estudo_descricao}
@@ -78,14 +78,15 @@ Com o processo de conversão dos dados foram geradas 1,1 Milhão de triplas, sen
 
 \newpage
 \section{Execução do processo}
+\label{sec:exec_processo}
 Nesta seção pretende-se descrever como foi realizada cada uma das etapas do processo de correspondência. 
 
 \subsection{Selecionar \textit{Datasets}}
 \label{sub:selecionar_datasets}
-Esta etapa diz respeito a seleção de quais \textit{datasets} serão utilizados como entrada para o processo de correspondência de instâncias. Vale ressaltar que dois ou mais \textit{datasets} podem ser selecionados. Neste contexto, foram selecionados os \textit{datasets} do RBIE, SBIE, WIE e Lattes.
+Esta etapa refere-se à seleção de quais \textit{datasets} serão utilizados como entrada para o processo de correspondência de instâncias. Vale ressaltar que dois ou mais \textit{datasets} podem ser selecionados. Neste contexto, foram selecionados os \textit{datasets} do RBIE, SBIE, WIE e Lattes.
   
 \subsection{Identificar Conceitos}
-Esta etapa do processo diz respeito a seleção dos conceitos (principal e relacionados), que serão utilizados no processo. Atualmente existem apenas uma restrição quanto a seleção dos conceitos, neste é possível selecionar apenas um conceito principal.
+Esta etapa do processo expõe a seleção dos conceitos (principal e relacionados), que serão utilizados no processo. Atualmente existe apenas uma restrição quanto a seleção dos conceitos, nesta é possível selecionar apenas um conceito principal.
 
 \subsubsection{Conceito Principal}
 Como descrito na seção \ref{sec:prop_identificar} para facilitar a identificação do conceito principal por parte do usuário a consulta \ref{lst:sparql} foi desenvolvida. A Tabela \ref{tab:estudo_sparql1} apresenta os resultados obtidos através execução da consulta. 
@@ -113,7 +114,7 @@ Como descrito na seção \ref{sec:prop_identificar} para facilitar a identifica�
 	\end{tabular}
 \end{table}
 
-Apesar de ter a segunda maior quantidade de instância nos dados, o conceito \textbf{\textit{Author}} foi selecionado como conceito principal. A escolhe desse conceito deu-se não só pela quantidade de instâncias, mas também por questões estratégicas, visto que a proposta deste estudo de caso é cruzar informações de pesquisadores.
+Sendo a segunda em quantidade de instância nos dados, o conceito \textbf{\textit{Author}} foi selecionado como conceito principal. A escolha desse conceito deu-se não pela quantidade de instâncias, mas por questões estratégicas, visto que a proposta deste estudo de caso é cruzar informações de pesquisadores.
 
 \subsubsection{Conceito Relacionado}
 Para selecionar o conceito relacionado que será utilizado, foi executada a consulta \ref{lst:sparql2}. A Tabela \ref{tab:estudo_sparql2} apresenta os conceitos relacionados ao conceito principal previamente selecionado.
@@ -143,17 +144,17 @@ O conceito \textbf{\textit{Contribution}} foi selecionado como conceito relacion
 A lista de recursos é gerada de forma automática com base nos conceitos selecionados anteriormente. A partir da lista de recursos serão montados os pares candidatos. Vale ressaltar que no estudo em questão um \textit{dataset} pode conter mais de uma instância para a mesma entidade do mundo real (e.g. mais de uma URI para o mesmo pesquisador). Dessa forma, foram gerados pares candidatos dentro do mesmo \textit{dataset}, caracterizando o alinhamento interno.
 
 \subsection{Alinhar Dados}
-A etapa de alinhamento é responsável por determinar se um par candidato diz respeito à mesma entidade do mundo real. Neste processo existem duas abordagens de alinhamento sendo elas simples e em cascata. Na abordagem simples, os recursos são comparados diretamente, explorando as propriedades e suas características. Na abordagem em cascata os recursos são comparados a partir dos recursos relacionados.
+A etapa de alinhamento é responsável por determinar a correspondências entre as instâncias. Neste processo existem duas abordagens de alinhamento sendo elas simples e em cascata. Na abordagem simples, os recursos são comparados diretamente, explorando as propriedades e suas características. Na abordagem em cascata os recursos são comparados a partir dos recursos relacionados.
 
 \subsubsection{Alinhamento Simples}
-Assim como outras abordagens para a correspondência de instâncias \cite{zhang2016rimom}, também foi utilizado funções que analisam a similaridade entre dois recursos. Para determinar a similaridade entre os pares foi utilizado a função \ref{eq:similaridade}. Essa função de similaridade gera valores entre 0 e 1, sendo 0 totalmente distintos e 1 iguais. Além da função utilizada, foram definidos limiares (\textit{threshold}). Isso quer dizer que valores de similaridade acima do limiar eram considerados correspondentes. 
+Assim como outras abordagens para a correspondência de instâncias \cite{zhang2016rimom}, também foram utilizadas funções que analisam a similaridade entre dois recursos. Para determinar a similaridade entre os pares foi utilizada a função \ref{eq:similaridade}. Essa função de similaridade gera valores entre 0 e 1, sendo 0 totalmente distintos e 1 iguais. Além da função utilizada, foram definidos limiares (\textit{threshold}). Isso quer dizer que valores de similaridade acima do limiar eram considerados correspondentes. 
 Inicialmente o valor do limiar foi definido de forma arbitrária e posteriormente ajustado com ajuda de testes. Nesses testes eram avaliados vários limiares com o objetivo de escolher o de melhor custo/benefício. Por fim, o valor do limiar foi estabelecido em 0.88.
 
 
 \subsubsection{Alinhamento em Cascata}
 O alinhamento em cascata consiste em alinhar instâncias do recurso principal a partir de recursos relacionados. Esta etapa do processo é executada para cada um dos conceitos relacionados selecionados na etapa de identificação de conceitos e consiste de três atividades:
 \begin{itemize}
-	\item \textbf{Alinhar dos recursos relacionados:} O alinhamento simples é executado entre as instâncias que pertencem ao conceito relacionado;
+	\item \textbf{Alinhar recursos relacionados:} O alinhamento simples é executado entre as instâncias que pertencem ao conceito relacionado;
 	
 	\item \textbf{Recuperar instâncias do conceito principal:} A partir do alinhamento entre instâncias de recurso relacionado, as instâncias que pertencem ao conceito principal são recuperadas.
 	
@@ -162,10 +163,11 @@ O alinhamento em cascata consiste em alinhar instâncias do recurso principal a 
 
 
 \section{Resultados}
-Os resultados apresentados nessa seção estão separados em duas partes. A primeira diz respeito aos alinhamentos gerados. A segunda aborda as respostas das perguntas realizadas pela comunidade.
+\label{sec:resultados}
+Os resultados apresentados nessa seção estão separados em duas partes. A primeira consiste dos alinhamentos gerados. A segunda aborda as respostas das perguntas realizadas pela comunidade.
 
 \subsection{Alinhamentos}
-Após a realização do alinhamento por parte da ferramenta, foi realizado um levantamento. A partir do levantamento foi possível gerar informações como a quantidade de recursos são repetidos nas bases, total de recursos alinhados com o perfil Lattes, bem como precisão, revocação e medida-f \cite{goutte2005probabilistic} para analisar a confiabilidade dos alinhamentos (ver Tabela \ref{tab:case_study}).
+Após a realização do alinhamento por parte da ferramenta, foi realizado um levantamento, a partir do qual foi possível gerar informações como a quantidade de recursos são repetidos nas bases, total de recursos alinhados com o perfil Lattes, bem como precisão, revocação e medida-f \cite{goutte2005probabilistic} para analisar a confiabilidade dos alinhamentos (ver Tabela \ref{tab:case_study}).
 
 %\begin{landscape}
 \begin{table}[!ht]
@@ -190,10 +192,10 @@ Após a realização do alinhamento por parte da ferramenta, foi realizado um le
 %\end{landscape}
 
 \subsection{Respostas}
-O processo de correspondência de instância permite não só identificar as instâncias que dizem respeito a mesma entidade, mas também permite que informações complementares sejam integradas. Dessa forma, foi necessário consultar mais de uma base ao mesmo tempo para responder as perguntas feitas pela comunidade. Devido a quantidade de perguntas feitas, apenas algumas elas serão apresentadas a seguir. As outras estão disponíveis no Anexo \_.
+O processo de correspondência de instância permite não só identificar as instâncias que se referem a mesma entidade, mas também permite que informações complementares sejam integradas. Dessa forma, foi necessário consultar mais de uma base ao mesmo tempo para responder às perguntas feitas pela comunidade. Devido à quantidade de perguntas feitas, apenas algumas delas serão apresentadas a seguir.
 
 \subsubsection{Q03 - Onde estão? (Estado)}
-Através dessa pergunta é possível saber onde os pesquisadores que publicaram no RBIE, SBIE ou WIE trabalham. Essa informação é obtida através do endereço profissional que pode ser encontrado no perfil do curriculum Lattes de cada pesquisador. Dessa forma, para responder essa pergunta, é necessário identificar o perfil. desses pesquisadores no curriculum Lattes.
+Através desta pergunta é possível saber onde os pesquisadores que publicaram no RBIE, SBIE ou WIE trabalham. Essa informação é obtida através do endereço profissional que pode ser encontrado no perfil do curriculum Lattes de cada pesquisador. Desta forma, para responder a esta pergunta, é necessário identificar o perfil. desses pesquisadores no curriculum Lattes.
 A consulta \ref{lst:where} recupera o endereço profissional dos pesquisadores que publicaram no WIE. Na linha 9, a transitividade da propriedade \textit{owl:sameAs} é utilizada com o objetivo de recuperar todos os perfis correspondentes. Para que a consulta não entrasse em loop, foi estabelecido a consulta de até 5 elementos.
 
 \begin{lstlisting}[captionpos=b, caption= Consulta para recuperar a concentração de pesquisadores por UF, label=lst:where,
@@ -229,7 +231,7 @@ A Figura \ref{fig:where} apresenta a concentração de pesquisadores por unidade
 \end{figure}
 
 \subsubsection{Q08 - Onde fizemos os nossos doutorados?}
-Através dessa pergunta é possível saber onde os pesquisadores que publicaram no RBIE, SBIE e WIE concluíram seus doutorados. Assim como a informação de endereço profissional, essa informação também pode ser obtida através do cruzamento entre essas bases e o Lattes. A consulta \ref{lst:phd} recupera a instituição onde os pesquisadores que publicaram no WIE concluíram seus doutorados.
+Através desta pergunta é possível saber onde os pesquisadores que publicaram no RBIE, SBIE e WIE concluíram seus doutorados. Assim como a informação de endereço profissional, esta informação também pode ser obtida através do cruzamento entre essas bases e o Lattes. A consulta \ref{lst:phd} recupera a instituição onde os pesquisadores que publicaram no WIE concluíram seus doutorados.
 
 \begin{lstlisting}[captionpos=b, caption= Consulta para recuperar a concentração de doutorados por universidade, label=lst:phd,
 basicstyle=\ttfamily,frame=single]

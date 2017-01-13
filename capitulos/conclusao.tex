@@ -2,14 +2,14 @@
 \label{cap:conclusao}
 O trabalho apresentou uma abordagem semiautomática para alinhar \textit{datasets} reais. Através de diagramas de atividades e de componentes foi descrito o processo utilizado para conectar recursos de diferentes \textit{datasets}. Essa proposta se faz necessária justamente pela necessidade de soluções capazes de alinhar dados de forma confiável e com menor conhecimento possível do domínio. Além disso, a solução permite que o alinhamento seja executado diretamente dentro do armazenamento de triplas, não havendo a necessidade de gerar arquivos para alinhar. 
 
-Visando avaliar a abordagem proposta em um cenário real, um estudo de caso foi desenvolvido. Neste estudo, a proposta foi utilizada para alinhar \textit{datasets} do RBIE, SBIE, WIE e Lattes. A utilização da solução de alinhamento permitiu que diversas perguntas pudessem ser respondidas. Além disso, foi possível problemas de erros e insistências nos dados puderam ser encontrados.
+Visando avaliar a abordagem proposta em um cenário real, um estudo de caso foi desenvolvido. Neste estudo, a proposta foi utilizada para alinhar \textit{datasets} do RBIE, SBIE, WIE e Lattes. A utilização da solução de alinhamento permitiu que diversas perguntas pudessem ser respondidas. Além disso, foi possível notar problemas relacionados às informações que eram fornecidas por autores que submetiam seus trabalhos.
 
 Por fim, um experimento foi conduzido  a fim de avaliar e comparar em termos de eficácia através das métricas de precisão, revocação e medida-f. Essas métricas foram avaliadas em dois cenários de alinhamento. O experimento apresentou resultados preliminares satisfatórios com base no desempenho dos trabalhos relacionados, pois em todos os cenários a proposta foi capaz de identificar um número significativo de trabalhos que poderiam ser alinhados. 
 
 \section{Principais contribuições}
 As principais contribuições deste trabalho são apresentadas a seguir:
 \begin{itemize}
-\item Desenvolvimento de processo alinhamento de dados conectados, permitindo que \textit{datasets} reais pudessem ser conectados;
+\item Desenvolvimento de processo alinhamento de dados conectados, permitindo que \textit{datasets} reais possam ser conectados;
 \item Abordagem capaz de calcular a similaridade entre recursos levando em consideração o modelo ontológico;
 \item Viabilização da execução do alinhamento diretamente dentro do armazenamento de triplas.
 \item  Criação de experimento e estudo de caso para avaliar a eficácia das soluções de alinhamento no estado da arte.
@@ -19,6 +19,6 @@ As principais contribuições deste trabalho são apresentadas a seguir:
 
 Algumas questões que não foram foco deste trabalho, mas que devem ser consideradas em trabalhos futuros, são estudos em como a qualidade e o tamanho (quantidade de triplas) do \textit{dataset} impacta na qualidade dos alinhamentos.
 
-Outra questão que não está dentro do escopo deste trabalho, mas que também deve ser levado em consideração, é o alinhamento entre ontologias, pois este trabalho foi desenvolvido com objetivo de alinhar dados. Por tanto, se faz necessário estudar mecanismos que unifiquem soluções para alinhar dados e alinhar ontologias.
+Outra questão que não está dentro do escopo deste trabalho, mas que também deve ser levado em consideração, é o alinhamento entre ontologias, pois este trabalho foi desenvolvido com objetivo de alinhar dados. Por tanto, faz-se necessário estudar mecanismos que unifiquem soluções para alinhar dados e alinhar ontologias.
 
-Como trabalhos futuros, pretende-se realizar mais experimentos para analisar a eficácia da ferramenta com \textit{datasets} com diversas características (Domínio, quantidade de triplas, qualidade etc.). Além disso, pretende-se disponibilizar a solução como uma infraestrutura de alinhamento disponível na Web, dando acesso aos alinhamentos realizados através da solução. Por fim, outras pesquisas serão aplicadas buscando automatizar ainda mais o processo de alinhamento, mais especificamente a escolha dos conceitos buscando otimizar o desempenho e a qualidade nos alinhamentos obtidos.
+Com trabalhos futuros, pretende-se realizar mais experimentos para analisar a eficácia da ferramenta com \textit{datasets} com diversas características (Domínio, quantidade de triplas, qualidade etc.). Além disso, pretende-se disponibilizar a solução como uma infraestrutura de alinhamento disponível na Web, dando acesso aos alinhamentos realizados através da solução. Por fim, outras pesquisas serão aplicadas para automatizar ainda mais o processo de alinhamento, mais especificamente a escolha dos conceitos buscando otimizar o desempenho e a qualidade nos alinhamentos obtidos.

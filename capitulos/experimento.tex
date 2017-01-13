@@ -6,10 +6,10 @@ Sabendo que o presente trabalho visa desenvolver um processo de alinhamento de d
 Nesta seção, será detalhado o planejamento do experimento que foi projetado para este trabalho. Dentro do planejamento, encontra-se a definição da questão de pesquisa e derivação de hipóteses, a seleção das variáveis dependentes e independentes, a identificação da unidade experimental e a seleção do modelo experimental que será utilizado.
 
 \subsection{Situando o problema}
-A avaliação de ferramentas de correspondência de instâncias utilizada \textit{datasets} e um alinhamento de referência. Como mencionado na subseção \ref{sub:contribuicao}, isso permite que os desenvolvedores utilizem computação específica para os \textit{datasets}. Com isso, retomamos o nosso problema:
+A avaliação de ferramentas de correspondência de instâncias utiliza dois \textit{datasets} e um alinhamento de referência. Como mencionado na subseção \ref{contribuicao}, isso permite que os desenvolvedores utilizem computação específica para os \textit{datasets}. Com isso, retomamos o nosso problema:
 
-\textbf{(Problema Geral)} Como identificar que duas instâncias dizem respeito à mesma entidade do mundo real?
-Atualmente, estratégias baseadas em similaridade, aprendizagem, regras e contexto \cite{Castano2011} vêm sendo utilizadas para resolver o problema. Porém, segundo \citeonline{Homoceanu2014} essa ferramentas para correspondência de instância não estão pontos para alinhar dados automaticamente de forma confiável. 
+\textbf{(Problema Geral)} Como identificar que duas instâncias referem-se à mesma entidade do mundo real?
+Atualmente, estratégias baseadas em similaridade, aprendizagem, regras e contexto \cite{castano2011ontology} vêm sendo utilizadas para resolver o problema. Porém, segundo \citeonline{homoceanu2014putting} essa ferramentas para correspondência de instância não estão pontos para alinhar dados automaticamente de forma confiável. 
 
 Diante disso, nos deparamos com nosso problema específico: 
 
@@ -29,7 +29,7 @@ Como objetivos específicos, nós temos:
 
 \subsection{Questões de Pesquisa e Hipóteses}
 \label{sub:hipoteses}
-Após a apresentação dos objetivos deste experimento, nos deparamos com as seguintes questões de pesquisa e usas respectivas hipóteses:
+Após a apresentação dos objetivos deste experimento, nos deparamos com as seguintes questões de pesquisa e suas respectivas hipóteses:
 
 %\textbf{Q1} Existe diferença na eficácia entre AML, RiMOM-2016 e a solução proposta? Se sim, qual abordagem foi melhor?
 \textbf{Q1} Como se comportam as ferramentas para correspondência de instâncias (AML, RiMOM-2016 e Proposta) com relação a eficácia? 
@@ -38,7 +38,7 @@ A questão de pesquisa acima implica nas seguintes hipóteses de pesquisa:
 
 \begin{itemize}
 \item H1-0: A precisão apresentada pelas abordagens é igual.
-\item H1-1: A precisão entre apresentada pelas abordagens é diferente.
+\item H1-1: A precisão apresentada pelas abordagens é diferente.
 \item H2-0: A revocação apresentada pelas abordagens é igual.
 \item H2-1: A revocação apresentada pelas abordagens é diferente.
 \item H3-0: A medida-f apresentada pelas abordagens é igual.
@@ -59,7 +59,7 @@ Como variáveis de resposta, também conhecidas como variáveis dependentes, nó
 P = \dfrac{|{A}\cap{B}|}{|A|}
 \end{equation}
 
-\textbf{Revocação (R):} Para a correspondência de instâncias, indica a quantidade de correspondências relevantes com relação com relação ao conjunto de todas as correspondências possíveis (espelho). A definição formal para esta métrica é descrita pela equação abaixo:
+\textbf{Revocação (R):} Para a correspondência de instâncias, indica a quantidade de correspondências relevantes com relação ao conjunto de todas as correspondências possíveis (espelho). A definição formal para esta métrica é descrita pela equação abaixo:
 
 \begin{equation}
 R = \dfrac{|{A}\cap{B}|}{|B|}
@@ -168,13 +168,13 @@ As unidades experimentais desta pesquisa são selecionadas de apenas uma base de
 É possível que a quantidade de fatores e cenários não sejam suficientes para observar diferenças significativas na eficácia entre as abordagens utilizadas para a correspondência de instâncias. Além disso, deve-se considerar que o tempo de resposta não foi considerado no experimento.
 
 \subsubsection{Ameaças à validade de conclusão}
-Devido a pequena quantidade de dados por \textit{dataset}, é possível que a quantidade de instâncias por \textit{dataset}, não seja suficiente para observar diferenças significativas nas métricas associadas.
+Devido à pequena quantidade de dados por \textit{dataset}, é possível que a quantidade de instâncias por \textit{dataset}, não seja suficiente para observar diferenças significativas nas métricas associadas.
 
 \section{Análise dos Resultados}
 O experimento foi conduzido de acordo com o planejamento descrito anteriormente neste capítulo, depois da execução, os \textit{datasets} de alinhamento eram coletados. Os dados de precisão, revocação e medida-f eram calculados de acordo com as funções especificadas anteriormente.
 Ao longo desta seção, uma análise descritiva dos dados obtidos será conduzida, envolve, a apresentação das métricas referentes a cada cenário.
 
-As figuras \ref{fig:cenario1}, \ref{fig:cenario2} apresentam as ferramentas de acordo com seus resultados em cada um dos cenários. A Tabela \ref{tab:resultados} sumariza os dados obtidos para cada cenário.
+As figuras \ref{fig:cenario1} e \ref{fig:cenario2} apresentam as ferramentas de acordo com seus resultados em cada um dos cenários. A Tabela \ref{tab:resultados} sumariza os dados obtidos para cada cenário.
 
 \begin{table}[h]
 	\centering
@@ -314,14 +314,14 @@ A próxima validação de hipótese ocorrerá com relação à revocação. As h
 
 Diante do resultado apresentado pelas ferramentas nos dois cenários de alinhamento, onde apresentou uma revocação de 0.875 para o cenário 1 e 0.707 para o cenário 2. Apesar do bom desempenho, a proposta apresentou valores iguais a pelo menos uma das ferramentas em cada um dos cenários. Dessa forma, não é possível refutar a hipótese nula (H2-0).
 
-Finalizando a verificação de hipóteses, serão analisadas as hipóteses relacionadas à medida-f.As hipóteses nula e alternativa estão numeradas abaixo, respectivamente:
+Finalizando a verificação de hipóteses, serão analisadas as hipóteses relacionadas à medida-f. As hipóteses nula e alternativa estão numeradas abaixo, respectivamente:
 
 \begin{itemize}
 \item \textbf{H3-0:} A medida-f apresentada pelas abordagens é igual.
 \item \textbf{H3-1:} A medida-f apresentada pelas abordagens é diferente.
 \end{itemize}
 
-Conforme os resultados apresentados na Tabela \ref{tab:resultados}, a proposta ficou em primeiro posição no cenário 1 com uma dedida-f de 0.933 e segundo lugar no cenário 2 com 0.794.
+Conforme os resultados apresentados na Tabela \ref{tab:resultados}, a proposta ficou em primeira posição no cenário 1 com uma dedida-f de 0.933 e segunda posição no cenário 2 com 0.794.
 
 \section{Principais conclusões}
 O experimento conduzido neste capítulo, visou avaliar a eficácia das ferramentas de alinhamento de dados conectados com relação às métricas de precisão, revocação e medida-f. Essas variáveis foram avaliadas separadamente em cada um dos dois cenários de alinhamento (9-heterogeneities e falsepositives-trap).
