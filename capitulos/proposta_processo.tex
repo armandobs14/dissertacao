@@ -117,31 +117,49 @@ O valor gerado pelo componente de similaridade é enviado para o componente de a
 
 \subsection{Alinhamento em cascata}
 \label{sub:cascata}
-O alinhamento em cascata recebe esse nome devido as atividades que são executadas nesta etapa que são: Alinhamento simples dos recursos relacionados, Recuperação das instâncias que pertencem ao conceito principal que estão relacionadas aos recursos relacionados e alinhamento simples das instâncias recuperadas.
+O alinhamento em cascata recebe esse nome devido ao encadeamento entre as atividades necessárias: (i) Recuperar instâncias que pertencem ao conceito relacionado; (ii) Alinhar instâncias que pertencem ao conceito relacionado; (iii) Recuperar instâncias que pertencem ao conceito principal; e (iv) Alinhar instâncias que pertencem ao conceito principal. O nome também foi utilizado com a intenção de fazer referência ao modelo de desenvolvimento em cascata \cite{royce1970managing}, que é o primeiro modelo de desenvolvimento de software. Segundo \citeonline{sommerville2011software}, trata-se de um modelo dirigido por planos, cujas etapas são planejadas antes da execução. 
 
-%\begin{figure}[!h]
-%	\centering
-%	\includegraphics[width=0.6\textwidth]{./imagens/cascata.pdf}
-%	\caption{Alinhamento em cascata}
-%	\label{fig:cascata}
-%\end{figure}
+O modelo de desenvolvimento em cascata e a abordagem de alinhamento em cascata compartilham algumas semelhanças. Dentre as semelhanças compartilhadas, temos o modo como as atividades são executadas, que é sequencial. Além disso, cada atividade só pode ser iniciada quando a atividade anterior for concluída. Outra característica compartilhada entre eles é o fato de todo o projeto ser planejado antes da execução. 
 
-\subsubsection{Alinhar Recursos}
+Diferentemente de um projeto que utiliza o modelo em cascata, onde todo o projeto deve estar concluído na etapa final, tem-se que o processo de correspondência entre instâncias só será considerado concluído quando todos os conceitos relacionados forem utilizados no processo de correspondência. Vale ressaltar que uma “cascata” é gerada para cada conceito relacionado selecionado. 
 
-Nesta atividade as instâncias que pertencem aos conceitos selecionados são alinhados. Para alinhar esses recursos é executado a etapa de alinhamento simples.
+A Figura \ref{cp_cascata} apresenta o relacionamento entre os conceitos e a cascata.
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=1\textwidth]{./imagens/CM_cascata.pdf}
+	\caption{Relacionamento entre conceito relacionado e cascata}
+	\label{cp_cascata}
+\end{figure}
+
+Imaginemos que algum órgão deseja encontrar quais autores estão presentes um dois \textit{datasets} simultaneamente. Para isso, desejam utilizar os artigos presentes em ambas as bases. Dessa forma, temos que o conceito principal e conceito relacionado são \textbf{\textit{Author}} e \textbf{\textit{Publication}}, respectivamente.
+
+\subsubsection{Recuperar Instâncias do Conceito Relacionado}
+\label{recuperao_relacionado}
+Nesta atividade recuperam-se as instâncias que pertencem a um conceito relacionado. Para isso, consultas são realizadas nos \textit{datasets} selecionados na primeira etapa do processo.  Os resultados das buscas são agrupados em listas, uma para cada \textit{dataset}. Cada elemento da lista é um grafo que é composto pela instância e seus relacionamentos. Por fim, as listas são enviadas para a próxima atividade da cascata, como pode ser visto na Figura \ref{cp_cascata}.
+
+Tomando como referência o exemplo citado, temos que as listas serão compostas por instâncias de \textbf{\textit{Publication}} e seus relacionamentos.
+
+\subsubsection{Alinhar Instâncias do Conceito Relacionado}
+\label{lista_rel}
+
+As instâncias recuperadas na atividade \ref{recuperao_relacionado} são submetidas para o alinhamento. Com isso, sua similaridade é calculada e as instâncias correspondentes são persistidas. Com isso, tem-se que ambas dizem respeito à mesma entidade, em outras palavras, referem-se à mesma publicação.
+
 
 \subsubsection{Recuperar Recursos do conceito principal}
-\label{recuperao}
+\label{recuperao_principal}
 
-A recuperação das instâncias que pertencem ao conceito principal é realizada a partir do  alinhamento dos recursos relacionados.A Figura \ref{fig:relacionados} representa abstratamente a construção dos pares candidatos a partir dos alinhamentos dos recursos relacionados.
+Similarmente ao que ocorre na subseção \ref{recuperao_relacionado}, a recuperação  das instâncias que pertencem ao conceito principal (\textbf{\textit{Author}}) também é realizada através de consultas nos \textit{datasets} selecionados. Porém, neste caso, as instâncias recuperadas devem estar relacionadas às instâncias da correspondência persistida anteriormente. Dessa forma, os autores que estão relacionados à publicação são recuperados e agrupados de acordo com o \textit{dataset}. A Figura \ref{fig:relacionados} apresenta a relação entre as instâncias que pertencem ao conceito principal e as correspondências.
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.9\textwidth]{./imagens/relacionados.pdf}
+	\caption{Relacionamento entre instâncias e correspondência}
+	\label{fig:relacionados}
+\end{figure}
 
 \subsubsection{Alinhar Recursos Recuperados}
 
-A partir das listas de candidatos geradas na atividade \ref{recuperao} o processo de alinhamento simples é executado.
+Através da restrição aplicada na atividade \ref{recuperao_principal}, tem-se que as instâncias recuperadas estão relacionadas à mesma entidade do mundo real. Consequentemente, existe ao menos uma correspondência entre as instâncias recuperadas. Assim, a correspondência entre os autores é persistida. 
 
-\begin{figure}[!ht]
-	\centering
-	\includegraphics[width=0.8\textwidth]{./imagens/relacionados.pdf}
-    \caption{Construção de pares candidatos a partir de recursos relacionados}
-	\label{fig:relacionados}
-\end{figure}
+
