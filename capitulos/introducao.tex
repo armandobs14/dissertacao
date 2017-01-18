@@ -1,22 +1,64 @@
 \chapter{Introdução}
 \label{cap:introducao}
-O Atual paradigma da Web é descrito como Web de documentos. Neste, os documentos ou páginas são descritas através de uma linguagem de marcação de hipertexto (HTML) e interligados através de hiperlinks. Para identificar as páginas na Web, é necessário um mecanismo capaz de identificar de forma única cada uma dessas páginas. Para isso, a identificação é realizada através de um mecanismo de identificação global chamado URI (Uniform Resource Identifier). Dessa forma, para ter acesso a um conteúdo específico de qualquer documento neste paradigma, é necessário obter todo o documento.
+A Web é baseada em documentos, onde os documentos ou páginas são descritas através de uma linguagem de marcação de hipertexto (HTML) e interligados através de \textit{hiperlinks}. Para acessar as páginas na Web, é necessário um mecanismo capaz de identificar de forma única cada uma dessas páginas, o que é feito através de um mecanismo de identificação global chamado URI (Uniform Resource Identifier). Dessa forma, para ter acesso a um conteúdo específico de qualquer documento neste paradigma, é necessário obter todo o documento.
 
-Diferentemente da Web de documentos, a Web de dados, através de URIs, possibilita que os dados sejam identificados de forma única, permitindo que apenas os dados desejados sejam recuperados. Os dados são representados através de um framework de descrição de recursos (RDF) além de contar com um protocolo para consulta aos dados, o \textit{Simple Protocol and RDF Query Language} (SPARQL). Através desses recursos juntamente com princípios e boas práticas, Surge o conceito de Dados Conectados.
+Analogamente, a Web Semântica, ou Web de dados, através de URIs, possibilita que os dados sejam identificados de forma única, permitindo que os dados desejados sejam recuperados. Os dados são representados através de um framework de descrição de recursos (RDF), além de contar com um protocolo para consulta aos dados, o \textit{Simple Protocol and RDF Query Language} (SPARQL). Através desses recursos juntamente com princípios e boas práticas, surge o conceito de Dados Conectados.
+% * <profsean@gmail.com> 2017-01-18T15:50:06.195Z:
+% 
+% > Web de dados
+% Incluir nota de rodapé: Para mais informações, acesse: https://www.w3.org/standards/semanticweb/data
+% 
+% ^.
 
 %Deve-se ressaltar que o RDF é responsável por dar estrutura aos dados seguindo o padrão de tripla: Sujeito, Predicado e Objeto. Com objetivo de dar significado aos dados utilizam-se vocabulários e ontologias. Tecnicamente, pode-se entender uma ontologia como um artefato computacional utilizado para modelar um domínio de interesse. Essa ontologia é composta de classes e propriedades, que são implementados através de uma linguagem de descrição de ontologias (OWL).
  
-O conceito de Dados Conectados está intimamente relacionado à Web de dados, pois de acordo com \citeonline{bizer2009linked}, Dados Conectados trata-se de usar a Web para criar links entre dados de fontes diferentes. Além disso, Dados Conectados é considerado um ponto chave para o desenvolvimento da Web Semântica \cite{berners2001semantic} . Além disso, \citeonline{Isotani2015} destacam seu potencial modo de aplicação para negócios e governos.  
+Dados Conectados estão intimamente relacionados à Web de dados, pois de acordo com \citeonline{bizer2009linked}, dados de diferentes fontes são disponibilizados na Web e conectados uns aos outros. Assim, Dados Conectados são considerados um ponto chave para o desenvolvimento da Web Semântica \cite{berners2001semantic}. Além disso, \citeonline{Isotani2015} destacam seu potencial para negócios e governos.  
 
-Na perspectiva de negócio, temos o caso da BestBuy, que través da utilização de serialização RDF (RDFa) melhorou o número de acessos via buscador  Google entre 15\% e 30\%. E do Google, que passou a utilizar a serialização json-ld em um de seus produtos, o Gmail. No governo, temos o caso do governo britânico que publica seus dados em formato RDF, permitindo que os dados possam ser conectados a outros, mesmo estando em bases diferentes. Consequentemente, a utilização de Dados Conectados vem sendo realizada de forma crescente.
+Na perspectiva de negócio, temos o caso da BestBuy, que através da utilização de serialização RDF (RDFa) melhorou o número de acessos via buscador  Google entre 15\% e 30\%. E do Google, que passou a utilizar a serialização json-ld em um de seus produtos, o Gmail. No governo, temos o caso do Reino Unido que publica seus dados em formato RDF, permitindo que os dados possam ser conectados a outros, mesmo estando em bases diferentes. Consequentemente, a utilização de Dados Conectados vem sendo realizada de forma crescente.
+% * <profsean@gmail.com> 2017-01-18T16:01:26.668Z:
+% 
+% > serialização RDF
+% Deveria ter explicado... Sugiro acrescentar explicação em nota de rodapé...
+% 
+% ^.
+% * <profsean@gmail.com> 2017-01-18T15:56:09.697Z:
+% 
+% > Consequentemente, a utilização de Dados Conectados vem sendo realizada de forma crescente.
+% Cadê evidências disto? Por que isto é importante aqui no seu texto? Sugiro retirar esta frase.
+% 
+% ^.
+% * <profsean@gmail.com> 2017-01-18T15:55:48.722Z:
+% 
+% > permitindo que os dados possam ser conectados a outros, mesmo estando em bases diferentes
+% Mas não é esta a ideia de dados conectados? Então, o que se ganhou com isto?
+% 
+% ^.
+% * <profsean@gmail.com> 2017-01-18T15:55:04.798Z:
+% 
+% > Gmail
+% E o que ganhou com isto?
+% 
+% ^.
+% * <profsean@gmail.com> 2017-01-18T15:54:34.908Z:
+% 
+% > json-ld
+% Acrescentar breve explicação e link em nota de rodapé...
+% 
+% ^.
+% * <profsean@gmail.com> 2017-01-18T15:54:26.188Z:
+% 
+% > RDFa
+% Acrescentar breve explicação e link em nota de rodapé...
+% 
+% ^.
 
-Dados Conectados podem ser vistos sob duas perspectivas: consumo e publicação. A primeira aborda o ponto de vista do consumidor, tratando a exploração de dados para tornar as aplicações mais ricas. A segunda está sob a perspectiva do publicador, abordando processos \cite{bizer2007publish, hyland2011joy, villazon2011methodological, Avila2015} e conceitos \cite{berners2006linked, wood2014linked} necessários para publicar e manter os dados na Web de forma conectada. 
+Dados Conectados podem ser vistos sob duas perspectivas: publicação e consumo. A publicação está sob a perspectiva do publicador, abordando conceitos \cite{berners2006linked, wood2014linked} e processos \cite{bizer2007publish, hyland2011joy, villazon2011methodological, Avila2015} necessários para publicar e manter os dados na Web de forma conectada. O consumo aborda o ponto de vista do consumidor, tratando a exploração de dados para tornar as aplicações mais ricas. 
 
-Publicar ou manter dados conectados na Web vai além de disponibilizar conjuntos de dados através de serializações RDF. É necessário conectá-los a outros conjuntos de dados já existentes. Porém, criar links entre conjuntos de dados requer uma análise cuidadosa por parte do especialista, que apesar de ser uma abordagem eficaz, não é escalável, visto que a quantidade de dados publicados cresce constantemente. Consequentemente, inviabilizando o processo de publicação de forma artesanal. Logo, para que seja possível construir a Web de Dados de forma eficiente, é necessário que existam soluções capazes de conectar dados de forma automática ou semiautomática.
+Publicar ou manter dados conectados na Web vai além de disponibilizar conjuntos de dados através de serializações RDF. É necessário conectá-los a outros conjuntos de dados já existentes. Porém, criar \textit{links} entre conjuntos de dados requer uma análise cuidadosa por parte do especialista, que apesar de ser uma abordagem eficaz, não é escalável, visto que a quantidade de dados publicados cresce constantemente. Consequentemente, inviabiliza o processo de publicação de forma artesanal. Logo, para que seja possível construir a Web de Dados de forma eficiente, é necessário que existam soluções capazes de conectar dados de forma automática ou semiautomática.
 
-Conectar dados automaticamente é um problema reconhecido por diversas comunidades. Dentre essas comunidades, podemos destacar as comunidades de Bancos de Dados e Web Semântica. Na primeira, esse problema é conhecido através do termo \textbf{\textit{Record Linkage}} \cite{gu2003record}. Na segunda, ele é reconhecido pelo termo \textbf{\textit{Instance Matching}}. Além disso, também é possível encontrar referências como \textbf{\textit{Problema de Resolução de Entidades}} \cite{menestrina2005generic} e \textbf{\textit{Deduplicação}} \cite{sarawagi2002interactive}, que se trata de um processo que tem como objetivo identificar e conectar recursos julgados representar a mesma entidade do mundo real.
+Conectar dados automaticamente é um problema reconhecido por diversas comunidades. Dentre essas comunidades, podemos destacar as comunidades de Bancos de Dados e Web Semântica. Na primeira, esse problema é conhecido através do termo \textbf{\textit{Record Linkage}} \cite{gu2003record}. Na segunda, ele é reconhecido pelo termo \textbf{\textit{Instance Matching}}. Além disso, também é possível encontrar referências como \textbf{Problema de Resolução de Entidades} \cite{menestrina2005generic} e \textbf{Deduplicação} \cite{sarawagi2002interactive}, que tem como objetivo identificar e conectar recursos julgados representar a mesma entidade do mundo real.
 
-\citeonline{castano2011ontology} ressaltam que a correspondência de instâncias (Instance Matching) apresenta características adicionais tais como: (i) \textbf{heterogeneidade estrutural}, que se refere à variação na estrutura das instâncias; (ii)\textbf{ conhecimento implícito}, que se refere às características e restrições  apresentadas pelo domínio e (iii) \textbf{identificação orientada à URI}, refere-se ao reuso das URIs para identificar novas informações a respeito de instâncias já existentes. Logo, há a necessidade de soluções específicas para a execução correta do processo de correspondência de instâncias. 
+\citeonline{castano2011ontology} ressaltam que a correspondência de instâncias (\textit{Instance Matching}) apresenta características adicionais tais como: (i) \textbf{heterogeneidade estrutural}, que se refere à variação na estrutura das instâncias; (ii)\textbf{ conhecimento implícito}, que se refere às características e restrições  apresentadas pelo domínio e (iii) \textbf{identificação orientada à URI}, refere-se ao reuso das URIs para identificar novas informações a respeito de instâncias já existentes. Logo, há a necessidade de soluções específicas para a execução correta do processo de correspondência de instâncias. 
 
 De acordo com \cite{castano2011ontology}, existem diversas técnicas que podem ser utilizadas no processo de correspondência de instâncias. Algumas dessas técnicas foram adaptadas de abordagens existentes na comunidade de Banco de Dados. Como pode ser visto na Figura \ref{fig:im_techniques}, tais técnicas estão concentradas em duas categorias: a primeira se refere a abordagens orientadas a valor. Nesta categoria, assume-se que a similaridade entre recursos pode ser obtida através da correspondência entre os atributos desses recursos, vale a pena ressaltar que a maior parte das abordagens dessa categoria estão focadas na comparação entre textos (e.g. Dice, Levenshtein, Jaro etc.).
 
@@ -29,6 +71,12 @@ De acordo com \cite{castano2011ontology}, existem diversas técnicas que podem s
 \end{figure}
 
 Na segunda categoria, estão concentradas as técnicas baseadas em recursos. 
+% * <profsean@gmail.com> 2017-01-18T16:12:01.753Z:
+% 
+% > baseadas em recursos
+% não seriam orientadas a instância?
+% 
+% ^.
 
 \textbf{Baseada em aprendizagem:} utiliza grupos de treinamento bem como técnicas de aprendizagem de máquina, como Máquina de Vetor de Suporte, para definir se os recursos representam a mesma entidade do mundo real.
 
