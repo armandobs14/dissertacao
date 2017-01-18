@@ -1,16 +1,34 @@
 \chapter{Trabalhos Relacionados}
+% * <profsean@gmail.com> 2017-01-18T20:19:34.451Z:
+% 
+% > Trabalhos
+% Independente de juntar ou não os capítulos, é importante encadear esta parte do texto com a anterior... Ficou uma quebra... muda completamente de assunto...
+% 
+% ^.
 \label{cap:relacionados}
 Neste capítulo serão apresentadas duas ferramentas para o alinhamento de dados conectados. As ferramentas apresentadas a seguir foram selecionadas devido ao seu destaque na edição de 2016 do relatório publicado pela Ontology Alignment Evaluation Initiative (OAEI). Inicialmente, a OAEI avaliava apenas ferramentas de alinhamento de ontologias, dando início à avaliação de soluções para alinhar dados em 2009. Desde então, um número crescente aplicações vêm sendo submetidas.
+% * <profsean@gmail.com> 2017-01-18T20:22:17.708Z:
+% 
+% > Desde então, um número crescente aplicações vêm sendo submetidas
+% Dados que comprovem? Evidências disto?
+% 
+% ^.
+% * <profsean@gmail.com> 2017-01-18T20:21:19.611Z:
+% 
+% > devido ao seu destaque
+% Deveria explicar melhor que destaque foi esse...
+% 
+% ^.
 
 \section{AgreementMakerLight (AML)}
-Desenvolvido em parceria entre o Instituto Gulbenkian de Ciência, Universidade de Lisboa, e Universidade de Illinois. O AgreementMakerLight é uma ferramenta de alinhamento de ontologias. De acordo com \cite{fariaoaei}, o AML é uma ferramenta que se baseia inicialmente em técnicas e similaridade léxica, tendo como enfase o uso de fontes externas como background.
+Desenvolvido em parceria entre o Instituto Gulbenkian de Ciência, a Universidade de Lisboa, e a Universidade de Illinois, o AgreementMakerLight é uma ferramenta de alinhamento de ontologias. De acordo com \cite{fariaoaei}, o AML se baseia inicialmente em técnicas e similaridade léxica, tendo como ênfase o uso de fontes externas como \textit{background}.
 
-O AML conta com três algoritmos para alinhamento voltados a correspondência de instâncias, sendo elas o \textit{HybridStringMatcher}, \textit{ValueStringMatcher} e \textit{Value2LexiconMatcher}. A primeira utiliza diversas abordagens para gerar a similaridade, sendo elas a comparação entre frases, palavras. Além disso, essa abordagem hibrida também explora a \textit{WordNet}. O segundo utiliza o mapeamento de valor para gerar calcular a similaridade, penalizando pares nos quais anotações ou propriedades de dados não são os mesmos. Por fim, o terceiro une as duas abordagens anteriores.
+O AML conta com três algoritmos para alinhamento voltados a correspondência de instâncias, sendo eles o \textit{HybridStringMatcher}, o \textit{ValueStringMatcher} e o \textit{Value2LexiconMatcher}. O primeiro utiliza diversas abordagens para gerar a similaridade, sendo elas a comparação entre frases, palavras. Além disso, essa abordagem hibrida também explora a \textit{WordNet}. O segundo utiliza o mapeamento de valor para gerar calcular a similaridade, penalizando pares nos quais anotações ou propriedades de dados não são os mesmos. Por fim, o terceiro une as duas abordagens anteriores.
 
-Apesar do AML possuir diferentes algoritmos alinhamentos na ferramenta, todos eles trabalham apenas no nível dos dados. Consequentemente, as características das propriedades são desconsiderados ao longo do processo de correspondência.
+Apesar do AML possuir diferentes algoritmos de alinhamento na ferramenta, todos eles trabalham apenas no nível dos dados. Consequentemente, as características das propriedades são desconsideradas ao longo do processo de correspondência.
 
 \section{RiMOM-2016}
-Baseando-se no RiMOM  \cite{li2009rimom}, \cite{zhang2016rimom} desenvolveram o RiMOM-2016, que é uma ferramenta para alinhar dados conectados. Ela implementa um número considerável de abordagens para alinhar, cuja escolha é realizada através dos metadados extraídos da ontologia. Além disso, o RiMOM-2016 utiliza um índice invertido para indexar os objetos e consequentemente gerar pares candidatos para um possível alinhamento. A geração dos pares é realizada quando dois recursos compartilham pelo menos um predicado e objeto.
+Baseando-se no RiMOM  \cite{li2009rimom}, \citeonline{zhang2016rimom} desenvolveram o RiMOM-2016, que é uma ferramenta para alinhar dados conectados. Ela implementa um número considerável de abordagens para alinhar, cuja escolha é realizada através dos metadados extraídos da ontologia. Além disso, o RiMOM-2016 utiliza um índice invertido para indexar os objetos e consequentemente gerar pares candidatos para um possível alinhamento. A geração dos pares é realizada quando dois recursos compartilham pelo menos um predicado e objeto.
 
 \begin{figure}[!ht]
 	\centering
@@ -25,6 +43,12 @@ Por um lado, o índice invertido permite que um número menor de comparações s
 \section{Comparação com a proposta}
 
 Neste capítulo, algumas das principais ferramentas existentes foram apresentadas. Essas ferramentas tem o objetivo de alinhar dados conectados através de diversas abordagens. Dentre os sistemas apresentados, nenhum deles contempla o alinhamento de dados como foco principal, sendo variações de ferramentas existentes para o alinhamento de ontologias.
+% * <profsean@gmail.com> 2017-01-18T20:34:14.738Z:
+% 
+% > nenhum deles contempla o alinhamento de dados como foco principal
+% Não tem nenhuma? Será que vc pesquisou direito? Será que não deveria ter buscado ferramentas que fazem alinhamento baseado em instâncias? Se não me engano o pessoal do Marco Antonio Casanova, prof. da PUC-Rio estava trabalhando com isso... não sei se deixaram ferramentas disponíveis. Sugiro dar uma pesquisada porque o Bernardo (que estará na sua banca) foi aluno do Casanova...
+% 
+% ^.
 
 Esta seção tem o objetivo de apresentar um comparativo entre os trabalhos relacionados e o presente estudo. Para isso, consideramos os seguintes critérios: (1) Quantidade de \textit{datasets} suportados; (2) Tipo de suporte à ontologia; (3) Utilização de computação específica; e (4) Exploração dos conceitos presentes na ontologia.
 
