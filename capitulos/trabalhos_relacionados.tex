@@ -6,18 +6,26 @@
 % 
 % ^.
 \label{cap:relacionados}
-Neste capítulo serão apresentadas duas ferramentas para o alinhamento de dados conectados. As ferramentas apresentadas a seguir foram selecionadas devido ao seu destaque na edição de 2016 do relatório publicado pela Ontology Alignment Evaluation Initiative (OAEI). Inicialmente, a OAEI avaliava apenas ferramentas de alinhamento de ontologias, dando início à avaliação de soluções para alinhar dados em 2009. Desde então, um número crescente aplicações vêm sendo submetidas.
+Neste capítulo serão apresentadas duas ferramentas para o alinhamento de dados conectados. As ferramentas apresentadas a seguir foram selecionadas  devido ao seu destaque na edição de 2016 do relatório publicado pela Ontology Alignment Evaluation Initiative (OAEI), mais especificamente da track  que trata ferramentas para correspondência de instâncias (\textit{Instance Matching}). Inicialmente, a OAEI avaliava apenas ferramentas de alinhamento de ontologias, dando início à avaliação de soluções para alinhar dados em 2009. Desde então, um número crescente aplicações vêm sendo submetidas \cite{cheatham2015results}.
 % * <profsean@gmail.com> 2017-01-18T20:22:17.708Z:
 % 
 % > Desde então, um número crescente aplicações vêm sendo submetidas
 % Dados que comprovem? Evidências disto?
 % 
+% ^ <armandobs14@gmail.com> 2017-01-18T20:46:12.594Z:
+%
+% Citei o mesmo paper que utilizei na introdução.
+%
 % ^.
 % * <profsean@gmail.com> 2017-01-18T20:21:19.611Z:
 % 
 % > devido ao seu destaque
 % Deveria explicar melhor que destaque foi esse... Preocupa o fato de ter considerado apenas 2 (e a escolha não estar bem clara)... também não sei se outras ferramentas com características mais próximas não deveriam ter sido consideradas (baseadas em instâncias)...
 % 
+% ^ <armandobs14@gmail.com> 2017-01-18T20:51:26.403Z:
+%
+% Citei que dentro do OAEI, essas ferramentas foram submetidas para a track de instance matching.
+%
 % ^.
 
 \section{AgreementMakerLight (AML)}
@@ -48,6 +56,10 @@ Neste capítulo, algumas das principais ferramentas existentes foram apresentada
 % > nenhum deles contempla o alinhamento de dados como foco principal
 % Não tem nenhuma? Será que vc pesquisou direito? Será que não deveria ter buscado ferramentas que fazem alinhamento baseado em instâncias? Se não me engano o pessoal do Marco Antonio Casanova, prof. da PUC-Rio estava trabalhando com isso... não sei se deixaram ferramentas disponíveis. Sugiro dar uma pesquisada porque o Bernardo (que estará na sua banca) foi aluno do Casanova...
 % 
+% ^ <armandobs14@gmail.com> 2017-01-18T20:44:36.267Z:
+%
+% Nesse caso, quis dizer que nenhuma das ferramentas apresentadas tem o alinhamento de dados como foco principal, pois são adaptações de soluções para o alinhamento de ontologias.
+%
 % ^.
 
 Esta seção tem o objetivo de apresentar um comparativo entre os trabalhos relacionados e o presente estudo. Para isso, consideramos os seguintes critérios: (1) Quantidade de \textit{datasets} suportados; (2) Tipo de suporte à ontologia; (3) Utilização de computação específica; e (4) Exploração dos conceitos presentes na ontologia.
@@ -60,7 +72,23 @@ Esta seção tem o objetivo de apresentar um comparativo entre os trabalhos rela
 		\toprule
 		\textbf{Critérios de comparação}                    & \textbf{RiMOM} & \textbf{AML} & \textbf{Proposta} \\ \midrule
 		(1) Quantidade de \textit{datasets} suportados    & 2              & 2            & 2+                \\
+% * <profsean@gmail.com> 2017-01-18T20:40:50.085Z:
+% 
+% > Quantidade de \textit{datasets} suportados
+% Por que os dois só consideram 2 datasets? Você quer dizer no alinhamento consideram 2 a 2 entidades?
+% 
+% ^ <armandobs14@gmail.com> 2017-01-18T20:55:00.624Z:
+% 
+% Eles são capazes de realizar a correspondência de dois datasets por vez (e.g. Lattes <-> SBIE). Dessa forma, para utilizar um outro dataset é necessário trocar um deles (e.g. Lattes <-> WIE). Já a proposta suporta mais de dois datasets por vez (e.g. Lattes <-> [SBIE,WIE,SBIE]).
+% 
+% ^.
 		(2) Tipo de suporte à ontologia                     & Dirigido       & Dirigido     & Baseado           \\
+% * <profsean@gmail.com> 2017-01-18T20:40:17.651Z:
+% 
+% > Tipo de suporte
+% Isto deveria ter sido melhor explicado... o que quer dizer? O que é dirigido e baseado?
+% 
+% ^.
 		(3) Utilização de computação específica             & Sim            & Sim          & Não               \\
 		(4) Exploração dos conceitos presentes na ontologia & Não            & Não          & Sim               \\ \bottomrule
 	\end{tabular}
@@ -69,3 +97,9 @@ Esta seção tem o objetivo de apresentar um comparativo entre os trabalhos rela
 Contudo, apesar das ferramentas se mostrarem capazes de encontrar correspondência entre instâncias, ainda deixam a desejar em alguns critérios, tais como a utilização de computação específica para os \textit{datasets}, além da pouca exploração das ontologia, que são utilizadas apenas para a geração de metadados, com o objetivo de escolher entre as abordagens de correspondência disponíveis. Diferentemente das ferramentas citadas, a proposta utiliza ontologias para guiar o processo de correspondência de instância. Além disso, essa abordagem permite que o usuário defina como o alinhamento deve ser realizado.
 
 Outro diferencial da proposta em relação aos trabalhos relacionados está no que chamamos de alinhamento em cascata, que consiste na utilização de instâncias que pertencem a conceitos relacionados ao conceito cujas instâncias serão alinhadas. Ademais, a proposta permite que as correspondências entre as instâncias sejam armazenadas diretamente na base de triplas (\textit{triple store}) em que estão armazenadas.
+% * <profsean@gmail.com> 2017-01-18T20:43:43.697Z:
+% 
+% > alinhamento em cascata, que consiste na utilização de instâncias que pertencem a conceitos relacionados ao conceito cujas instâncias serão alinhadas.
+% Isto deveria ser melhor explicado... Por que o alinhamento em cascata é importante? Como esta importância é percebida?
+% 
+% ^.
