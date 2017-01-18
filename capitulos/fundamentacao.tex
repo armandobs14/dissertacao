@@ -6,7 +6,7 @@ O objetivo deste capítulo é apresentar a fundamentação teórica referente ao
 
 \subsection{RDF (Resource Description Framework)}
 
-RDF trata-se de um framework de descrição de recursos, trabalhando como um alicerce para a construção de Dados Conectados. Em concordância com tecnologias Web, bem como Dados Conectados, o modelo RDF utiliza URIs para identificação de recursos, permitindo que os recursos sejam descritos uniformemente na Web. Basicamente, o RDF é estruturado em triplas do tipo sujeito, predicado, objeto (ver Figura \ref{fig:spo}). 
+RDF trata-se de um \textit{framework} de descrição de recursos, trabalhando como um alicerce para a construção de Dados Conectados. Em concordância com tecnologias Web, bem como Dados Conectados, o modelo RDF utiliza URIs para identificação de recursos, permitindo que os recursos sejam descritos uniformemente na Web. Basicamente, o RDF é estruturado em triplas do tipo sujeito, predicado, objeto (ver Figura \ref{fig:spo}). 
 
 \begin{figure}[!ht]
 	\centering
@@ -27,14 +27,22 @@ Em Computação, de maneira informal, uma ontologia define um conjunto de concei
 . Para melhor entendimento, abaixo seguem detalhes sobre os termos citados nessa definição: 
 =======
 \section{Ontologias}
-Os Dados Conectados fazem uso de ontologias como suporte formal para representação de conhecimento, pois só RDF não é o bastante para que máquinas consigam entender a relação entre os dados. Desta forma, as ontologias têm um papel fundamental na modelagem e descrição de dados. A palavra ontologia vem do Grego ontos e logos, significando conhecimento do ser. Em filosofia, ontologia refere-se ao estudo do ser. Em Computação, de maneira informal, uma ontologia define um conjunto de conceitos e suas relações, tais como a terminologia (vocabulário do domínio), definição explícita dos conceitos essenciais, suas classificações, taxonomias, relações e axiomas do domínio, incluindo hierarquias e restrições \cite{deved2006semantic}. Em 1993, \citeauthor{gruber1993translation} definiu ontologia como uma especificação explícita de uma conceitualização. Em 1997, \citeauthor{borstw1997construction} definiu ontologia como uma especificação formal de uma conceitualização compartilhada. Em 1998, \citeauthor{studer1998knowledge} unificaram as duas definições, desta forma ontologia pode ser definida como uma especificação formal e explícita de uma conceitualização compartilhada. Para melhor entendimento, abaixo seguem detalhes sobre os termos citados nessa definição: 
+Os Dados Conectados fazem uso de ontologias como suporte formal para representação de conhecimento, pois só RDF não é o bastante para que máquinas consigam entender a relação entre os dados. Desta forma, as ontologias têm um papel fundamental na modelagem e descrição de dados. A palavra ontologia vem do Grego \textit{ontos} e \textit{logos}, significando conhecimento do ser. Em filosofia, ontologia refere-se ao estudo do ser. Em Computação, de maneira informal, uma ontologia define um conjunto de conceitos e suas relações, tais como a terminologia (vocabulário do domínio), definição explícita dos conceitos essenciais, suas classificações, taxonomias, relações e axiomas do domínio, incluindo hierarquias e restrições \cite{deved2006semantic}. Em 1993, \citeauthor{gruber1993translation} definiu ontologia como uma especificação explícita de uma conceitualização. Em 1997, \citeauthor{borstw1997construction} definiu ontologia como uma especificação formal de uma conceitualização compartilhada. Em 1998, \citeauthor{studer1998knowledge} unificaram as duas definições, desta forma ontologia pode ser definida como uma especificação formal e explícita de uma conceitualização compartilhada. Para melhor entendimento, abaixo seguem detalhes sobre os termos citados nessa definição: 
 % * <profsean@gmail.com> 2017-01-18T19:49:08.414Z:
 % 
 % > \citeauthor{studer1998knowledge}
 % Aqui o formato da citação está errado... Não entendi o motivo...
 % 
+<<<<<<< HEAD
 % ^.
 >>>>>>> e57fd49fa6d5318301d485b0747e91f46d43dd1c
+=======
+% ^ <armandobs14@gmail.com> 2017-01-18T20:06:42.666Z:
+%
+% Isso ocorre por erro no bibtex, estou ajustando.
+%
+% ^ <armandobs14@gmail.com> 2017-01-18T20:06:50.399Z.
+>>>>>>> be0f08b7b854254d427f895a44dadcce6bfecb85
 \begin{itemize}
 	\item \textbf{Explícita:} definições de conceitos, relações, restrições e axiomas; 
 	\item \textbf{Formal:} compreensível para agentes e sistemas; 
@@ -61,9 +69,9 @@ Para conectar os dados disponíveis na Web com qualidade, foram desenvolvidas as
 
 Algoritmos de similaridade podem ser entendidos como funções utilizadas para medir a semelhança entre duas palavras. Tais funções são utilizadas em vários contextos, partindo de correções ortográficas até tarefas de processamento de linguagem natural (PLN). Um dos algoritmos de similaridade mais conhecidos pela comunidade foi proposto por Levenshtein em 1965 \cite{levenshtein1966binary}, que se baseia na quantidade mínima de edições (remoções e adições) necessárias para que uma palavra seja igual a outra.  
 
-Dependendo da perspectiva dada ao texto (conjunto de caracteres e conjuntos de palavras) existem diferentes abordagens (baseadas em caractere, baseadas em token) \cite{cohen2003comparison}. Abordagens baseadas em caractere (e.g. Levenshtein) realizam a comparação letra por letra. Já as abordagens baseadas em tokens (e.g. Jaro)  consideram a palavra como um corpo único.
+Dependendo da perspectiva dada ao texto (conjunto de caracteres e conjuntos de palavras) existem diferentes abordagens (baseadas em caractere, baseadas em \textit{token}) \cite{cohen2003comparison}. Abordagens baseadas em caractere (e.g. Levenshtein) realizam a comparação letra por letra. Já as abordagens baseadas em \textit{tokens} (e.g. Jaro) consideram a palavra como um corpo único.
 
-Nesta proposta, foi utilizada uma generalização do algoritmo de Monge-Elkan \cite{monge1996field}, que tem o objetivo de dar um peso maior a tokens mais semelhantes. Inicialmente, Monge-Elkan foi desenvolvido com o objetivo de calcular a semelhança entre textos que possuem vários tokens, onde a similaridade de cada token é calculada através da média das similaridades internas, que é provida por uma técnica baseada em caractere (e.g. Cosseno, Jaro, Dice). Essa abordagem se destaca em cenários de desordem ou ausência de tokens. Além disso, esse algoritmo explora os benefícios providos pelas abordagens baseadas caractere (e.g. erros de digitação, erros de OCR e erros ortográficos) \cite{jimenez2009generalized}.
+Nesta proposta, foi utilizada uma generalização do algoritmo de Monge-Elkan \cite{monge1996field}, que tem o objetivo de dar um peso maior a \textit{tokens} mais semelhantes. Inicialmente, Monge-Elkan foi desenvolvido com o objetivo de calcular a semelhança entre textos que possuem vários \textit{tokens}, onde a similaridade de cada \textit{token} é calculada através da média das similaridades internas, que é provida por uma técnica baseada em caractere (e.g. Cosseno, Jaro, Dice). Essa abordagem se destaca em cenários de desordem ou ausência de \textit{tokens}. Além disso, esse algoritmo explora os benefícios providos pelas abordagens baseadas caractere (e.g. erros de digitação, erros de OCR e erros ortográficos) \cite{jimenez2009generalized}.
 
 \subsection{Alinhamento de Dados Conectados}
 
@@ -73,10 +81,10 @@ Alinhar Dados Conectados  trata-se de um processo que tem como objetivo identifi
 f\left( { URI }_{ i },{ URI }_{ j } \right) :=\begin{cases} \mbox{verdadeiro, se } sim\left( { URI }_{ i },{ URI }_{ j } \right) >\theta  \\ \mbox{falso, caso contrário} \end{cases}\mbox{com }{ URI }_{ i } \in { D }_{ i }\mbox{ e }{ URI }_{ j } \in { D }_{ j }
 \end{equation}
 
-onde 1 $\leq$ i,j $\leq$ n, e $sim()$ é uma função que é capaz de calcular a similaridade entre os recursos e $\theta$ é o parâmetro que regula o nível de qualidade para o alinhamento, que também pode ser conhecido como limiar ou threshold. Além disso, é possível ressaltar outros benefícios que surgem a partir da conexão entre dados, sendo elas: 
+onde 1 $\leq$ i,j $\leq$ n, e $sim()$ é uma função que é capaz de calcular a similaridade entre os recursos e $\theta$ é o parâmetro que regula o nível de qualidade para o alinhamento, que também pode ser conhecido como limiar ou \textit{threshold}. Além disso, é possível ressaltar outros benefícios que surgem a partir da conexão entre dados, sendo elas: 
 
 \begin{itemize}
-	\item \textbf{Integração semântica de dados:} Refere-se ao melhoramento de as técnicas existentes pra descobertas de mapeamento (semi) automático entre ontologias heterogêneas e distribuídas; 
+	\item \textbf{Integração semântica de dados:} Refere-se ao melhoramento das técnicas existentes para descobertas de mapeamento (semi) automático entre ontologias heterogêneas e distribuídas; 
 	\item \textbf{Reconhecimento de identidade:} Refere-se à capacidade de identificar se descritores de recursos distintos estão relacionados à mesma entidade do mundo real; 
 	\item\textbf{ População de ontologias:} Refere-se à descoberta de relacionamentos entre novas instâncias e as instâncias já existentes na base de conhecimento. 
 \end{itemize}
@@ -92,7 +100,17 @@ Segundo \citeonline{ferrara2008towards}, para que uma abordagem seja capaz de id
 	\label{fig:imrequirements}
 \end{figure}
 
-\textbf{Diferença de Valores:}
+\textbf{Valores diferentes:}
+% * <profsean@gmail.com> 2017-01-18T20:15:13.295Z:
+% 
+% > Diferença de Valores:
+% "Diferença de valores" (como está no texto) ou "Valores diferentes" (como está na figura)?
+% 
+% ^ <armandobs14@gmail.com> 2017-01-18T20:17:47.903Z:
+%
+% Ajustei para deixar de acordo com a imagem.
+%
+% ^ <armandobs14@gmail.com> 2017-01-18T20:17:50.727Z.
 Um algoritmo de correspondência de instância deve reconhecer valores correspondentes, sempre que possível, mesmo quando esses valores possuem erros. Para mitigar esse problema, a comunidade utiliza abordagens como algoritmos de similaridade e transformação de valores.
 
 
@@ -101,6 +119,7 @@ Instâncias que pertencem a ontologias diferentes diferem não somente entre pro
 
 
 \textbf{Heterogeneidade Lógica:}
+<<<<<<< HEAD
 A heterogeneidade lógica é um problema de alinhamento de ontologias, que não é levado em consideração no processo de alinhamento de dados, porém é necessário em tarefas de inferência.
 
 \section{Trabalhos Relacionados}
@@ -150,3 +169,16 @@ Esta seção tem o objetivo de apresentar um comparativo entre os trabalhos rela
 Contudo, apesar das ferramentas se mostrarem capazes de encontrar correspondência entre instâncias, ainda deixam a desejar em alguns critérios, tais como a utilização de computação específica para os \textit{datasets}, além da pouca exploração das ontologia, que são utilizadas apenas para a geração de metadados, com o objetivo de escolher entre as abordagens de correspondência disponíveis. Diferentemente das ferramentas citadas, a proposta utiliza ontologias para guiar o processo de correspondência de instância. Além disso, essa abordagem permite que o usuário defina como o alinhamento deve ser realizado.
 
 Outro diferencial da proposta em relação aos trabalhos relacionados está no que chamamos de alinhamento em cascata, que consiste na utilização de instâncias que pertencem a conceitos relacionados ao conceito cujas instâncias serão alinhadas. Ademais, a proposta permite que as correspondências entre as instâncias sejam armazenadas diretamente na base de triplas (\textit{triple store}) em que estão armazenadas.
+=======
+% * <profsean@gmail.com> 2017-01-18T20:18:47.062Z:
+% 
+% > Heterogeneidade Lógica:
+% Não explicou...
+% 
+% ^ <armandobs14@gmail.com> 2017-01-18T20:36:14.777Z:
+%
+% O autor não descreve o que seria de fato a heterogeneidade lógica, dessa forma descrevi de acordo o meu entendimento.
+%
+% ^ <armandobs14@gmail.com> 2017-01-18T20:36:21.108Z.
+A heterogeneidade lógica é um problema de alinhamento de ontologias, que não é levado em consideração no processo de alinhamento de dados, porém é necessário em tarefas de inferência. Esse problema diz respeito à semântica atribuída aos termos, pois é algumas situações um termo pode ter significados diferentes. Por exemplo, manga (fruta) e manga (parte da roupa).
+>>>>>>> be0f08b7b854254d427f895a44dadcce6bfecb85
