@@ -1,35 +1,35 @@
 \chapter{Experimento}
 \label{cap:experimento}
-Sabendo que o presente trabalho visa desenvolver um processo de alinhamento de dados  e  independente de contexto consolidado em uma ferramenta que seja capaz de realizar a correspondência de instâncias, afim de melhorar a eficácia das soluções de correspondência de instâncias. Este capítulo está dividido em quatro seções que abordam (i) Design de Experimento; (ii) Execução do experimento; (iii) Análise dos resultados e (iv) Principais conclusões obtidas.
+O presente trabalho apresentou um processo de alinhamento de dados independente de contexto. Esse processo foi consolidado em uma ferramenta para realizar a correspondência de instâncias. Este capítulo apresenta o experimento realizado para análise da eficácia do alinhamento de dados à partir do processo e ferramenta propostos. O capítulo está dividido em quatro seções que abordam (i) \textit{Design} de experimento; (ii) Execução do experimento; (iii) Análise dos resultados e (iv) Principais conclusões obtidas.
 
-\section{Design de Experimento}
+\section{\textit{Design} de Experimento}
 Nesta seção, será detalhado o planejamento do experimento que foi projetado para este trabalho. Dentro do planejamento, encontra-se a definição da questão de pesquisa e derivação de hipóteses, a seleção das variáveis dependentes e independentes, a identificação da unidade experimental e a seleção do modelo experimental que será utilizado.
 
 \subsection{Situando o problema}
 A avaliação de ferramentas de correspondência de instâncias utiliza dois \textit{datasets} e um alinhamento de referência. Como mencionado na subseção \ref{contribuicao}, isso permite que os desenvolvedores utilizem computação específica para os \textit{datasets}. Com isso, retomamos o nosso problema:
 
 \textbf{(Problema Geral)} Como identificar que duas instâncias referem-se à mesma entidade do mundo real?
-Atualmente, estratégias baseadas em similaridade, aprendizagem, regras e contexto \cite{castano2011ontology} vêm sendo utilizadas para resolver o problema. Porém, segundo \citeonline{homoceanu2014putting} essa ferramentas para correspondência de instância não estão pontos para alinhar dados automaticamente de forma confiável. 
+Atualmente, estratégias baseadas em similaridade, aprendizagem, regras e contexto \cite{castano2011ontology} vêm sendo utilizadas para resolver o problema. Porém, segundo \citeonline{homoceanu2014putting} essa ferramentas para correspondência de instância não estão prontas para alinhar dados automaticamente de forma confiável. 
 
 Diante disso, nos deparamos com nosso problema específico: 
 
-\textbf{(Problema Específico)} Como melhorar a eficácias das ferramentas para correspondência de instâncias?
+\textbf{(Problema Específico)} Como melhorar a eficácia das ferramentas para correspondência de instâncias?
 
 \subsection{Objetivos da Investigação}
-A pesquisa a ser realizada é de caráter experimental e tem como objetivo geral \textbf{avaliar a eficácia das ferramentas de correspondência de instâncias}. O intuito do experimento é \textbf{refutar} as hipóteses nulas definidas na subseção \ref{sub:hipoteses} indicando que a abordagem proposta, apesar de não conter computação específica para os \textit{datasets} é capaz de criar correspondências com eficácia.
+A pesquisa a ser realizada é de caráter experimental e tem como objetivo geral \textbf{avaliar a eficácia das ferramentas de correspondência de instâncias}. O intuito do experimento é \textbf{refutar} as hipóteses nulas definidas na subseção \ref{sub:hipoteses}, indicando que a abordagem proposta, apesar de não conter computação específica para os \textit{datasets}, é capaz de criar correspondências com eficácia.
 
-Formalmente, o objetivo da nossa investigação pode ser definido como \textbf{analisar} ferramentas de correspondência de instâncias \textbf{com a intenção de}  compará-los \textbf{a respeito} de sua eficácia \textbf{no ponto de vista} de geração de correspondência entre instâncias \textbf{no contexto} alinhamento de dados entre \textit{datasets} \textbf{com o fim} de utilizar as melhores abordagens \textbf{provendo} uma melhoria na qualidade das ferramentas.
+Formalmente, o objetivo da nossa investigação pode ser definido como \textbf{analisar} ferramentas de correspondência de instâncias \textbf{com a intenção de} compará-las \textbf{a respeito} de sua eficácia \textbf{no ponto de vista} de geração de correspondência entre instâncias, \textbf{no contexto} de alinhamento de dados entre \textit{datasets}, \textbf{com o fim} de utilizar as melhores abordagens \textbf{provendo} uma melhoria na qualidade das ferramentas.
 
-Como objetivos específicos, nós temos:
+Como objetivos específicos, temos:
 \begin{enumerate}[label=\roman*]
-\item Comparar as abordagens criadas;
-\item Avaliar empiricamente a qualidade dos modelos criados.
+\item Comparar a abordagem proposta e as existentes;
+\item Avaliar empiricamente a qualidade dos modelo criado.
 \end{enumerate}
 
 
 \subsection{Questões de Pesquisa e Hipóteses}
 \label{sub:hipoteses}
-Após a apresentação dos objetivos deste experimento, nos deparamos com as seguintes questões de pesquisa e suas respectivas hipóteses:
+Após a apresentação dos objetivos deste experimento, nos deparamos com a seguinte questão de pesquisa e suas respectivas hipóteses:
 
 %\textbf{Q1} Existe diferença na eficácia entre AML, RiMOM-2016 e a solução proposta? Se sim, qual abordagem foi melhor?
 \textbf{Q1} Como se comportam as ferramentas para correspondência de instâncias (AML, RiMOM-2016 e Proposta) com relação a eficácia? 
@@ -89,6 +89,16 @@ Os níveis dos fatores são apresentados na Tabela \ref{tab:factor_levels}.
 \end{table}
 
 \subsection{Definição formal das Hipóteses}
+% * <profsean@gmail.com> 2017-01-19T01:59:54.731Z:
+% 
+% > Definição formal das Hipóteses
+% Para mim não é isto... Você não quer saber se são iguais ou diferentes, mas se a proposta consegue um alinhamento melhor (e em quais condições)... Deste modo, seria uma questão de verificar se a diferença de valores é estatisticamente significativa (o que não me parece ser) e porque o desempenho da proposta foi melhor no cenário 1 e intermediário no cenário 2...
+% 
+% ^ <armandobs14@gmail.com> 2017-01-19T18:15:23.403Z:
+% 
+% Foi utilizado o teste de fisher para verificar a validação de hipóteses.
+% 
+% ^ <armandobs14@gmail.com> 2017-01-20T05:11:17.970Z.
 Formalmente, todas as hipóteses definidas na seção \ref{sub:hipoteses} podem ser definidas conforme a Tabela \ref{tab:hypothesis}. P, R e F são funções que retornam, respectivamente a precisão, revocação e medida-f, com relação às abordagens F1 (AML), F2 (RiMOM-2016) e F3 (Proposta).
 
 \begin{table}[h]
@@ -114,8 +124,8 @@ A Figura \ref{fig:experiment} apresenta os passos de execução de cada alinhame
 	\item Carregar dos dados;
 	\item Executar ferramenta dentro do contêiner;
 	\item Coletar dados de alinhamento;
-	\item Destruir container;
-	\item Analisar dados;
+	\item Destruir contêiner;
+	\item Analisar dados.
 \end{itemize}
 
 \begin{figure}[h]
@@ -130,7 +140,7 @@ Os dados utilizados neste estudo foram fornecidos pela OAEI. O \textit{dataset}\
 
 %-----------------------------------------------------------
 \section{Execução do experimento}
-Para avaliar as ferramentas para correspondência de instância, o experimento irá contar com dois cenários possíveis, com uma execução para cada nível dos fatores definidos na subseção \ref{sub:fator_nivel} , totalizando 6 execuções. A Tabela \ref{tab:cenarios} apresenta os cenários. 
+Para avaliar as ferramentas para correspondência de instância, o experimento irá contar com dois cenários possíveis, com uma execução para cada nível dos fatores definidos na subseção \ref{sub:fator_nivel}, totalizando 6 execuções. A Tabela \ref{tab:cenarios} apresenta os cenários. 
 
 \begin{table}[h]
 	\centering
@@ -157,22 +167,23 @@ Para isolar os efeitos entre as execuções, todo o experimento foi conduzido em
 
 \subsection{Ameaças à validade}
 Embora todo experimento tenha sido projetado para minimizar possíveis ameaças que comprometam suas conclusões, existem algumas ameaças que devem ser mencionadas. Nos tópicos a seguir, serão apresentadas e detalhadas as ameaças deste experimento.
-
-\subsubsection{Ameaças à validade interna}
+\begin{itemize}
+\item \textbf{Ameaças à validade interna:}\\
 Uma possível ameaça interna à validade do experimento pode ser a seleção das unidades experimentais, pois os \textit{dataset} utilizados no experimento foram fornecidos pelo OAEI e nenhum outro \textit{dataset} foi utilizado.
 
-\subsubsection{Ameaças à validade externa}
+\item \textbf{Ameaças à validade externa}\\
 As unidades experimentais desta pesquisa são selecionadas de apenas uma base de dados correspondente a cada modelo, tendo, cada uma delas, características que poderão não ser generalizadas para as demais bases
 
-\subsubsection{Ameaças à validade de construto}
+\item \textbf{Ameaças à validade de construto}\\
 É possível que a quantidade de fatores e cenários não sejam suficientes para observar diferenças significativas na eficácia entre as abordagens utilizadas para a correspondência de instâncias. Além disso, deve-se considerar que o tempo de resposta não foi considerado no experimento.
 
-\subsubsection{Ameaças à validade de conclusão}
+\item \textbf{Ameaças à validade de conclusão}\\
 Devido à pequena quantidade de dados por \textit{dataset}, é possível que a quantidade de instâncias por \textit{dataset}, não seja suficiente para observar diferenças significativas nas métricas associadas.
 
+\end{itemize}
+
 \section{Análise dos Resultados}
-O experimento foi conduzido de acordo com o planejamento descrito anteriormente neste capítulo, depois da execução, os \textit{datasets} de alinhamento eram coletados. Os dados de precisão, revocação e medida-f eram calculados de acordo com as funções especificadas anteriormente.
-Ao longo desta seção, uma análise descritiva dos dados obtidos será conduzida, envolve, a apresentação das métricas referentes a cada cenário.
+O experimento foi conduzido de acordo com o planejamento descrito anteriormente neste capítulo. Depois da execução, os \textit{datasets} de alinhamento foram coletados. Os dados de precisão, revocação e medida-f foram calculados de acordo com as funções especificadas anteriormente. Ao longo desta seção, uma análise descritiva dos dados obtidos será apresentada com as métricas referentes a cada cenário.
 
 As figuras \ref{fig:cenario1} e \ref{fig:cenario2} apresentam as ferramentas de acordo com seus resultados em cada um dos cenários. A Tabela \ref{tab:resultados} sumariza os dados obtidos para cada cenário.
 
@@ -295,35 +306,37 @@ As figuras \ref{fig:cenario1} e \ref{fig:cenario2} apresentam as ferramentas de 
 \end{figure}
 \end{center}
 
-\subsection{Verificação das hipóteses}
-Esta seção tem como objetivo validar ou refutar as hipóteses propostas. A primeira hipótese a ser verificada será feita com relação à precisão. As hipóteses nula e alternativa estão numeradas abaixo, respectivamente:
-on
+%\subsection{Verificação das hipóteses}
+A seguir serão apresentados os resultados mapeados para suas respectivas hipóteses. A primeira hipótese refere-se à precisão apresentada pelas ferramentas. As hipóteses nula e alternativa estão numeradas abaixo, respectivamente:
+
 \begin{itemize}
 \item \textbf{H1-0:} A precisão apresentada pelas abordagens é igual.
 \item \textbf{H1-1:} A precisão apresentada pelas abordagens é diferente.
 \end{itemize}
 
-Para realizar a análise, devemos observar a precisão nos dois cenários de alinhamento. Como descrito na Tabela \ref{tab:resultados}, a proposta apresentou precisão de 1 para o cenário 1 e 0.906 para o cenário 2, refutando a hipótese nula (H1-0).
+Para realizar a análise, devemos observar a precisão nos dois cenários de alinhamento. Como descrito na Tabela \ref{tab:resultados}, a proposta apresentou precisão de 1 para o cenário 1 e 0.906 para o cenário 2.
 
-A próxima validação de hipótese ocorrerá com relação à revocação. As hipóteses nula e alternativa estão numeradas abaixo, respectivamente:
+A próxima validação de hipótese se refere à revocação. As hipóteses nula e alternativa estão numeradas abaixo, respectivamente:
 
 \begin{itemize}
 \item \textbf{H2-0:} A revocação apresentada pelas abordagens é igual.
 \item \textbf{H2-1:} A revocação apresentada pelas abordagens é diferente.
 \end{itemize}
 
-Diante do resultado apresentado pelas ferramentas nos dois cenários de alinhamento, onde apresentou uma revocação de 0.875 para o cenário 1 e 0.707 para o cenário 2. Apesar do bom desempenho, a proposta apresentou valores iguais a pelo menos uma das ferramentas em cada um dos cenários. Dessa forma, não é possível refutar a hipótese nula (H2-0).
+Diante do resultado apresentado pela proposta nos dois cenários de alinhamento, onde apresentou uma revocação de 0.875 para o cenário C1 e 0.707 para o cenário C2. Apesar do bom desempenho, a proposta apresentou valores iguais a pelo menos uma das ferramentas em cada um dos cenários.
 
-Finalizando a verificação de hipóteses, serão analisadas as hipóteses relacionadas à medida-f. As hipóteses nula e alternativa estão numeradas abaixo, respectivamente:
+Finalizando a verificação de hipóteses, são analisadas as hipóteses relacionadas à medida-f. As hipóteses nula e alternativa estão listadas abaixo, respectivamente:
 
 \begin{itemize}
 \item \textbf{H3-0:} A medida-f apresentada pelas abordagens é igual.
 \item \textbf{H3-1:} A medida-f apresentada pelas abordagens é diferente.
 \end{itemize}
 
-Conforme os resultados apresentados na Tabela \ref{tab:resultados}, a proposta ficou em primeira posição no cenário 1 com uma dedida-f de 0.933 e segunda posição no cenário 2 com 0.794.
+Conforme os resultados apresentados na Tabela \ref{tab:resultados}, a proposta ficou em primeira posição no cenário 1 com uma medida-f de 0.933 e segunda posição no cenário 2 com 0.794.
+
+Para a análise estatística inferencial, visando a validação das hipóteses, utilizamos o teste de Fisher \cite{fisher1922mathematical} para comparar os pares das métricas. Esse teste pode ser usado para analisar a significância estatística da amostra. Com isso, é possível aceitar ou refutar qualquer uma das hipóteses, entre outras palavras, verificar se os resultados obtidos possuem diferenças estatísticas. Para isso, usou-se os resultados obtidos no experimento como entrada, seguindo a configuração apresentada na Tabela \ref{tab:resultados}. Como resultado, o teste estatístico apresentou p-valor igual a 0.8333, indicando que as ferramentas apresentam eficácia similar em relação às métricas. Consequentemente, não é possível refutar nenhuma das hipóteses nulas.
 
 \section{Principais conclusões}
-O experimento conduzido neste capítulo, visou avaliar a eficácia das ferramentas de alinhamento de dados conectados com relação às métricas de precisão, revocação e medida-f. Essas variáveis foram avaliadas separadamente em cada um dos dois cenários de alinhamento (9-heterogeneities e falsepositives-trap).
+O experimento conduzido neste capítulo, visou avaliar a eficácia das ferramentas de alinhamento de dados conectados com relação às métricas de precisão, revocação e medida-f. Essas variáveis foram avaliadas separadamente em cada um dos dois cenários C1 e C2. No cenário C1, os dados apresentam 9 tipos de heterogeneidade ( \textit{e.g.}, multilinguagem, diferença nos catálogos, diferença fonética, diferentes graus de descrição). No cenário C2, os dados apresentam conjuntos instâncias similares, havendo apenas uma correspondência possível, o que caracteriza as demais instâncias como falso-positivas.
 
-Pelas análises realizadas, foi possível verificar que a proposta apresentou bons resultados mesmo não utilizando abordagens dedicadas ao \textit{dataset}.
+Diante dos resultados apresentados pelo teste estatístico, tem-se que as ferramentas apresentam eficácia similar para ambos os cenários analisados.  Contudo, pelas análises realizadas sobre as métricas, foi possível verificar que a proposta se destacou apenas em um dos cenários, o C1. Entretanto, deve-se ressaltar que a bordagem proposta não utiliza implementações específicas para os \textit{datasets} analisados, permitindo que seja utilizada em outros contextos com facilidade.

@@ -42,6 +42,12 @@
 % ---------------------
 % Pacotes ADICIONAIS
 % ---------------------
+\usepackage{titlesec}
+\titleformat{\paragraph}
+{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
+\titlespacing*{\paragraph}
+{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
 \usepackage{lipsum}									% Geração de dummy text
 \usepackage{amsmath,amssymb,mathrsfs}	% Comandos matemáticos avançados 
 \usepackage{setspace}  								% Para permitir espaçamento simples, 1 1/2 e duplo
@@ -84,8 +90,12 @@
 %	morekeywords={PREFIX,rdf,rdfs,url,exists,as,owl},
 	basicstyle=\ttfamily\small, 
 	breaklines=true,
-	backgroundcolor=\color{cyan!10},	
+	backgroundcolor=\color{cyan!10},
+     numbers=left,
+     numberstyle=\tiny,
 	}
+    \renewcommand{\lstlistingname}{Código}
+\renewcommand{\lstlistlistingname}{Lista de Códigos Fonte}
 %\lstset{
 %  language=Java,
 %  basicstyle=\ttfamily\small, 
@@ -176,13 +186,13 @@
 %\include{pretextual/assinaturas}
 
 % Dedicatória
-%\include{pretextual/dedicatoria}
+\include{pretextual/dedicatoria}
 
 % Agradecimentos
-%\include{pretextual/agradecimentos}
+\include{pretextual/agradecimentos}
 
 % Epígrafe
-%\include{pretextual/epigrafe}
+\include{pretextual/epigrafe}
 
 % Resumo e Abstract
 \include{pretextual/resumos}
@@ -234,6 +244,7 @@
 \include{capitulos/proposta_componentes}
 \include{capitulos/estudo_de_caso}
 \include{capitulos/experimento}
+\include{capitulos/discussao}
 \include{capitulos/conclusao}
 
 % ----------------------------------------------------------
