@@ -1,6 +1,16 @@
-\chapter{Implementação do Processo}
-\label{cap:componentes}
-A execução do processo ocorre por meio de componentes para a análise de similaridade, persistência dos dados, geração do alinhamento, lógica entre as etapas e pré-processamento (ver Figura \ref{fig:componentes}). Alguns componentes foram reusados, como o de similaridade léxica, que contém vários algoritmos para detectar a similaridade entre textos. Outros componentes foram desenvolvidos, como os responsáveis pela detecção da similaridade de recurso, alinhamento e outros.
+\section{Implementação do Processo}
+\label{sec:componentes}
+A execução do processo ocorre por meio de componentes para a análise de similaridade, persistência dos dados, geração do alinhamento, lógica entre as etapas e pré-processamento (ver Figura \ref{fig:componentes}). Alguns componentes foram reusados (em azul), como o de similaridade léxica, que contém vários algoritmos para detectar a similaridade entre textos. Outros componentes foram desenvolvidos (em amarelo), como os responsáveis pela detecção da similaridade de recurso, alinhamento e outros.
+% * <profsean@gmail.com> 2017-01-19T00:27:58.596Z:
+% 
+% > Outros componentes foram desenvolvidos, como os responsáveis pela detecção da similaridade de recurso, alinhamento e outros.
+% Consegue mostrar em cores diferentes na Figura os componentes reusados e os desenvolvidos?
+% 
+% ^ <armandobs14@gmail.com> 2017-01-20T04:12:40.858Z:
+%
+% Colori de azul os componentes reusados  e de deixei em amarelos os componentes desenvolvidos.
+%
+% ^ <armandobs14@gmail.com> 2017-01-20T04:12:42.793Z.
 
 \begin{figure}[!ht]
 	\centering
@@ -12,21 +22,10 @@ A execução do processo ocorre por meio de componentes para a análise de simil
 Apesar de existirem diversas soluções que contém algoritmos para o cálculo de similaridade e alinhamento entre recursos, optou-se pelo desenvolvimento de uma abordagem que contemplasse problemas provenientes de bases de dados reais (acentuação, ausência de propriedades, formatação e outros) \cite{castano2011ontology,ferrara2008towards}.
 Os principais componentes utilizados são:
 
-\section{Persistência}
+\subsection{Pré-processamento}
+O componente de pré-processamento tem como função realizar tratamentos nos textos que serão aplicados à função de similaridade. Alguns exemplos de tratamento são: tratamento de acentos, pontuação e outros.
 
-O componente de persistência é responsável por materializar as correspondências encontras pelo componente de alinhamento. Para isso, é utilizado o JOINT, que de acordo com \citeonline{holanda2013joint}, é um arcabouço para facilitar o desenvolvimento de aplicações baseadas em ontologia. As \textit{features} apresentadas pela ferramenta JOINT permitem que operações sejam realizada diretamente no servidor de triplas (Virtuoso, OWLim etc.). Além disso, essa ferramenta também suporta a execução de consultas SPARQL, que através de um sistema de tradução, transforma as triplas em objetos da linguagem Java.
-
-A Figura \ref{fig:joint} apresenta a arquitetura do JOINT.
-
-\begin{figure}[!ht]
-	\centering
-	\includegraphics[width=1\textwidth]{./imagens/joint.png}
-	\caption{Arquitetura da ferramenta JOINT}
-	\footnotesize{Fonte: \cite{holanda2013joint}.}
-	\label{fig:joint}
-\end{figure}
-
-\section{Similaridade}
+\subsection{Similaridade}
 O componente de similaridade é dividido em dois subcomponentes, sendo eles o de similaridade léxica e recurso. O primeiro utiliza métricas que analisam a similaridade entre palavras e textos. Algumas dessas técnicas são Levenshtein \cite{levenshtein1966binary}, Cosseno \cite{singhal2001modern}, Jaro-Winkler \cite{winkler1990string} e outros. O segundo componente, que se refere à similaridade de recurso utiliza o primeiro e tem como função gerar a similaridade entre recursos.
 
 Para o cálculo da similaridade dos recursos foi utilizada uma abordagem baseada na técnica de subgrafo semântico \cite{wang2008lily}. Na prática, um subgrafo semântico diz respeito às triplas que estão relacionadas a um recurso qualquer, que estão de acordo com a modelagem ontológica. A Figura \ref{fig:subgrafo} representa um subgrafo que relaciona um autor e sua publicação. Além de propriedades de objetos, um subgrafo também possui propriedades de dados, tanto do recurso principal (Author), quanto dos conceitos relacionados (Production). % O trecho de código \ref{lst:similaridade} descreve a implementação do cálculo de similaridade.
@@ -120,14 +119,24 @@ Para o cálculo da similaridade dos recursos foi utilizada uma abordagem baseada
 
 
 O valor gerado pelo componente de similaridade é enviado para o componente de alinhamento.
-\section{Alinhamento}
+
+\subsection{Alinhamento}
 O componente de alinhamento tem como responsabilidade determinar, de acordo com os valores obtidos na etapa de similaridade, se os recursos analisados realmente dizem respeito à mesma entidade do mundo real. Para determinar se o alinhamento deve ser realizado, este componente faz uso de limiares de aceitação, que são determinados previamente. Por esse motivo, o processo de alinhamento não é uma tarefa automática, pois precisa que os valores sejam ajustados. Existem diversas formas de determinar o valor do limiar, que vão desde executar várias vezes e analisar o melhor custo/benefício entre precisão e revocação até utilizar técnicas que atualizam o valor do limiar dinamicamente.
 
 
-\section{Núcleo}
+\subsection{Núcleo}
+O componente de núcleo é responsável por concentrar e coordenar as configurações durante a execução. Atualmente, o componente de núcleo conta com três modalidades para a correspondência entre instâncias, sendo elas o alinhamento simples, que é executado em todas as modalidades, podendo também ser executado de forma independente, como mencionado na subseção \ref{im_simples}. O alinhamento em cascata, que é executado quando é escolhido um conceito relacionado ao conceito cujas instâncias se deseja alinhar. O processo de execução do alinhamento em cascata pode ser encontrado na subseção \ref{sub:cascata}. Por fim, há o alinhamento em multicascata, que ocorre quando mais de um conceito relacionado é escolhido. Vale ressaltar que esta variação se trata dos alinhamentos em cascata de vários conceitos relacionados, que podem ser executados em paralelo.
 
-O componente de núcleo é responsável por concentrar e coordenar as configurações durante a execução. Atualmente, o componente de núcleo conta com três modalidades para a correspondência entre instâncias, sendo elas o alinhamento simples, que é executado em todas as modalidades, podendo também ser executado de forma independente, como mencionado na subseção \ref{im_simples}. O alinhamento em cascata, que é executando quando é escolhido um conceito relacionado ao conceito cujas instâncias se deseja alinhar. O processo de execução do alinhamento em cascada pode ser encontrado na subseção \ref{sub:cascata}. Por fim, o alinhamento em multicascata, que ocorre quando mais de um conceito relacionado é escolhido. Vale ressaltar que esta variação se trata do alinhamento em cascata de vários conceitos relacionados, que pode ser executado em paralelo.
 
-\section{Pré-processamento}
-O componente de pré-processamento tem como função realizar tratamentos nos textos que serão aplicados à função de similaridade. Alguns exemplos de tratamento são: tratamento de acentos, pontuação e outros.
+\subsection{Persistência}
+O componente de persistência é responsável por materializar as correspondências encontradas pelo componente de alinhamento. Para isso, é utilizado o JOINT, que de acordo com \citeonline{holanda2013joint}, é um arcabouço para facilitar o desenvolvimento de aplicações baseadas em ontologia. As \textit{features} apresentadas pela ferramenta JOINT permitem que operações sejam realizadas diretamente no servidor de triplas (Virtuoso, OWLim etc.). Além disso, essa ferramenta também suporta a execução de consultas SPARQL, que através de um sistema de tradução, transforma as triplas em objetos da linguagem Java.
 
+A Figura \ref{fig:joint} apresenta a arquitetura do JOINT.
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=1\textwidth]{./imagens/joint.png}
+	\caption{Arquitetura da ferramenta JOINT}
+	\footnotesize{Fonte: \cite{holanda2013joint}.}
+	\label{fig:joint}
+\end{figure}

@@ -2,16 +2,18 @@
 \label{cap:introducao}
 A Web é baseada em documentos, onde os documentos ou páginas são descritas através de uma linguagem de marcação de hipertexto (HTML) e interligados através de \textit{hiperlinks}. Para acessar as páginas na Web, é necessário um mecanismo capaz de identificar de forma única cada uma dessas páginas, o que é feito através de um mecanismo de identificação global chamado URI (Uniform Resource Identifier). Dessa forma, para ter acesso a um conteúdo específico de qualquer documento neste paradigma, é necessário obter todo o documento.
 
-Analogamente, a Web Semântica, ou Web de dados\footnote{Para mais informações, acesse: \url{https://www.w3.org/standards/semanticweb/data}}, através de URIs, possibilita que os dados sejam identificados de forma única, permitindo que os dados desejados sejam recuperados. Os dados são representados através de um framework de descrição de recursos (RDF), além de contar com um protocolo para consulta aos dados, o \textit{Simple Protocol and RDF Query Language} (SPARQL). Através desses recursos juntamente com princípios e boas práticas, surge o conceito de Dados Conectados.
+Analogamente, a Web Semântica, ou Web de dados\footnote{Para mais informações, acesse: \url{https://www.w3.org/standards/semanticweb/data}}, através de URIs, possibilita que recursos na web sejam identificados de forma única, viabilizando assim a recuperação de seus conteúdos. Esses, por sua vez, são representados através de um framework de descrição de recursos (RDF), além de contar com um protocolo para consulta, o \textit{Simple Protocol and RDF Query Language} (SPARQL). Tais elementos, juntamente com princípios e boas práticas, surge o conceito de Dados Conectados.
 
 %Deve-se ressaltar que o RDF é responsável por dar estrutura aos dados seguindo o padrão de tripla: Sujeito, Predicado e Objeto. Com objetivo de dar significado aos dados utilizam-se vocabulários e ontologias. Tecnicamente, pode-se entender uma ontologia como um artefato computacional utilizado para modelar um domínio de interesse. Essa ontologia é composta de classes e propriedades, que são implementados através de uma linguagem de descrição de ontologias (OWL).
  
-Dados Conectados estão intimamente relacionados à Web de dados, pois de acordo com \citeonline{bizer2009linked}, dados de diferentes fontes são disponibilizados na Web e conectados uns aos outros. Assim, Dados Conectados são considerados um ponto chave para o desenvolvimento da Web Semântica \cite{berners2001semantic}. Além disso, \citeonline{Isotani2015} destacam seu potencial para negócios e governos.  
+Dados Conectados estão intimamente relacionados à Web de dados, pois de acordo com \citeonline{bizer2009linked}, dados de diferentes fontes são disponibilizados na Web e conectados uns aos outros. Assim, Dados Conectados são considerados um ponto chave para o desenvolvimento da Web Semântica \cite{berners2001semantic}, Além de seu potencial uso para negócios e governos \cite{Isotani2015}.  
 
 Na perspectiva de negócio, temos o caso da BestBuy, que através da utilização de serialização RDF\footnote{A seriaização RDF é uma maneira de estruturar dados seguindo a estrutura de triplas. Algumas das serializações RDF são: RDF/XML, Turtle e N-triples. Mais informações no Capítulo de fundamentação.} (RDFa\footnote{RDFa é uma serialização RDF que utiliza atributos em documentos HTML. Para mais informações acesse: \url{https://rdfa.info}}) melhorou o número de acessos via buscador  Google entre 15\% e 30\%. E do Google, que passou a utilizar a serialização json-ld\footnote{json-ld é uma serialização RDF que utiliza o json como base, esta serialização é ideal para desenvolvedores, podendo ser utilizada em serviços Web e bancos de dados não relacionais (e.g. MongoDB). Para mais informações acesse: \url{http://json-ld.org}} em um de seus produtos, o Gmail. Com disso, a aplicação passou a categorizar e fornecer visualizações personalizadas de acordo com o e-mail recebido. No governo, temos o caso do Reino Unido que publica seus dados em formato RDF, permitindo que diversos setores possam compartilhar e interoperar dados.
 Dados Conectados podem ser vistos sob duas perspectivas: publicação e consumo. A publicação está sob a perspectiva do publicador, abordando conceitos \cite{berners2006linked, wood2014linked} e processos \cite{bizer2007publish, hyland2011joy, villazon2011methodological, Avila2015} necessários para publicar e manter os dados na Web de forma conectada. O consumo aborda o ponto de vista do consumidor, tratando a exploração de dados para tornar as aplicações mais ricas. 
 
-Publicar ou manter dados conectados na Web vai além de disponibilizar conjuntos de dados através de serializações RDF. É necessário conectá-los a outros conjuntos de dados já existentes. Porém, criar \textit{links} entre conjuntos de dados requer uma análise cuidadosa por parte do especialista, que apesar de ser uma abordagem eficaz, não é escalável, visto que a quantidade de dados publicados cresce constantemente. Consequentemente, inviabiliza o processo de publicação de forma artesanal. Logo, para que seja possível construir a Web de Dados de forma eficiente, é necessário que existam soluções capazes de conectar dados de forma automática ou semiautomática.
+Publicar ou manter dados conectados na Web vai além de disponibilizar conjuntos de dados através de serializações RDF. É necessário conectá-los a outros conjuntos de dados já existentes. Porém, criar \textit{links} entre conjuntos de dados requer uma análise cuidadosa por parte do especialista, que apesar de ser uma abordagem eficaz, não é escalável, visto que a quantidade de dados publicados cresce constantemente. Consequentemente, inviabiliza o processo de publicação de forma manual. Logo, para que seja possível construir a Web de Dados de forma eficiente, é necessário que existam soluções capazes de conectar dados de forma automática ou semiautomática.
+
+\section{Problemática e justificativa}
 
 Conectar dados automaticamente é um problema reconhecido por diversas comunidades. Dentre essas comunidades, podemos destacar as comunidades de Bancos de Dados e Web Semântica. Na primeira, esse problema é conhecido através do termo \textbf{\textit{Record Linkage}} \cite{gu2003record}. Na segunda, ele é reconhecido pelo termo \textbf{\textit{Instance Matching}}. Além disso, também é possível encontrar referências como \textbf{Problema de Resolução de Entidades} \cite{menestrina2005generic} e \textbf{Deduplicação} \cite{sarawagi2002interactive}, que tem como objetivo identificar e conectar recursos julgados representar a mesma entidade do mundo real.
 
@@ -118,16 +120,16 @@ Dentre as propriedades com suporte inadequado,  destaca-se a propriedade owl:sam
 Neste contexto, este trabalho propõe uma abordagem independente de contexto para o alinhamento de dados conectados por meio de um processo de alinhamento que leva em consideração aspectos dos dados e  características do modelo ontológico.
 Assim, os recursos/instâncias analisados, além de alinhados através das propriedades de dados, podem ser alinhados através seus relacionamentos. Para isso, propõe-se uma abordagem de alinhamento em cascata. Ademais, a proposta trata o problema do alinhamento entre \textit{datasets} reais, permitindo que seja possível alinhar \textit{datasets} distribuídos na Web de forma confiável.
 
-\section{Problemática e justificativa}
+
 Em um cenário favorável, a tarefa de encontrar recursos correspondentes entre \textit{datasets} pode ser realizada com facilidade. Por outro lado, o mesmo não pode ser dito quando há milhares de instâncias, visto que os recursos necessários para manter uma análise manual tornam esta prática inviável. Além disso, devido ao esforço necessário juntamente com a quantidade de instâncias que devem ser comparadas, tem-se que a qualidade da análise pode ser comprometida.
 
 Sabendo que aumentar a quantidade de recursos não é uma solução, nos deparamos com nosso problema geral:
 
 \textbf{(Problema Geral)} Como simplificar a identificação de instâncias que dizem respeito à mesma entidade do mundo real?
 
-Para manter a qualidade das análises, mesmo com o crescimento dos \textit{datasets}, diversas comunidades utilizam a tecnologia para auxiliar na correspondência de recursos. Dentre essas comunidades, destaca-se a de Banco de Dados (BD), que estuda abordagens para identificar recursos entre bancos de dados diferentes. No entando, \citeonline{araujo2011serimi} ressaltam que apesar das abordagens utilizadas pela comunidade de BD (\textit{Record Linkage}) compartilhar características com as abordagens utilizadas pela comunidade de Dados Conectados (\textit{Instance Matching}), ambas diferenciam-se em alguns aspectos, tais como: semântica dos relacionamentos e flexibilidade do modelo RDF.
+Para manter a qualidade das análises, mesmo com o crescimento dos \textit{datasets}, diversas comunidades utilizam a tecnologia para auxiliar na correspondência de recursos. Dentre essas comunidades, destaca-se a de Banco de Dados (BD), que estuda abordagens para identificar recursos entre bancos de dados diferentes. No entanto, \citeonline{araujo2011serimi} ressaltam que apesar das abordagens utilizadas pela comunidade de BD (\textit{Record Linkage}) compartilhar características com as abordagens utilizadas pela comunidade de Dados Conectados (\textit{Instance Matching}), ambas diferenciam-se em alguns aspectos, tais como: semântica dos relacionamentos e flexibilidade do modelo RDF.
 
-Para suportar os aspectos que diferenciam \textit{Record Linkage} de \textit{Instance Matching}, a comunidade de Dados Conectados vêm desenvolvendo abordagens próprias. Essas abordagens vêm se mostrando promissoras diante das avaliações às quais são submetidas. Porém, apesar do desempenho apresentado, diversas soluções deixam a desejar no suporte a aspectos relacionados à semântica do modelo ontológico, comprometendo a qualidade das correspondências geradas.
+Para suportar os aspectos que diferenciam \textit{Record Linkage} de \textit{Instance Matching}, a comunidade de Dados Conectados vêm desenvolvendo abordagens próprias. Essas abordagens vêm se mostrando promissoras diante das avaliações às quais são submetidas. Porém, apesar do desempenho apresentado, diversas soluções provêm suporte insuficiente a aspectos relacionados à semântica do modelo ontológico, comprometendo a qualidade das correspondências geradas.
 
 O que leva ao nosso problema específico.
 
@@ -140,7 +142,7 @@ Para tanto, é apresentado como questão de pesquisa (\textbf{Q1}) o seguinte qu
 \section{Objetivo}
 
 
-Essa abordagem visa disponibilizar um mecanismo útil que permita alinhar semiautomaticamente recursos entre \textit{datasets} diferentes. Além disso, a proposta também pretende facilitar a identificação e alinhamento de recursos dentro do mesmo \textit{dataset}. 
+Essa abordagem visa disponibilizar um mecanismo útil que permita alinhar recursos entre \textit{datasets} diferentes. Além disso, a proposta também pretende facilitar a identificação e alinhamento de recursos dentro do mesmo \textit{dataset}. 
 
 Apesar de ser um trabalho com enfoque em engenharia de software, as suas contribuições estão mais voltadas para a área de Dados Conectados. Segue algumas dessas contribuições:
 
@@ -150,29 +152,30 @@ Apesar de ser um trabalho com enfoque em engenharia de software, as suas contrib
 \end{itemize}
 
 
-\section{Contribuição e relevância do trabalho}
+\section{Relevância e contribuições do trabalho}
 \label{contribuicao}
 Anualmente a OAEI realiza a avaliação de ferramentas para a correspondência de instâncias. Essa avaliação utiliza \textit{datasets} previamente disponibilizados juntamente com uma referência de correspondências entre as instâncias. Essa prática permite que o experimento seja reproduzido, permitindo que os resultados fornecidos pela OAEI sejam validados. Por outro lado, permite também que dos desenvolvedores implementem algoritmos que utilizam computação específica para o \textit{dataset}. Desta forma, é necessário o estudo de abordagens independentes de contexto que sejam capazes de alinhar dados de forma confiável. Além disso, as soluções fornecidas requerem que os \textit{datasets} sejam fornecidos em formato de arquivo, sendo necessário gerar os arquivos dos \textit{datasets} sempre que é necessário realizar a correspondência de instâncias.
 
 Nesse contexto, a proposta apresenta as seguintes contribuições:
 \begin{itemize}
 \item Desenvolvimento de processo independente de contexto para o alinhamento de dados conectados;
-\item Viabilização da execução do alinhamento diretamente dentro do armazenamento de triplas;% * 
+\item Viabilização da execução do alinhamento diretamente no armazenamento dos dados;
 \item  Criação de experimento e estudo de caso para avaliar a eficácia das soluções de alinhamento no estado da arte.
 \end{itemize}
 
 \section{Estrutura do trabalho}
 
-Esta dissertação está dividida em 8 capítulos. O Capítulo \ref{cap:introducao} introduz a problemática e os objetivos do trabalho proposto, enaltecendo a necessidade de uma abordagem capaz de alinhar dados conectados. No Capítulo \ref{cap:fundamentacao}, são apresentados os conceitos relacionados ao tema deste trabalho, como RDF, Ontologias, Dados Conectados, Algoritmos de similaridade e Alinhamento de Dados Conectados.
+Esta dissertação está dividida em 7 capítulos. O Capítulo \ref{cap:fundamentacao}, são apresentados os conceitos e trabalhos relacionados ao ao trabalho proposto. Na conclusão do capítulo é apresentada uma tabela comparativa entre a abordagem proposta e os trabalhos relacionados apresentados.
 
-No Capítulo \ref{cap:relacionados}, são apresentados os trabalhos relacionados à abordagem proposta. Na conclusão do capítulo é apresentada uma tabela comparativa entre a abordagem proposta e os trabalhos relacionados apresentados.
+% O Capítulo \ref{cap:processo} descreve em detalhes o processo de correspondência de instâncias proposto. O processo foi descrito por intermédio de um diagrama de atividades. A subseção \ref{sub:cascata} descreve em detalhes como é realizado o alinhamento/correspondência em cascata, que é umas das principais contribuições deste trabalho.
 
-O Capítulo \ref{cap:processo} descreve em detalhes o processo de correspondência de instâncias proposto. O processo foi descrito por intermédio de um diagrama de atividades. A subseção \ref{sub:cascata} descreve em detalhes como é realizado o alinhamento/correspondência em cascata, que é umas das principais contribuições deste trabalho.
+% O Capítulo \ref{cap:componentes} mostra como a proposta foi desenvolvida, através de um diagrama de componentes. Neste capítulo, todas as etapas do processo bem como os componentes da arquitetura são descritos detalhadamente.
 
-O Capítulo \ref{cap:componentes} mostra como a proposta foi desenvolvida, através de um diagrama de componentes. Neste capítulo, todas as etapas do processo bem como os componentes da arquitetura são descritos detalhadamente.
+O Capítulo \ref{cap:proposta} descreve em detalhes o processo e a arquitetura desenvolvida para suportar a correspondência de instâncias. 
+Nas seções que compõem este capítulo, o processo e a arquitetura são apresentados através de diagramas.
 
 No Capítulo \ref{cap:estudo} é apresentado um estudo de caso. Nele é descrito o QIE, um sistema que apresenta o cruzamento dados da Revista Brasileira de Informática na Educação (RBIE), Simpósio Brasileiro de Informática na Educação (SBIE) e Workshop de informática na Escola (WIE) com dados extraídos da plataforma LATTES. Além disso, é descrito como o processo foi utilizado para alinhar os dados dos pesquisadores e de suas produções científicas entre essas bases.
 
 No Capítulo \ref{cap:experimento}, um experimento foi projetado para avaliar, em termos de eficácia através das métricas de precisão, revocação e medida-f, a abordagem proposta, em comparação com AgreementMakerLite (AML) \cite{fariaoaei} e RiMOM-2016 \cite{zhang2016rimom}. Cada conjunto de alinhamento gerado é avaliado e uma discussão geral é apresentada ao final do capítulo.
 
-Por fim, no Capítulo \ref{cap:conclusao}, são apresentadas as considerações finais deste trabalho. bem como são definidos alguns trabalhos futuros.
+Por fim, no Capítulo \ref{cap:conclusao}, são apresentadas as considerações finais deste trabalho.
