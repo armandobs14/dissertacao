@@ -1,6 +1,6 @@
 \section{Implementação do Processo}
 \label{sec:componentes}
-A execução do processo ocorre por meio de componentes para a análise de similaridade, persistência dos dados, geração do alinhamento, lógica entre as etapas e pré-processamento (ver Figura \ref{fig:componentes}). Alguns componentes foram reusados (em azul), como o de similaridade léxica, que contém vários algoritmos para detectar a similaridade entre textos. Outros componentes foram desenvolvidos (em amarelo), como os responsáveis pela detecção da similaridade de recurso, alinhamento e outros.
+A execução do processo ocorre por meio de componentes para a análise de similaridade, persistência dos dados, geração do alinhamento, lógica entre as etapas e pré-processamento (ver Figura \ref{fig:componentes}). Alguns componentes foram reusados (em preto), como o de similaridade léxica, que contém vários algoritmos para detectar a similaridade entre textos. Outros componentes foram desenvolvidos (em branco), como os responsáveis pela detecção da similaridade de recurso, alinhamento e outros.
 % * <profsean@gmail.com> 2017-01-19T00:27:58.596Z:
 % 
 % > Outros componentes foram desenvolvidos, como os responsáveis pela detecção da similaridade de recurso, alinhamento e outros.
@@ -8,7 +8,7 @@ A execução do processo ocorre por meio de componentes para a análise de simil
 % 
 % ^ <armandobs14@gmail.com> 2017-01-20T04:12:40.858Z:
 %
-% Colori de azul os componentes reusados  e de deixei em amarelos os componentes desenvolvidos.
+% Colori de preto os componentes reusados  e de deixei em amarelos os componentes desenvolvidos.
 %
 % ^ <armandobs14@gmail.com> 2017-01-20T04:12:42.793Z.
 
@@ -30,12 +30,12 @@ O componente de similaridade é dividido em dois subcomponentes, sendo eles o de
 
 Para o cálculo da similaridade dos recursos foi utilizada uma abordagem baseada na técnica de subgrafo semântico \cite{wang2008lily}. Na prática, um subgrafo semântico diz respeito às triplas que estão relacionadas a um recurso qualquer, que estão de acordo com a modelagem ontológica. A Figura \ref{fig:subgrafo} representa um subgrafo que relaciona um autor e sua publicação. Além de propriedades de objetos, um subgrafo também possui propriedades de dados, tanto do recurso principal (Author), quanto dos conceitos relacionados (Production). % O trecho de código \ref{lst:similaridade} descreve a implementação do cálculo de similaridade.
 
-\begin{figure}[!ht]
-	\centering
-	\includegraphics[width=0.9\textwidth]{./imagens/subgrafo_semantico.pdf}
-    \caption{subgrafo que relaciona os conceitos Author e Publication}
-	\label{fig:subgrafo}
-\end{figure}
+%\begin{figure}[!ht]
+%	\centering
+%	\includegraphics[width=0.9\textwidth]{./imagens/subgrafo_semantico.pdf}
+%    \caption{subgrafo que relaciona os conceitos Author e Publication}
+%	\label{fig:subgrafo}
+%\end{figure}
 
 % \begin{lstlisting}[captionpos=b, caption= Trecho de código java para calcular a similaridade entre recursos, label=lst:similaridade,
 %    basicstyle=\ttfamily,frame=single]

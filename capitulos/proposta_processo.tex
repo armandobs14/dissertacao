@@ -20,7 +20,7 @@ Tais critérios foram definidos de acordo com o escopo do processo, ou seja, dad
 \subsection{II - Identificar Conceitos}
 \label{sec:prop_identificar}
 Para auxiliar na escolha do conceito principal bem como os conceitos que estão relacionados, foram desenvolvidas duas consultas SPARQL. A primeira consulta explora a ontologia, principalmente as relações rdfs:domain e rdfs:range das propriedades de objeto (ver código \ref{lst:sparql}). A segunda explora os dados e as relações estabelecidas pelas instâncias.
-Na consulta (código \ref{lst:sparql}), a linha 4 tem o papel de recuperar todos os conceitos pertencentes à ontologia ou vocabulário. Na linha 5 é aplicada uma restrição, em que os conceitos devem ser domínio ou \textit{range} de uma relação. Consequentemente, uma instância desse conceito será sujeito ou objeto de uma tripla (ver Figura \ref{fig:subgrafo1}).
+Na consulta (código \ref{lst:sparql}), a linha 4 tem o papel de recuperar todos os conceitos pertencentes à ontologia ou vocabulário. Na linha 5 é aplicada uma restrição, em que os conceitos devem ser domínio ou \textit{range} de uma relação. Consequentemente, uma instância desse conceito será sujeito ou objeto de uma tripla (ver Figura \ref{fig:subgrafo}).
 % * <profsean@gmail.com> 2017-01-18T23:27:16.703Z:
 % 
 % > linha 4
@@ -35,7 +35,7 @@ Na consulta (código \ref{lst:sparql}), a linha 4 tem o papel de recuperar todos
 	\centering
 	\includegraphics[width=0.9\textwidth]{./imagens/subgrafo_semantico.pdf}
 	\caption{Relação entre ontologia e dados}
-	\label{fig:subgrafo1}
+	\label{fig:subgrafo}
 \end{figure}
 
 \begin{lstlisting}[float,captionpos=b, caption= Consulta SPARQL para identificação de conceito, label=lst:sparql,
