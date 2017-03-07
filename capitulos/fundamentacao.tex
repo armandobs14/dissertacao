@@ -57,9 +57,18 @@ Para conectar os dados disponíveis na Web com qualidade, foram desenvolvidas as
 
 \subsection{Algoritmos de similaridade}
 
-Algoritmos de similaridade podem ser entendidos como funções utilizadas para medir a semelhança entre objetos. Tais funções são utilizadas em vários contextos, partindo de correções ortográficas até tarefas de processamento de linguagem natural (PLN). A escolha de uma abordagem pode variar de acordo com o contexto de aplicação. No contexto de similaridade entre palavras por exemplo, um dos algoritmos de similaridade mais conhecidos pela comunidade foi proposto por Levenshtein em 1965 \cite{levenshtein1966binary}, que se baseia na quantidade mínima de edições (remoções e adições) necessárias para que uma palavra seja igual a outra.
+Algoritmos de similaridade podem ser entendidos como funções utilizadas para medir a semelhança entre objetos. Essas funções podem ser utilizadas em diferentes contextos, partindo de correções ortográficas até tarefas de processamento de linguagem natural (PLN). A escolha de uma abordagem pode variar de acordo com o contexto de aplicação. Além disso, existe mais de uma abordagem dentro do mesmo contexto. A Figura \ref{fig:tecnicas_similaridade} apresenta uma visão geral sobre as abordagens de acordo com seu contexto de aplicação. 
 
-%A Figura [x] apresenta uma visão geral sobre as abordagens existentes para calcular a similaridade entre objetos. 
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=1\textwidth]{./imagens/similarity-metrics.pdf}
+	\caption{Visão geral das tecnicas de similaridade}
+	\label{fig:tecnicas_similaridade}
+\end{figure}
+
+%descrever as categorias pontilhadas 
+
+%No contexto de similaridade entre palavras por exemplo, um dos algoritmos de similaridade mais conhecidos pela comunidade foi proposto por Levenshtein em 1965 \cite{levenshtein1966binary}, que se baseia na quantidade mínima de edições (remoções e adições) necessárias para que uma palavra seja igual a outra.
 
 %Dependendo do objeto a ser analisado (palavras, textos e objetos complexos) existem diferentes abordagens (baseadas em caractere, baseadas em \textit{token}) \cite{cohen2003comparison}. Abordagens baseadas em caractere (e.g. Levenshtein) realizam a comparação letra por letra. Já as abordagens baseadas em \textit{tokens} (e.g. Jaro) consideram a palavra como um corpo único.
 
