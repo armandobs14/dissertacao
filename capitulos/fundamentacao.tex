@@ -57,7 +57,7 @@ Para conectar os dados disponíveis na Web com qualidade, foram desenvolvidas as
 
 \subsection{Algoritmos de similaridade}
 
-Algoritmos de similaridade podem ser entendidos como funções utilizadas para medir a semelhança entre objetos. Essas funções podem ser utilizadas em diferentes contextos, partindo de correções ortográficas até tarefas de processamento de linguagem natural (PLN). A escolha de uma abordagem pode variar de acordo com o contexto de aplicação. Além disso, existe mais de uma abordagem dentro do mesmo contexto. A Figura \ref{fig:tecnicas_similaridade} apresenta uma visão geral sobre as abordagens de acordo com seu contexto de aplicação. 
+Algoritmos de similaridade podem ser entendidos como funções utilizadas para medir a semelhança entre objetos. Essas funções podem ser utilizadas em diferentes contextos, partindo de correções ortográficas até tarefas de processamento de linguagem natural (PLN). A escolha de uma abordagem pode variar de acordo com o contexto de aplicação. Além disso, existe mais de uma abordagem dentro do mesmo contexto. 
 
 \begin{figure}[!ht]
 	\centering
@@ -66,11 +66,24 @@ Algoritmos de similaridade podem ser entendidos como funções utilizadas para m
 	\label{fig:tecnicas_similaridade}
 \end{figure}
 
-%descrever as categorias pontilhadas 
+A Figura \ref{fig:tecnicas_similaridade} apresenta uma visão geral sobre as abordagens de acordo com seu contexto de aplicação (tracejado). Esses contextos estão descritos a seguir:
 
-%No contexto de similaridade entre palavras por exemplo, um dos algoritmos de similaridade mais conhecidos pela comunidade foi proposto por Levenshtein em 1965 \cite{levenshtein1966binary}, que se baseia na quantidade mínima de edições (remoções e adições) necessárias para que uma palavra seja igual a outra.
-
-%Dependendo do objeto a ser analisado (palavras, textos e objetos complexos) existem diferentes abordagens (baseadas em caractere, baseadas em \textit{token}) \cite{cohen2003comparison}. Abordagens baseadas em caractere (e.g. Levenshtein) realizam a comparação letra por letra. Já as abordagens baseadas em \textit{tokens} (e.g. Jaro) consideram a palavra como um corpo único.
+\begin{itemize}
+	\item \textbf{Baseado em edição:}\\
+	As técnicas baseadas em edição calculam a similaridade entre objetos através do número de inserções e remoções necessárias para que um objeto se torne igual ao outro. Neste contexto, tem-se que  um dos algoritmos de similaridade mais conhecidos pela comunidade foi proposto por Levenshtein em 1965 \cite{levenshtein1966binary}, que se baseia na quantidade mínima de edições (remoções e adições) necessárias para que uma palavra seja igual a outra.
+	
+	\item \textbf{Baseado em token:}\\
+	As técnicas baseadas em token consideram que cada palavra é um elemento de conjunto, que pode ser ordenado (vetor) ou não ordenado. Neste contexto, tem-se que o objetivo das técnicas é analisar quão similar são estes conjuntos. Na perspectiva de conjunto como vetor, tem-se que quanto menor é o ângulo existente entre os vetores mais similares eles são. Na perspectiva de conjunto, a similaridade entre os conjuntos é dada pela quantidade de elementos comuns aos dois conjuntos.
+	
+	\item \textbf{Dependente de domínio:}\\
+	As técnicas dependentes de domínio exploram informações relacionadas aos dados. Essas informações são de conhecimento prévio do especialista. Dados como: datas, valores e regras de associação, são utilizados para analisar a similaridade entre objetos. Vale ressaltar que as técnicas baseadas em contexto possuem baixo índice de reuso.
+	
+	\item \textbf{Fonético:}\\
+	As técnicas baseadas em similaridade fonética exploram a semelhança existente entre os sons. Isso quer dizer que palavras homófonas apresentam o mesmo valor. Por exemplo, o valor gerado pela função \textit{soundex} para as entradas \textbf{xeque} e \textbf{cheque} são equivalentes (("22).
+	
+	\item \textbf{Híbrido:}\\
+	As técnicas baseadas ema nordagem hóbrida, por sua vez, mesclam uma ou mais abordagens apresentadas. Por exemplo, a técnica denominada monge-elkan \cite{monge1996field}, que permite a utilização de outras técnicas internamente. Esta técnica executa em ordem quadrática, visto que a similaridade escolhida por cada componente é dada pela maior similaridade encontrada durante as comparações.
+\end{itemize}
 
 Nesta proposta, foi utilizada uma generalização do algoritmo de Monge-Elkan \cite{monge1996field}, que tem o objetivo de dar um peso maior a \textit{tokens} mais semelhantes. Inicialmente, Monge-Elkan foi desenvolvido com o objetivo de calcular a semelhança entre textos que possuem vários \textit{tokens}, onde a similaridade de cada \textit{token} é calculada através da média das similaridades internas, que é provida por uma técnica baseada em caractere (e.g. Cosseno, Jaro, Dice). Essa abordagem se destaca em cenários de desordem ou ausência de \textit{tokens}. Além disso, esse algoritmo explora os benefícios providos pelas abordagens baseadas caractere (e.g. erros de digitação, erros de OCR e erros ortográficos) \cite{jimenez2009generalized}.
 
