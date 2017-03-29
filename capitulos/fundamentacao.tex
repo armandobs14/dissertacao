@@ -109,7 +109,7 @@ Alinhar Dados Conectados  trata-se de um processo que tem como objetivo identifi
 f\left( { URI }_{ i },{ URI }_{ j } \right) :=\begin{cases} \mbox{verdadeiro, se } sim\left( { URI }_{ i },{ URI }_{ j } \right) >\theta  \\ \mbox{falso, caso contrário} \end{cases}\mbox{com }{ URI }_{ i } \in { D }_{ i }\mbox{ e }{ URI }_{ j } \in { D }_{ j }
 \end{equation}
 
-onde 1 $\leq$ i,j $\leq$ n, e $sim()$ é uma função que é capaz de calcular a similaridade entre os recursos e $\theta$ é o parâmetro que regula o nível de qualidade para o alinhamento, que também pode ser conhecido como limiar ou \textit{threshold}. Além disso, é possível ressaltar outros benefícios que surgem a partir da conexão entre dados, sendo elas: 
+onde 1 $\leq$ i,j $\leq$ n, e $sim()$ é uma função que é capaz de calcular a similaridade entre os recursos. Esses recursos pertencem a \textit{Datasets} distintos( ${ D }_{ i }$ e ${ D }_{ j }$ ). Por fim, tem-se que $\theta$ é o parâmetro que regula o nível de qualidade para o alinhamento, que também pode ser conhecido como limiar ou \textit{threshold}. Além disso, é possível ressaltar outros benefícios que surgem a partir da conexão entre dados, sendo elas: 
 
 \begin{itemize}
 	\item \textbf{Integração semântica de dados:} Refere-se ao melhoramento das técnicas existentes para descobertas de mapeamento (semi) automático entre ontologias heterogêneas e distribuídas; 
@@ -117,7 +117,7 @@ onde 1 $\leq$ i,j $\leq$ n, e $sim()$ é uma função que é capaz de calcular a
 	\item\textbf{ População de ontologias:} Refere-se à descoberta de relacionamentos entre novas instâncias e as instâncias já existentes na base de conhecimento. 
 \end{itemize}
 
-Segundo \citeonline{ferrara2008towards}, para que uma abordagem seja capaz de identificar recursos que identifiquem a mesma entidade do mundo real com propriedade essa deve satisfazer diferentes requisitos, que estão  dispostos em três categorias (ver Figura \ref{fig:imrequirements}).
+Segundo \citeonline{ferrara2008towards}, para que uma abordagem seja capaz de identificar recursos que identifiquem a mesma entidade do mundo real, essa deve satisfazer diferentes requisitos, que estão  dispostos em três categorias (ver Figura \ref{fig:imrequirements}).
 
 \begin{figure}[!ht]
 	\centering
@@ -205,7 +205,7 @@ Neste capítulo serão apresentadas duas ferramentas para o alinhamento de dados
 \subsection{AgreementMakerLight (AML)}
 Desenvolvido em parceria entre o Instituto Gulbenkian de Ciência, a Universidade de Lisboa, e a Universidade de Illinois, o AgreementMakerLight é uma ferramenta de alinhamento de ontologias. De acordo com \cite{fariaoaei}, o AML se baseia inicialmente em técnicas e similaridade léxica, tendo como ênfase o uso de fontes externas como \textit{background}.
 
-O AML conta com três algoritmos para alinhamento voltados a correspondência de instâncias, sendo eles o \textit{HybridStringMatcher}, o \textit{ValueStringMatcher} e o \textit{Value2LexiconMatcher}. O primeiro utiliza diversas abordagens para gerar a similaridade, sendo elas a comparação entre frases, palavras. Além disso, essa abordagem hibrida também explora a \textit{WordNet}. O segundo utiliza o mapeamento de valor para gerar calcular a similaridade, penalizando pares nos quais anotações ou propriedades de dados não são os mesmos. Por fim, o terceiro une as duas abordagens anteriores.
+O AML conta com três algoritmos para alinhamento voltados a correspondência de instâncias, sendo eles o \textit{HybridStringMatcher}, o \textit{ValueStringMatcher} e o \textit{Value2LexiconMatcher}. O primeiro utiliza diversas abordagens para gerar a similaridade, sendo elas a comparação entre frases, palavras. Além disso, essa abordagem híbrida também explora a \textit{WordNet}. O segundo utiliza o mapeamento de valor para calcular a similaridade, penalizando pares nos quais anotações ou propriedades de dados não são os mesmos. Por fim, o terceiro une as duas abordagens anteriores.
 
 Apesar do AML possuir diferentes algoritmos de alinhamento na ferramenta, todos eles trabalham apenas no nível dos dados. Consequentemente, as características das propriedades são desconsideradas ao longo do processo de correspondência.
 

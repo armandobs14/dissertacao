@@ -18,12 +18,12 @@ Diante disso, nos deparamos com nosso problema específico:
 \subsection{Objetivos da Investigação}
 A pesquisa a ser realizada é de caráter experimental e tem como objetivo geral \textbf{avaliar a eficácia das ferramentas de correspondência de instâncias}. O intuito do experimento é \textbf{refutar} as hipóteses nulas definidas na subseção \ref{sub:hipoteses}, indicando que a abordagem proposta, apesar de não conter computação específica para os \textit{datasets}, é capaz de criar correspondências com eficácia.
 
-Formalmente, o objetivo da nossa investigação pode ser definido como \textbf{analisar} ferramentas de correspondência de instâncias \textbf{com a intenção de} compará-las \textbf{a respeito} de sua eficácia \textbf{no ponto de vista} de geração de correspondência entre instâncias, \textbf{no contexto} de alinhamento de dados entre \textit{datasets}, \textbf{com o fim} de utilizar as melhores abordagens \textbf{provendo} uma melhoria na qualidade das ferramentas.
+Formalmente, o objetivo da nossa investigação pode ser definido como analisar ferramentas de correspondência de instâncias com a intenção de compará-las a respeito de sua eficácia no ponto de vista de geração de correspondência entre instâncias, no contexto de alinhamento de dados entre \textit{datasets}, com o fim de utilizar as melhores abordagens provendo uma melhoria na qualidade das ferramentas.
 
 Como objetivos específicos, temos:
-\begin{enumerate}[label=\roman*]
-\item Comparar a abordagem proposta e as existentes;
-\item Avaliar empiricamente a qualidade dos modelo criado.
+\begin{enumerate}
+	\item[i)] Comparar a abordagem proposta e as existentes;
+	\item[ii)] Avaliar empiricamente a qualidade dos modelo criado.
 \end{enumerate}
 
 
@@ -84,7 +84,7 @@ Os níveis dos fatores são apresentados na Tabela \ref{tab:factor_levels}.
 		\textbf{Fator}        & \textbf{Nível} &  \textbf{Descrição}   \\ \hline
 		\multirow{3}{*}{Ferramenta} &       F1       &    Ferramenta AML     \\ \cline{2-3}
 		&       F2       & Ferramenta RiMOM-2016 \\ \cline{2-3}
-		&       F3       &       Proprosta       \\ \hline
+		&       F3       &       Proposta       \\ \hline
 	\end{tabular}
 \end{table}
 
@@ -136,7 +136,7 @@ A Figura \ref{fig:experiment} apresenta os passos de execução de cada alinhame
 \end{figure}
 
 \subsection{Coleta dos Dados}
-Os dados utilizados neste estudo foram fornecidos pela OAEI. O \textit{dataset}\footnote{\url{http://islab.di.unimi.it/content/im_oaei/2016/\#doremus}} é composto por três variações (9-heterogeneities,4-heterogeneities e falsepositives-trap). Cada uma das variações conta com um alinhamento de referência, para que seja possível calcular as métricas.
+Os dados utilizados neste estudo foram fornecidos pela OAEI. O \textit{dataset}\footnote{\url{http://islab.di.unimi.it/content/im_oaei/2016/\#doremus}} é composto por três variações (\textit{9-heterogeneities}, \textit{4-heterogeneities} e \textit{falsepositives-trap}). Cada uma das variações conta com um alinhamento de referência, para que seja possível calcular as métricas.
 
 %-----------------------------------------------------------
 \section{Execução do experimento}

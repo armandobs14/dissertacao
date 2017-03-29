@@ -19,7 +19,7 @@ Tais critérios foram definidos de acordo com o escopo do processo, ou seja, dad
 
 \subsection{II - Identificar Conceitos}
 \label{sec:prop_identificar}
-Para auxiliar na escolha do conceito principal bem como os conceitos que estão relacionados, foram desenvolvidas duas consultas SPARQL. A primeira consulta explora a ontologia, principalmente as relações rdfs:domain e rdfs:range das propriedades de objeto (ver código \ref{lst:sparql}). A segunda explora os dados e as relações estabelecidas pelas instâncias.
+Para auxiliar na escolha do conceito principal bem como os conceitos que estão relacionados, foram desenvolvidas duas consultas SPARQL. A primeira consulta explora a ontologia, principalmente as relações \textit{rdfs:domain} e \textit{rdfs:range} das propriedades de objeto (ver código \ref{lst:sparql}). A segunda explora os dados e as relações estabelecidas pelas instâncias.
 Na consulta (código \ref{lst:sparql}), a linha 4 tem o papel de recuperar todos os conceitos pertencentes à ontologia ou vocabulário. Na linha 5 é aplicada uma restrição, em que os conceitos devem ser domínio ou \textit{range} de uma relação. Consequentemente, uma instância desse conceito será sujeito ou objeto de uma tripla (ver Figura \ref{fig:subgrafo}).
 % * <profsean@gmail.com> 2017-01-18T23:27:16.703Z:
 % 
@@ -101,7 +101,7 @@ A etapa de alinhamento de dados está dividida em duas atividades sendo elas: (i
 
 \subsubsection{Alinhamento simples}
 \label{im_simples}
-Para alinhar os recursos é necessário executar alguns procedimentos, sendo eles o tratamento dos dados, comparação entre recursos e análise da similaridade. O primeiro procedimento se refere a transformações nas propriedades dos recursos. Essas transformações são necessárias para auxiliar os algoritmos de similaridade a analisarem melhor a semelhança entre os recursos. No procedimento de comparação, cada uma da propriedades é analisada. Caso uma propriedade não pertença a um dos recursos, ela é dispensada da comparação. A Figura  \ref{fig:resources} apresenta a comparação entre as propriedades de cada recurso.
+Para alinhar os recursos é necessário executar alguns procedimentos, sendo eles o tratamento dos dados, comparação entre recursos e análise da similaridade. O primeiro procedimento, tratamento, se refere a transformações nas propriedades dos recursos. Essas transformações são necessárias para auxiliar os algoritmos de similaridade a analisarem melhor a semelhança entre os recursos. No procedimento de comparação, cada uma da propriedades é analisada. Caso uma propriedade não pertença a um dos recursos, ela é dispensada da comparação. A Figura  \ref{fig:resources} apresenta a comparação entre as propriedades de cada recurso.
 
 \begin{figure}[!h]
 	\centering
@@ -119,10 +119,10 @@ P_f =M a x  ( P_{r1} ,P_{r2} ) - P_d
 
 Onde:
 \begin{itemize}
-	\item $P_{r1}$ – Propriedades do recurso 1;
-	\item $P_{r2}$ –  Propriedades do recurso 2;
-	\item $P_d$ –  Propriedades que devem ser desconsideradas;
-	\item $M a x  ( P_{r1} ,P_{r2} )$ – Retorna o maior conjunto de propriedades;
+	\item $P_{r1}$ – Conjunto de propriedades do recurso 1;
+	\item $P_{r2}$ – Conjunto de propriedades do recurso 2;
+	\item $P_d$ –  Conjunto de propriedades que devem ser desconsideradas;
+	\item $M a x  ( P_{r1} ,P_{r2} )$ – Retorna o conjunto com maior número de propriedades;
 \end{itemize}
 
 A Equação \ref{eq:similaridade} trata da função de similaridade entre recursos, essa equação pode ser entendida como a média das similaridades entre dois recursos. Tal abordagem foi escolhida com o objetivo de não privilegiar nenhuma das similaridades parciais. Contudo, é possível que existam outras funções mais adequadas para calcular a similaridade entre recursos.
@@ -180,7 +180,7 @@ A Figura \ref{cp_cascata} apresenta o relacionamento entre os conceitos e a casc
 	\label{cp_cascata}
 \end{figure}
 
-Imaginemos que algum órgão deseja encontrar quais autores estão presentes dois \textit{datasets} simultaneamente. Para isso, desejam utilizar os artigos presentes em ambas as bases. Dessa forma, temos que o conceito principal e conceito relacionado são \textbf{\textit{Author}} e \textbf{\textit{Publication}}, respectivamente.
+Imaginemos que algum órgão deseja encontrar quais autores estão presentes em dois \textit{datasets} simultaneamente. Para isso, desejam utilizar os artigos presentes em ambas as bases. Dessa forma, temos que o conceito principal e conceito relacionado são \textbf{\textit{Author}} e \textbf{\textit{Publication}}, respectivamente.
 
 %\subsubsection{Recuperar Instâncias do Conceito Relacionado}
 \paragraph{Recuperar Instâncias do Conceito Relacionado}
@@ -193,8 +193,7 @@ Tomando como referência o exemplo citado, temos que as listas serão compostas 
 \paragraph{Alinhar Instâncias do Conceito Relacionado}
 \label{lista_rel}
 
-As instâncias recuperadas na atividade \ref{recuperao_relacionado} são submetidas para o alinhamento. Com isso, sua similaridade é calculada e as instâncias correspondentes são persistidas. Com isso, tem-se que ambas dizem respeito à mesma entidade, em outras palavras, referem-se à mesma publicação.
-
+As instâncias recuperadas na atividade \ref{recuperao_relacionado} são submetidas para o alinhamento. Através do cálculo de similaridade realizado entre essas instâncias. O resultado desse cálculo é comparado com um limiar de aceitação, havendo duas possibilidades. Em caso positivo, ou seja, a similaridade está no limiar de aceitação. Consequentemente, as instâncias são entendidas como correspondentes e o alinhamento é persistido. Caso contrário, o par candidato é descartado.
 
 %\subsubsection{Recuperar Recursos do conceito principal}
 \paragraph{Recuperar Recursos do conceito principal}

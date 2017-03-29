@@ -1,6 +1,6 @@
 \chapter{Introdução}
 \label{cap:introducao}
-A Web é baseada em documentos, onde os documentos ou páginas são descritas através de uma linguagem de marcação de hipertexto (HTML) e interligados através de \textit{hyperlinks}. Para acessar as páginas na Web, é necessário um mecanismo capaz de identificar de forma única cada uma dessas páginas, o que é feito através de um mecanismo de identificação global chamado URI (Uniform Resource Identifier). Dessa forma, para ter acesso a um conteúdo específico de qualquer documento neste paradigma, é necessário obter todo o documento.
+A Web é baseada em documentos, onde os documentos ou páginas são descritas através de uma linguagem de marcação de hipertexto (HTML) e interligados através de \textit{hyperlinks}. Para acessar as páginas na Web, é necessário um mecanismo capaz de identificar de forma única cada uma dessas páginas, o que é feito através de um mecanismo de identificação global chamado URI (\textit{Uniform Resource Identifier}). Dessa forma, para ter acesso a um conteúdo específico de qualquer documento neste paradigma, é necessário obter todo o documento.
 
 Analogamente, a Web Semântica, ou Web de dados\footnote{Para mais informações, acesse: \url{https://www.w3.org/standards/semanticweb/data}}, através de URIs, possibilita que recursos na web sejam identificados de forma única, viabilizando assim a recuperação de seus conteúdos. Esses, por sua vez, são representados através de um framework de descrição de recursos (RDF), além de contar com um protocolo para consulta, o \textit{Simple Protocol and RDF Query Language} (SPARQL). Tais elementos, juntamente com princípios e boas práticas, surge o conceito de Dados Conectados.
 
@@ -31,17 +31,17 @@ De acordo com \cite{castano2011ontology}, existem diversas técnicas que podem s
 
 Na segunda categoria, estão concentradas as técnicas orientadas à instância. 
 
-\textbf{Baseada em aprendizagem:} Utiliza grupos de treinamento bem como técnicas de aprendizagem de máquina, como Máquina de Vetor de Suporte (\textit{support vector machine}), para definir se os recursos representam a mesma entidade do mundo real.
+\textbf{Baseadas em aprendizagem:} Utiliza grupos de treinamento bem como técnicas de aprendizagem de máquina, como Máquina de Vetor de Suporte (\textit{support vector machine}), para definir se os recursos representam a mesma entidade do mundo real.
 
-\textbf{Baseada em similaridade:} Essa técnica enxerga os recursos como um conjunto de valores. Pode utilizar as mesmas funções para comparação entre textos, como a similaridade média para comparar dois recursos. 
+\textbf{Baseadas em similaridade:} Essa técnica enxerga os recursos como um conjunto de valores. Pode utilizar as mesmas funções para comparação entre textos, como a similaridade média para comparar dois recursos. 
 
-\textbf{Baseadas em regras:} Diferente das outras técnicas, esta usa valores booleanos no lugar de valores numéricos. Além disso, esta subcategoria apresenta bons resultados, porém esta abordagem é dependente do domínio. 
+\textbf{Baseadas em regras:} Diferente das outras técnicas, esta usa valores \textit{booleanos} no lugar de valores numéricos. Além disso, esta subcategoria apresenta bons resultados, embora seja dependente do domínio. 
 
 \textbf{Baseadas em contexto:} O contexto de um recurso pode ser entendido como os relacionamentos dele com outros recursos. Dessa forma, essa abordagem analisa as instâncias e suas relações.
 
-Conforme as técnicas apresentadas, tem-se que o calculo da similaridade entre recursos é elemento comum entre as aplicações de correspondência de instância.
+Conforme as técnicas apresentadas, tem-se que o cálculo da similaridade entre recursos é elemento comum entre as aplicações de correspondência de instância.
 
-Para identificar e conectar recursos na Web, a comunidade vem apresentando um número crescente de soluções (ver Figura \ref{fig:oaei_imtools}).a \textit{Ontology Alignment Evaluation Initiative} (OAEI) realiza uma avaliação anual, que consiste em alinhar dois conjuntos de dados pré-definidos e comparar o alinhamento gerado pela solução com o alinhamento de referência. A partir da comparação entre os dois conjuntos de alinhamento, as métricas de precisão, revocação e medida-f são geradas.
+Para identificar e conectar recursos na Web, a comunidade vem apresentando um número crescente de soluções (ver Figura \ref{fig:oaei_imtools}). A \textit{Ontology Alignment Evaluation Initiative} (OAEI) realiza uma avaliação anual, que consiste em alinhar dois conjuntos de dados pré-definidos e comparar o alinhamento gerado pela solução com o alinhamento de referência. A partir da comparação entre os dois conjuntos de alinhamento, as métricas de precisão, revocação e medida-f são geradas.
 
 
 \begin{figure}[!h]
@@ -52,13 +52,13 @@ Para identificar e conectar recursos na Web, a comunidade vem apresentando um n�
         \label{fig:oaei_imtools}
 \end{figure}
 
-Porém, de acordo com \citeonline{homoceanu2014putting}, apesar dos bons resultados apresentados, as soluções não estão prontas para alinhar dados automaticamente de forma confiável. Para se chegar a esta conclusão, os autores realizaram um experimento equivalente ao executado pela OAEI, mas utilizando dados reais, que foram obtidos de 5 fontes diferentes (Freebase\footnote{\url{http://www.freebase.com/}}, DBPedia\footnote{\url{http://dbpedia.org}}, LinkedMDB\footnote{\url{http://www.linkedmdb.org}}, DrugBase\footnote{\url{http://www.drugbase.de/de/}} e NewYork Times\footnote{\url{http://www.nytimes.com}}), que podem ser obtidos através do endereço \url{http://www.ifis.cs.tu-bs.de/node/2906}.
+Porém, de acordo com \citeonline{homoceanu2014putting}, apesar dos bons resultados apresentados, as soluções não estão prontas para alinhar dados automaticamente de forma confiável. Para se chegar a esta conclusão, os autores realizaram um experimento equivalente ao executado pela OAEI, mas utilizando dados reais, que foram obtidos de 5 fontes diferentes (Freebase\footnote{\url{http://www.freebase.com/}}, DBpedia\footnote{\url{http://dbpedia.org}}, LinkedMDB\footnote{\url{http://www.linkedmdb.org}}, DrugBase\footnote{\url{http://www.drugbase.de/de/}} e NewYork Times\footnote{\url{http://www.nytimes.com}}), que podem ser obtidos através do endereço \url{http://www.ifis.cs.tu-bs.de/node/2906}.
 
 No experimento realizado por \citeonline{homoceanu2014putting} foi utilizada uma abordagem de caixa preta, onde qualquer sistema independente de domínio pode ser utilizado na avaliação. Nesse contexto, o SLINT+ \cite{nguyen2012interlinking} foi utilizado por ser uma ferramenta independente de domínio e que não precisa de treinamento. A ferramenta foi avaliada em duas perspectivas. Na primeira perspectiva a transitividade da propriedade \textit{owl:sameAs} foi desconsiderada. Diferentemente da segunda, que considerou a transitividade das correspondências criadas. A Tabela \ref{tab:homoceanu2014putting} apresenta os resultados obtidos no experimento \cite{homoceanu2014putting}.
 
 \begin{table}[h]
 	\centering
-	\caption{Quantidade de links owl:sameAs, quantidade de links owl:sameAs entre tipos diferentes, precisão. Nas perspectivas sem e com transividade}
+	\caption{Quantidade de links \textit{owl:sameAs}, quantidade de links \textit{owl:sameAs} entre tipos diferentes, precisão. Nas perspectivas sem e com transividade para cada um dos limiares de aceitação \textit{tetha}.}
 	\label{tab:homoceanu2014putting}
 	\begin{tabular}{@{}l|lll|lll@{}}
 		\toprule
@@ -75,9 +75,9 @@ No experimento realizado por \citeonline{homoceanu2014putting} foi utilizada uma
 
 %Além disso, o experimento permitiu notar que as características do modelo não eram considerados durante o processo de correspondência de instâncias.
 
-Segundo \cite{homoceanu2014putting} e \cite{ferrara2008towards}, uma solução de correspondência de instâncias deveria explorar a modelagem ontológica, que utiliza vocabulários e ontologias para seu desenvolvimento. Essa recomendação se deve ao fato de RDF apenas dá estrutura aos dados, sendo responsabilidade das ontologias dar significado aos conceitos representados. Um modelo ontológico é composto por classes e propriedades, que são descritas através de uma linguagem de descrição de ontologias (e.g. OWL). As classes são utilizadas para representar os conceitos que pertencem ao domínio de interesse, já as propriedades são utilizadas para relacionar conceitos, sendo chamadas de propriedades de objeto (\textit{object properties}) ou relacionar conceitos e dados, sendo chamadas de propriedade de dados (\textit{data properties}). Essas propriedades possuem características como transitividade, simetria e reflexibilidade. Dessa forma, o baixo suporte às características das propriedades pode afetar diretamente na qualidade de soluções de correspondência de instâncias. 
+Segundo \cite{homoceanu2014putting} e \cite{ferrara2008towards}, uma solução de correspondência de instâncias deveria explorar a modelagem ontológica, que utiliza vocabulários e ontologias para seu desenvolvimento. Essa recomendação se deve ao fato de RDF apenas prover estrutura aos dados, sendo responsabilidade das ontologias dar significado aos conceitos representados. Um modelo ontológico é composto por classes e propriedades, que são descritas através de uma linguagem de descrição de ontologias (e.g. OWL). As classes são utilizadas para representar os conceitos que pertencem ao domínio de interesse, já as propriedades são utilizadas para relacionar conceitos, sendo chamadas de propriedades de objeto (\textit{object properties}) ou relacionar conceitos e dados, sendo chamadas de propriedade de dados (\textit{data properties}). Essas propriedades possuem características como transitividade, simetria e reflexibilidade. Dessa forma, o baixo suporte às características das propriedades pode afetar diretamente na qualidade de soluções de correspondência de instâncias. 
         
-Dentre as propriedades com suporte inadequado,  destaca-se a propriedade owl:sameAs, que é responsável por identificar recursos equivalentes. Além disso, essa se trata de uma propriedade transitiva, de forma que se existem dois recursos equivalentes R1 e R2 e existe um terceiro recurso R3 que é equivalente a R2, então R1 é equivalente a R3 como representado na Figura \ref{sameAsSample}. Tais características fazem com que a propriedade owl:sameAs seja uma das  mais utilizadas para alinhar dados na Web. Dessa forma, utilizar ferramentas que levem em consideração as características das propriedades é de grande importância para alinhar dados de forma confiável.
+Dentre as propriedades com suporte inadequado,  destaca-se a propriedade \textit{owl:sameAs}, que é responsável por identificar recursos equivalentes. Além disso, essa se trata de uma propriedade transitiva, de forma que se existem dois recursos equivalentes R1 e R2 e existe um terceiro recurso R3 que é equivalente a R2, então R1 é equivalente a R3 como representado na Figura \ref{sameAsSample}. Tais características fazem com que a propriedade \textit{owl:sameAs} seja uma das  mais utilizadas para alinhar dados na Web. Dessa forma, utilizar ferramentas que levem em consideração as características das propriedades é de grande importância para alinhar dados de forma confiável.
 
 
 \begin{figure}[h]
@@ -107,18 +107,18 @@ Dentre as propriedades com suporte inadequado,  destaca-se a propriedade owl:sam
 		\node[right= of dummy,ellipse,draw](r2) {dblp:perfil\_2}
 		edge[pil,<->, bend left=45] node[auto] {owl:sameAs} (r3);
 		
-		\node[left= of dummy,ellipse,draw] (r1) {schoolar:perfil\_3}
+		\node[left= of dummy,ellipse,draw] (r1) {scholar:perfil\_3}
 		edge[dashed,<->, bend right] node[auto] {owl:sameAs} (r3)
 		edge[pil,<->, bend left] node[auto] {owl:sameAs} (r2);
 		\end{tikzpicture}
 		}
-		\caption{Transitividade da propriedade owl:sameAs}
+		\caption{Transitividade da propriedade \textit{owl:sameAs}}
 		\label{sameAsSample}
 \end{figure}
 
 
 Neste contexto, este trabalho propõe uma abordagem independente de contexto para o alinhamento de dados conectados por meio de um processo de alinhamento que leva em consideração aspectos dos dados e  características do modelo ontológico.
-Assim, os recursos/instâncias analisados, além de alinhados através das propriedades de dados, podem ser alinhados através seus relacionamentos. Para isso, propõe-se uma abordagem de alinhamento em cascata. Ademais, a proposta trata o problema do alinhamento entre \textit{datasets} reais, permitindo que seja possível alinhar \textit{datasets} distribuídos na Web de forma confiável.
+Assim, os recursos/instâncias analisados, além de alinhados através das propriedades de dados, podem ser alinhados através de seus relacionamentos. Para isso, propõe-se uma abordagem de alinhamento em cascata. Ademais, a proposta trata o problema do alinhamento entre \textit{datasets} reais, permitindo que seja possível alinhar \textit{datasets} distribuídos na Web de forma confiável.
 
 
 Em um cenário favorável, a tarefa de encontrar recursos correspondentes entre \textit{datasets} pode ser realizada com facilidade. Por outro lado, o mesmo não pode ser dito quando há milhares de instâncias, visto que os recursos necessários para manter uma análise manual tornam esta prática inviável. Além disso, devido ao esforço necessário juntamente com a quantidade de instâncias que devem ser comparadas, tem-se que a qualidade da análise pode ser comprometida.
@@ -154,7 +154,7 @@ Apesar de ser um trabalho com enfoque em engenharia de software, as suas contrib
 
 \section{Relevância e contribuições do trabalho}
 \label{contribuicao}
-Anualmente a OAEI realiza a avaliação de ferramentas para a correspondência de instâncias. Essa avaliação utiliza \textit{datasets} previamente disponibilizados juntamente com uma referência de correspondências entre as instâncias. Essa prática permite que o experimento seja reproduzido, permitindo que os resultados fornecidos pela OAEI sejam validados. Por outro lado, permite também que dos desenvolvedores implementem algoritmos que utilizam computação específica para o \textit{dataset}. Desta forma, é necessário o estudo de abordagens independentes de contexto que sejam capazes de alinhar dados de forma confiável. Além disso, as soluções fornecidas requerem que os \textit{datasets} sejam fornecidos em formato de arquivo, sendo necessário gerar os arquivos dos \textit{datasets} sempre que é necessário realizar a correspondência de instâncias.
+Anualmente a OAEI realiza a avaliação de ferramentas para a correspondência de instâncias. Essa avaliação utiliza \textit{datasets} previamente disponibilizados juntamente com uma referência de correspondências entre as instâncias. Essa prática permite que o experimento seja reproduzido, possibilitando a validação dos resultados fornecidos pela OAEI. Por outro lado, permite também que desenvolvedores implementem algoritmos que utilizam computação específica para o \textit{dataset}. Desta forma, é necessário o estudo de abordagens independentes de contexto que sejam capazes de alinhar dados de forma confiável. Além disso, as soluções fornecidas requerem que os \textit{datasets} sejam fornecidos em formato de arquivo, sendo necessário gerar os arquivos dos \textit{datasets} sempre que é necessário realizar a correspondência de instâncias.
 
 Nesse contexto, a proposta apresenta as seguintes contribuições:
 \begin{itemize}
